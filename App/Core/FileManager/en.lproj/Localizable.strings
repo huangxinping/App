@@ -1,0 +1,13 @@
+/*
+   Localizable.strings
+   HLMZiniMini
+
+   Created by huangxinping on 3/3/14.
+   Copyright (c) 2014 sharemerge. All rights reserved.
+ */
+
+"capability.network.error" = "Network exception";
+"capability.network.wait"  = "Waiting";
+
+"common.cancel"            = "Cancel";
+"common.back"              = "Back";

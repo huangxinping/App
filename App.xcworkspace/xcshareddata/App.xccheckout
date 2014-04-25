@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>87884764-A3AB-4B40-9519-57151AA2F671</string>
+	<key>IDESourceControlProjectName</key>
+	<string>App</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0ACB1DAF-E8B3-4EC2-B291-A0ECACE0B243</key>
+		<string>https://github.com/huangxinping/ShareMergeLib.git</string>
+		<key>4DB64F3C-0CB9-4084-9C38-5DDFE2AD1A95</key>
+		<string>https://github.com/huangxinping/App.git</string>
+		<key>F18AE4EE-AF56-4EF8-BD4C-55E5A3E3C1B5</key>
+		<string>https://github.com/JJMM/DurexKit.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>App.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0ACB1DAF-E8B3-4EC2-B291-A0ECACE0B243</key>
+		<string>../Vendor/ShareMerge</string>
+		<key>4DB64F3C-0CB9-4084-9C38-5DDFE2AD1A95</key>
+		<string>..</string>
+		<key>F18AE4EE-AF56-4EF8-BD4C-55E5A3E3C1B5</key>
+		<string>../Vendor/DurexKit</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/huangxinping/App.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>4DB64F3C-0CB9-4084-9C38-5DDFE2AD1A95</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4DB64F3C-0CB9-4084-9C38-5DDFE2AD1A95</string>
+			<key>IDESourceControlWCCName</key>
+			<string>App</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F18AE4EE-AF56-4EF8-BD4C-55E5A3E3C1B5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>DurexKit</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0ACB1DAF-E8B3-4EC2-B291-A0ECACE0B243</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ShareMerge</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Splash View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="splash" id="BYZ-38-t0r" customClass="SplashViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qjI-aK-3mG">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qjI-aK-3mG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="60e-T4-Vps"/>
+                            <constraint firstItem="qjI-aK-3mG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ajx-Wd-yob"/>
+                            <constraint firstAttribute="bottom" secondItem="qjI-aK-3mG" secondAttribute="bottom" id="QX3-ec-58O"/>
+                            <constraint firstAttribute="trailing" secondItem="qjI-aK-3mG" secondAttribute="trailing" id="jpF-XH-8KC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="splashImageView" destination="qjI-aK-3mG" id="dP0-Cl-CzC"/>
+                        <segue destination="oxP-Gf-uwn" kind="modal" identifier="embed_root" animates="NO" id="cTQ-Cb-aZq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-35" y="-26"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="FBk-cZ-heq">
+            <objects>
+                <viewController storyboardIdentifier="root" id="stn-JH-a7p" customClass="RootViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="A1l-n5-aQl"/>
+                        <viewControllerLayoutGuide type="bottom" id="zwg-FR-ftA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="458-Q7-ja6">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="9Za-kU-lMN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BLO-K3-7X7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1834" y="-26"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="c0W-YO-Hwu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oxP-Gf-uwn" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yt3-c5-ShJ">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="stn-JH-a7p" kind="relationship" relationship="rootViewController" id="aMz-dH-6e7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z7P-q9-S6W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="860" y="-26"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>

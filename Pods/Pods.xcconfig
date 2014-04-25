@@ -1,0 +1,6 @@
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/UMengAnalytics"
+LIBRARY_SEARCH_PATHS = "$(PODS_ROOT)/UMengAnalytics/**"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers" -isystem "${PODS_ROOT}/Headers/UMengAnalytics"
+OTHER_LDFLAGS = -ObjC -lMobClickLibrary -lz
+PODS_ROOT = ${SRCROOT}/Pods

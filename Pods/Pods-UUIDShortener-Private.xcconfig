@@ -1,0 +1,5 @@
+#include "Pods-UUIDShortener.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/UUIDShortener" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/UMengAnalytics" "${PODS_ROOT}/Headers/UUIDShortener"
+OTHER_LDFLAGS = -ObjC
+PODS_ROOT = ${SRCROOT}
