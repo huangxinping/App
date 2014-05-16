@@ -6,6 +6,24 @@
 // project.
 
 
+// COSTouchVisualizer
+#define COCOAPODS_POD_AVAILABLE_COSTouchVisualizer
+#define COCOAPODS_VERSION_MAJOR_COSTouchVisualizer 1
+#define COCOAPODS_VERSION_MINOR_COSTouchVisualizer 0
+#define COCOAPODS_VERSION_PATCH_COSTouchVisualizer 2
+
+// MBProgressHUD
+#define COCOAPODS_POD_AVAILABLE_MBProgressHUD
+#define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0
+#define COCOAPODS_VERSION_MINOR_MBProgressHUD 8
+#define COCOAPODS_VERSION_PATCH_MBProgressHUD 0
+
+// MKStoreKit
+#define COCOAPODS_POD_AVAILABLE_MKStoreKit
+#define COCOAPODS_VERSION_MAJOR_MKStoreKit 4
+#define COCOAPODS_VERSION_MINOR_MKStoreKit 99
+#define COCOAPODS_VERSION_PATCH_MKStoreKit 0
+
 // UITextView+UIControl
 #define COCOAPODS_POD_AVAILABLE_UITextView_UIControl
 #define COCOAPODS_VERSION_MAJOR_UITextView_UIControl 0

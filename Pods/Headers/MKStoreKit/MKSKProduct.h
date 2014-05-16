@@ -1,0 +1,1 @@
+../../MKStoreKit/MKSKProduct.h
