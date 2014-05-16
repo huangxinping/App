@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "32E4529F966740AD9E717DBD"
-               BuildableName = "libPods-UMengAnalytics.a"
-               BlueprintName = "Pods-UMengAnalytics"
+               BlueprintIdentifier = "342D4DF1EB7E4538A82DBE74"
+               BuildableName = "libPods-UITextView+UIControl.a"
+               BlueprintName = "Pods-UITextView+UIControl"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

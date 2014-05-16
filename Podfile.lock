@@ -1,10 +1,13 @@
 PODS:
+  - UITextView+UIControl (0.1.0)
   - UMengAnalytics (2.2.1)
 
 DEPENDENCIES:
+  - UITextView+UIControl
   - UMengAnalytics
 
 SPEC CHECKSUMS:
+  UITextView+UIControl: dc34dabc7d1425be90591ebd48c517203d1ed747
   UMengAnalytics: ce494e736260640957348d00eb0f41aa02167662
 
 COCOAPODS: 0.32.1
