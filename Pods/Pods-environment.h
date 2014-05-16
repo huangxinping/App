@@ -12,6 +12,18 @@
 #define COCOAPODS_VERSION_MINOR_COSTouchVisualizer 0
 #define COCOAPODS_VERSION_PATCH_COSTouchVisualizer 2
 
+// CRNavigationController
+#define COCOAPODS_POD_AVAILABLE_CRNavigationController
+#define COCOAPODS_VERSION_MAJOR_CRNavigationController 1
+#define COCOAPODS_VERSION_MINOR_CRNavigationController 1
+#define COCOAPODS_VERSION_PATCH_CRNavigationController 0
+
+// FontLabel
+#define COCOAPODS_POD_AVAILABLE_FontLabel
+#define COCOAPODS_VERSION_MAJOR_FontLabel 0
+#define COCOAPODS_VERSION_MINOR_FontLabel 0
+#define COCOAPODS_VERSION_PATCH_FontLabel 1
+
 // MBProgressHUD
 #define COCOAPODS_POD_AVAILABLE_MBProgressHUD
 #define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0
