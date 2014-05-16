@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "55E6C2FAC20242E3997FBC28"
-               BuildableName = "libPods-COSTouchVisualizer.a"
-               BlueprintName = "Pods-COSTouchVisualizer"
+               BlueprintIdentifier = "724C3AA8F8694B72852F56CD"
+               BuildableName = "libPods-JSErrorStackTrace.a"
+               BlueprintName = "Pods-JSErrorStackTrace"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

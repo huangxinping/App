@@ -24,6 +24,12 @@
 #define COCOAPODS_VERSION_MINOR_FontLabel 0
 #define COCOAPODS_VERSION_PATCH_FontLabel 1
 
+// JSErrorStackTrace
+#define COCOAPODS_POD_AVAILABLE_JSErrorStackTrace
+#define COCOAPODS_VERSION_MAJOR_JSErrorStackTrace 1
+#define COCOAPODS_VERSION_MINOR_JSErrorStackTrace 1
+#define COCOAPODS_VERSION_PATCH_JSErrorStackTrace 0
+
 // MBProgressHUD
 #define COCOAPODS_POD_AVAILABLE_MBProgressHUD
 #define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0

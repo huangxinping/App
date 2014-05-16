@@ -2,6 +2,7 @@ PODS:
   - COSTouchVisualizer (1.0.2)
   - CRNavigationController (1.1)
   - FontLabel (0.0.1)
+  - JSErrorStackTrace (1.1.0)
   - MBProgressHUD (0.8)
   - MKStoreKit (4.99)
   - UITextView+UIControl (0.1.0)
@@ -11,6 +12,7 @@ DEPENDENCIES:
   - COSTouchVisualizer
   - CRNavigationController
   - FontLabel
+  - JSErrorStackTrace
   - MBProgressHUD
   - MKStoreKit
   - UITextView+UIControl
@@ -20,6 +22,7 @@ SPEC CHECKSUMS:
   COSTouchVisualizer: 7a678be1df4f6b11031f354708cd91ed9a130300
   CRNavigationController: 4b174a0b9bf3d284cd0475b1ed7a5d09c76727d4
   FontLabel: cff30a74f514280b4dbe12fe64b6f88105ce5b6f
+  JSErrorStackTrace: 31badbf74ffb2e23e8e3a2a5e8de5bd7fbe0faaf
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
   MKStoreKit: 5dea8e2966c1218c0d0f0b5c749d2d9317141a2b
   UITextView+UIControl: dc34dabc7d1425be90591ebd48c517203d1ed747
