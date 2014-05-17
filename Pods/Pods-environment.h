@@ -24,6 +24,12 @@
 #define COCOAPODS_VERSION_MINOR_FontLabel 0
 #define COCOAPODS_VERSION_PATCH_FontLabel 1
 
+// JDStatusBarNotification
+#define COCOAPODS_POD_AVAILABLE_JDStatusBarNotification
+#define COCOAPODS_VERSION_MAJOR_JDStatusBarNotification 1
+#define COCOAPODS_VERSION_MINOR_JDStatusBarNotification 4
+#define COCOAPODS_VERSION_PATCH_JDStatusBarNotification 8
+
 // JSErrorStackTrace
 #define COCOAPODS_POD_AVAILABLE_JSErrorStackTrace
 #define COCOAPODS_VERSION_MAJOR_JSErrorStackTrace 1
@@ -41,6 +47,12 @@
 #define COCOAPODS_VERSION_MAJOR_MKStoreKit 4
 #define COCOAPODS_VERSION_MINOR_MKStoreKit 99
 #define COCOAPODS_VERSION_PATCH_MKStoreKit 0
+
+// MLPAccessoryBadge
+#define COCOAPODS_POD_AVAILABLE_MLPAccessoryBadge
+#define COCOAPODS_VERSION_MAJOR_MLPAccessoryBadge 1
+#define COCOAPODS_VERSION_MINOR_MLPAccessoryBadge 0
+#define COCOAPODS_VERSION_PATCH_MLPAccessoryBadge 0
 
 // UITextView+UIControl
 #define COCOAPODS_POD_AVAILABLE_UITextView_UIControl
