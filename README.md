@@ -12,6 +12,7 @@ App
 5. git clone https://github.com/huangxinping/Weather.git
 6. cd Weather/
 7. git submodule add -f https://github.com/huangxinping/ShareMergeLib.git Vendor/ShareMerge
+8. git submodule add -f https://github.com/JJMM/DurexKit.git Vendor/DurexKit
 
 ## Option
 
@@ -38,6 +39,7 @@ App
 5. 克隆新创建的工程：git clone https://github.com/huangxinping/Weather.git
 6. 进入新创建工程：cd Weather/
 7. 下载依赖库：git submodule add -f https://github.com/huangxinping/ShareMergeLib.git Vendor/ShareMerge
+8. 下载依赖哭：git submodule add -f https://github.com/JJMM/DurexKit.git Vendor/DurexKit
 
 ## 可选操作
 1. 初始化子模块：git submodule init

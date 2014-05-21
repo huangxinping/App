@@ -1,1 +1,0 @@
-../../JSErrorStackTrace/NSError+JSErrorStackTrace.h

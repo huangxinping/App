@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E0D8C8A192C90C90079BE90 /* NSArray+SafeKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0D8C71192C90C90079BE90 /* NSArray+SafeKit.m */; };
+		1E0D8C8B192C90C90079BE90 /* NSDictionary+SafeKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0D8C73192C90C90079BE90 /* NSDictionary+SafeKit.m */; };
+		1E0D8C8C192C90C90079BE90 /* NSMutableArray+SafeKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0D8C75192C90C90079BE90 /* NSMutableArray+SafeKit.m */; };
+		1E0D8C8D192C90C90079BE90 /* NSMutableDictionary+SafeKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0D8C77192C90C90079BE90 /* NSMutableDictionary+SafeKit.m */; };
+		1E0D8C8E192C90C90079BE90 /* NSMutableString+SafeKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0D8C79192C90C90079BE90 /* NSMutableString+SafeKit.m */; };
+		1E0D8C8F192C90C90079BE90 /* NSObject+SafeKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0D8C7B192C90C90079BE90 /* NSObject+SafeKit.m */; };
+		1E0D8C90192C90C90079BE90 /* NSString+SafeKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0D8C7D192C90C90079BE90 /* NSString+SafeKit.m */; };
+		1E0D8C91192C90C90079BE90 /* NSException+SafeKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0D8C80192C90C90079BE90 /* NSException+SafeKit.m */; };
+		1E0D8C92192C90C90079BE90 /* NSObject+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0D8C82192C90C90079BE90 /* NSObject+Swizzle.m */; };
+		1E0D8C93192C90C90079BE90 /* SafeKitConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0D8C84192C90C90079BE90 /* SafeKitConfig.m */; };
+		1E0D8C94192C90C90079BE90 /* SafeKitLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0D8C87192C90C90079BE90 /* SafeKitLog.m */; };
+		1E0D8C95192C90C90079BE90 /* SafeKitMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0D8C89192C90C90079BE90 /* SafeKitMacro.m */; };
 		1E3E77761908FF9A004F052E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3E77751908FF9A004F052E /* Foundation.framework */; };
 		1E3E77781908FF9A004F052E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3E77771908FF9A004F052E /* CoreGraphics.framework */; };
 		1E3E777A1908FF9B004F052E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3E77791908FF9B004F052E /* UIKit.framework */; };
@@ -75,6 +87,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E0D8C6D192C90C90079BE90 /* DurexKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DurexKit.h; sourceTree = "<group>"; };
+		1E0D8C6F192C90C90079BE90 /* Foundation+SafeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Foundation+SafeKit.h"; sourceTree = "<group>"; };
+		1E0D8C70192C90C90079BE90 /* NSArray+SafeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SafeKit.h"; sourceTree = "<group>"; };
+		1E0D8C71192C90C90079BE90 /* NSArray+SafeKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SafeKit.m"; sourceTree = "<group>"; };
+		1E0D8C72192C90C90079BE90 /* NSDictionary+SafeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SafeKit.h"; sourceTree = "<group>"; };
+		1E0D8C73192C90C90079BE90 /* NSDictionary+SafeKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SafeKit.m"; sourceTree = "<group>"; };
+		1E0D8C74192C90C90079BE90 /* NSMutableArray+SafeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SafeKit.h"; sourceTree = "<group>"; };
+		1E0D8C75192C90C90079BE90 /* NSMutableArray+SafeKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+SafeKit.m"; sourceTree = "<group>"; };
+		1E0D8C76192C90C90079BE90 /* NSMutableDictionary+SafeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+SafeKit.h"; sourceTree = "<group>"; };
+		1E0D8C77192C90C90079BE90 /* NSMutableDictionary+SafeKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+SafeKit.m"; sourceTree = "<group>"; };
+		1E0D8C78192C90C90079BE90 /* NSMutableString+SafeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+SafeKit.h"; sourceTree = "<group>"; };
+		1E0D8C79192C90C90079BE90 /* NSMutableString+SafeKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+SafeKit.m"; sourceTree = "<group>"; };
+		1E0D8C7A192C90C90079BE90 /* NSObject+SafeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SafeKit.h"; sourceTree = "<group>"; };
+		1E0D8C7B192C90C90079BE90 /* NSObject+SafeKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SafeKit.m"; sourceTree = "<group>"; };
+		1E0D8C7C192C90C90079BE90 /* NSString+SafeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SafeKit.h"; sourceTree = "<group>"; };
+		1E0D8C7D192C90C90079BE90 /* NSString+SafeKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SafeKit.m"; sourceTree = "<group>"; };
+		1E0D8C7F192C90C90079BE90 /* NSException+SafeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSException+SafeKit.h"; sourceTree = "<group>"; };
+		1E0D8C80192C90C90079BE90 /* NSException+SafeKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSException+SafeKit.m"; sourceTree = "<group>"; };
+		1E0D8C81192C90C90079BE90 /* NSObject+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Swizzle.h"; sourceTree = "<group>"; };
+		1E0D8C82192C90C90079BE90 /* NSObject+Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Swizzle.m"; sourceTree = "<group>"; };
+		1E0D8C83192C90C90079BE90 /* SafeKitConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafeKitConfig.h; sourceTree = "<group>"; };
+		1E0D8C84192C90C90079BE90 /* SafeKitConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeKitConfig.m; sourceTree = "<group>"; };
+		1E0D8C85192C90C90079BE90 /* SafeKitCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafeKitCore.h; sourceTree = "<group>"; };
+		1E0D8C86192C90C90079BE90 /* SafeKitLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafeKitLog.h; sourceTree = "<group>"; };
+		1E0D8C87192C90C90079BE90 /* SafeKitLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeKitLog.m; sourceTree = "<group>"; };
+		1E0D8C88192C90C90079BE90 /* SafeKitMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafeKitMacro.h; sourceTree = "<group>"; };
+		1E0D8C89192C90C90079BE90 /* SafeKitMacro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafeKitMacro.m; sourceTree = "<group>"; };
 		1E0F0CDA190A43C3003A4826 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		1E3E77721908FF9A004F052E /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E3E77751908FF9A004F052E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -208,6 +247,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E0D8C6C192C90C90079BE90 /* DurexKit */ = {
+			isa = PBXGroup;
+			children = (
+				1E0D8C6D192C90C90079BE90 /* DurexKit.h */,
+				1E0D8C6E192C90C90079BE90 /* Foundation */,
+				1E0D8C7E192C90C90079BE90 /* SafeCore */,
+			);
+			name = DurexKit;
+			path = DurexKit/DurexKit;
+			sourceTree = "<group>";
+		};
+		1E0D8C6E192C90C90079BE90 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				1E0D8C6F192C90C90079BE90 /* Foundation+SafeKit.h */,
+				1E0D8C70192C90C90079BE90 /* NSArray+SafeKit.h */,
+				1E0D8C71192C90C90079BE90 /* NSArray+SafeKit.m */,
+				1E0D8C72192C90C90079BE90 /* NSDictionary+SafeKit.h */,
+				1E0D8C73192C90C90079BE90 /* NSDictionary+SafeKit.m */,
+				1E0D8C74192C90C90079BE90 /* NSMutableArray+SafeKit.h */,
+				1E0D8C75192C90C90079BE90 /* NSMutableArray+SafeKit.m */,
+				1E0D8C76192C90C90079BE90 /* NSMutableDictionary+SafeKit.h */,
+				1E0D8C77192C90C90079BE90 /* NSMutableDictionary+SafeKit.m */,
+				1E0D8C78192C90C90079BE90 /* NSMutableString+SafeKit.h */,
+				1E0D8C79192C90C90079BE90 /* NSMutableString+SafeKit.m */,
+				1E0D8C7A192C90C90079BE90 /* NSObject+SafeKit.h */,
+				1E0D8C7B192C90C90079BE90 /* NSObject+SafeKit.m */,
+				1E0D8C7C192C90C90079BE90 /* NSString+SafeKit.h */,
+				1E0D8C7D192C90C90079BE90 /* NSString+SafeKit.m */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		1E0D8C7E192C90C90079BE90 /* SafeCore */ = {
+			isa = PBXGroup;
+			children = (
+				1E0D8C7F192C90C90079BE90 /* NSException+SafeKit.h */,
+				1E0D8C80192C90C90079BE90 /* NSException+SafeKit.m */,
+				1E0D8C81192C90C90079BE90 /* NSObject+Swizzle.h */,
+				1E0D8C82192C90C90079BE90 /* NSObject+Swizzle.m */,
+				1E0D8C83192C90C90079BE90 /* SafeKitConfig.h */,
+				1E0D8C84192C90C90079BE90 /* SafeKitConfig.m */,
+				1E0D8C85192C90C90079BE90 /* SafeKitCore.h */,
+				1E0D8C86192C90C90079BE90 /* SafeKitLog.h */,
+				1E0D8C87192C90C90079BE90 /* SafeKitLog.m */,
+				1E0D8C88192C90C90079BE90 /* SafeKitMacro.h */,
+				1E0D8C89192C90C90079BE90 /* SafeKitMacro.m */,
+			);
+			path = SafeCore;
+			sourceTree = "<group>";
+		};
 		1E3E77691908FF9A004F052E = {
 			isa = PBXGroup;
 			children = (
@@ -488,6 +578,7 @@
 		1EBBE6A9190A5B9D004004DC /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				1E0D8C6C192C90C90079BE90 /* DurexKit */,
 				1EBBE6F6190A5B9D004004DC /* ShareMerge */,
 			);
 			path = Vendor;
@@ -663,18 +754,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E3E78AC190901BC004F052E /* CoreEngine+Send.m in Sources */,
+				1E0D8C8F192C90C90079BE90 /* NSObject+SafeKit.m in Sources */,
 				1E3E77861908FF9B004F052E /* AppDelegate.m in Sources */,
+				1E0D8C8B192C90C90079BE90 /* NSDictionary+SafeKit.m in Sources */,
+				1E0D8C8C192C90C90079BE90 /* NSMutableArray+SafeKit.m in Sources */,
+				1E0D8C8A192C90C90079BE90 /* NSArray+SafeKit.m in Sources */,
 				1E3E78AA190901BC004F052E /* CoreEngine+DB.m in Sources */,
 				1E3E78B3190901BC004F052E /* UIEngine+Observer.m in Sources */,
+				1E0D8C94192C90C90079BE90 /* SafeKitLog.m in Sources */,
 				1E3E78AF190901BC004F052E /* SMLocalization.m in Sources */,
+				1E0D8C93192C90C90079BE90 /* SafeKitConfig.m in Sources */,
 				1E3E78AD190901BC004F052E /* CoreEngine.m in Sources */,
 				1E3E78B5190901BC004F052E /* UIEngine.m in Sources */,
 				1E3E78B6190901BC004F052E /* EmptySegue.m in Sources */,
 				1E3E78BB190901BC004F052E /* SplashViewController.m in Sources */,
 				1E3E78B0190901BC004F052E /* NetController.m in Sources */,
+				1E0D8C92192C90C90079BE90 /* NSObject+Swizzle.m in Sources */,
 				1E3E78B4190901BC004F052E /* UIEngine+Post.m in Sources */,
+				1E0D8C90192C90C90079BE90 /* NSString+SafeKit.m in Sources */,
 				1E3E78A8190901BC004F052E /* DBController+Keychain.m in Sources */,
+				1E0D8C95192C90C90079BE90 /* SafeKitMacro.m in Sources */,
 				1E3E78A9190901BC004F052E /* DBController.m in Sources */,
+				1E0D8C91192C90C90079BE90 /* NSException+SafeKit.m in Sources */,
+				1E0D8C8E192C90C90079BE90 /* NSMutableString+SafeKit.m in Sources */,
+				1E0D8C8D192C90C90079BE90 /* NSMutableDictionary+SafeKit.m in Sources */,
 				1E3E78B7190901BC004F052E /* PushNoAnimationSegue.m in Sources */,
 				1E3E78B9190901BC004F052E /* RootViewController.m in Sources */,
 				1E3E77821908FF9B004F052E /* main.m in Sources */,
