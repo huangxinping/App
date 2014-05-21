@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Colours.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-FontLabel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -44,6 +49,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-PermissiveResearch.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-RegExCategories.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-UITextView+UIControl.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -61,62 +76,6 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>0C43EC06A9EA4C87B09D6E81</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>16E4A2CAEDD84A749C01A738</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>1FA4CC0A0EC34E84B6859A53</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>533035C411DC47C39C661020</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7D74C61C61EE4C248940C43B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7F91570EFDA1455783CF6A85</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8CFAA7BC6079414C88AEFF3B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9FDB6DD26E8543DF9228791F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C7C88B7274BB4F948515EA6B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D380BD7F8A7D4DC3A6E9E5A8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D6EBD01C762D419DADA9528C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

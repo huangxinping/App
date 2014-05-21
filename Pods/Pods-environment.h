@@ -18,6 +18,12 @@
 #define COCOAPODS_VERSION_MINOR_CRNavigationController 1
 #define COCOAPODS_VERSION_PATCH_CRNavigationController 0
 
+// Colours
+#define COCOAPODS_POD_AVAILABLE_Colours
+#define COCOAPODS_VERSION_MAJOR_Colours 5
+#define COCOAPODS_VERSION_MINOR_Colours 3
+#define COCOAPODS_VERSION_PATCH_Colours 0
+
 // FontLabel
 #define COCOAPODS_POD_AVAILABLE_FontLabel
 #define COCOAPODS_VERSION_MAJOR_FontLabel 0
@@ -53,6 +59,18 @@
 #define COCOAPODS_VERSION_MAJOR_MLPAccessoryBadge 1
 #define COCOAPODS_VERSION_MINOR_MLPAccessoryBadge 0
 #define COCOAPODS_VERSION_PATCH_MLPAccessoryBadge 0
+
+// PermissiveResearch
+#define COCOAPODS_POD_AVAILABLE_PermissiveResearch
+#define COCOAPODS_VERSION_MAJOR_PermissiveResearch 0
+#define COCOAPODS_VERSION_MINOR_PermissiveResearch 1
+#define COCOAPODS_VERSION_PATCH_PermissiveResearch 0
+
+// RegExCategories
+#define COCOAPODS_POD_AVAILABLE_RegExCategories
+#define COCOAPODS_VERSION_MAJOR_RegExCategories 1
+#define COCOAPODS_VERSION_MINOR_RegExCategories 0
+#define COCOAPODS_VERSION_PATCH_RegExCategories 0
 
 // UITextView+UIControl
 #define COCOAPODS_POD_AVAILABLE_UITextView_UIControl

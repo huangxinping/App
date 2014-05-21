@@ -1,4 +1,5 @@
 PODS:
+  - Colours (5.3.0)
   - COSTouchVisualizer (1.0.2)
   - CRNavigationController (1.1)
   - FontLabel (0.0.1)
@@ -7,10 +8,13 @@ PODS:
   - MBProgressHUD (0.8)
   - MKStoreKit (4.99)
   - MLPAccessoryBadge (1.0)
+  - PermissiveResearch (0.1.0)
+  - RegExCategories (1.0)
   - UITextView+UIControl (0.1.0)
   - UMengAnalytics (2.2.1)
 
 DEPENDENCIES:
+  - Colours
   - COSTouchVisualizer
   - CRNavigationController
   - FontLabel
@@ -19,19 +23,24 @@ DEPENDENCIES:
   - MBProgressHUD
   - MKStoreKit
   - MLPAccessoryBadge
+  - PermissiveResearch
+  - RegExCategories
   - UITextView+UIControl
   - UMengAnalytics
 
 SPEC CHECKSUMS:
-  COSTouchVisualizer: 7a678be1df4f6b11031f354708cd91ed9a130300
-  CRNavigationController: 4b174a0b9bf3d284cd0475b1ed7a5d09c76727d4
-  FontLabel: cff30a74f514280b4dbe12fe64b6f88105ce5b6f
-  JDStatusBarNotification: a77275c66f1dfb1d1e4c2a49ab5a6498cb5a9b62
-  JSErrorStackTrace: 31badbf74ffb2e23e8e3a2a5e8de5bd7fbe0faaf
-  MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
-  MKStoreKit: 5dea8e2966c1218c0d0f0b5c749d2d9317141a2b
-  MLPAccessoryBadge: c16ad90692ea443c94aafe2f7b1b357a8c902e97
-  UITextView+UIControl: dc34dabc7d1425be90591ebd48c517203d1ed747
-  UMengAnalytics: ce494e736260640957348d00eb0f41aa02167662
+  Colours: 60b2e4dbdf2a0f077a98a07dae1ed18ac3333e21
+  COSTouchVisualizer: d49c18c76475fb517dc87e93a471f23a9206b956
+  CRNavigationController: e6f95ddaff76444a7083d546d5b9f08f915c6073
+  FontLabel: cfda95de214f7f2a8dd45ba73ae2b4ccd0898948
+  JDStatusBarNotification: c68611370dedc0ef865fb0fc1768dfbaf8fd961f
+  JSErrorStackTrace: 5ca6b7fc11540eaea8d938618c955c5fcc93a24c
+  MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
+  MKStoreKit: b3974582d36f1410eb4d1174728f45909a367b86
+  MLPAccessoryBadge: 7e553c0c3b74c1d6ae269c48fadc84ce0c4ac3dc
+  PermissiveResearch: 94b5951881562321c9fd6591ecb6963cfa6e2a46
+  RegExCategories: a6410301023ff81bd047c05fd8691d24ca5c7ea9
+  UITextView+UIControl: 57c3bde36e8120a75f93da7b1d0665cc44647be2
+  UMengAnalytics: d4154135487c209b23698841e55f0fbd536d383b
 
 COCOAPODS: 0.32.1
