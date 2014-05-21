@@ -5,6 +5,7 @@ PODS:
   - FontLabel (0.0.1)
   - JDStatusBarNotification (1.4.8)
   - JSErrorStackTrace (1.1.0)
+  - Masonry (0.5.0)
   - MBProgressHUD (0.8)
   - MKStoreKit (4.99)
   - MLPAccessoryBadge (1.0)
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - FontLabel
   - JDStatusBarNotification
   - JSErrorStackTrace
+  - Masonry
   - MBProgressHUD
   - MKStoreKit
   - MLPAccessoryBadge
@@ -35,6 +37,7 @@ SPEC CHECKSUMS:
   FontLabel: cfda95de214f7f2a8dd45ba73ae2b4ccd0898948
   JDStatusBarNotification: c68611370dedc0ef865fb0fc1768dfbaf8fd961f
   JSErrorStackTrace: 5ca6b7fc11540eaea8d938618c955c5fcc93a24c
+  Masonry: eb26a0073a2c4b0df533c39fd623fb11d79a1bd9
   MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
   MKStoreKit: b3974582d36f1410eb4d1174728f45909a367b86
   MLPAccessoryBadge: 7e553c0c3b74c1d6ae269c48fadc84ce0c4ac3dc

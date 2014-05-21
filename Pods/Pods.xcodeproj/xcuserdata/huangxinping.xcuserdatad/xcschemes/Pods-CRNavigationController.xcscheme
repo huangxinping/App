@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AFEFB4067A0A4E63B4A7D207"
+               BlueprintIdentifier = "66D30A1D9360432CAD26F526"
                BuildableName = "libPods-CRNavigationController.a"
                BlueprintName = "Pods-CRNavigationController"
                ReferencedContainer = "container:Pods.xcodeproj">
