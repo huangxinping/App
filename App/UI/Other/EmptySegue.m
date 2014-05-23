@@ -1,10 +1,15 @@
-//
-//  EmptySegue.m
-//  HLMZiniMini
-//
-//  Created by huangxinping on 3/6/14.
-//  Copyright (c) 2014 sharemerge. All rights reserved.
-//
+/**
+ *  EmptySegue.h
+ *  ShareMerge
+ *
+ *  Created by huangxp on 2014-03-06.
+ *
+ *  空segue
+ *
+ *  Copyright (c) www.sharemerge.com All rights reserved.
+ */
+
+/** @file */    // Doxygen marker
 
 #import "EmptySegue.h"
 

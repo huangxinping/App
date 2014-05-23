@@ -1,10 +1,15 @@
-//
-//  CoreEngine.h
-//  ShareMerge
-//
-//  Created by huangxinping on 3/3/14.
-//  Copyright (c) 2014 sharemerge. All rights reserved.
-//
+/**
+ *  CoreEngine.h
+ *  ShareMerge
+ *
+ *  Created by huangxp on 2014-03-02.
+ *
+ *  中心引擎
+ *
+ *  Copyright (c) www.sharemerge.com All rights reserved.
+ */
+
+/** @file */    // Doxygen marker
 
 #import "CoreEngine.h"
 #import "DBController+Keychain.h"

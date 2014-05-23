@@ -1,10 +1,15 @@
-//
-//  PushNoAnimationSegue.m
-//  HLMZiniMini
-//
-//  Created by huangxinping on 3/13/14.
-//  Copyright (c) 2014 sharemerge. All rights reserved.
-//
+/**
+ *  PushNoAnimationSegue.h
+ *  ShareMerge
+ *
+ *  Created by huangxp on 2014-03-10.
+ *
+ *  push无动画segue
+ *
+ *  Copyright (c) www.sharemerge.com All rights reserved.
+ */
+
+/** @file */    // Doxygen marker
 
 #import "PushNoAnimationSegue.h"
 

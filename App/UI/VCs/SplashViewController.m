@@ -1,10 +1,15 @@
-//
-//  SplashViewController.m
-//  HLMZiniMini
-//
-//  Created by huangxinping on 3/13/14.
-//  Copyright (c) 2014 sharemerge. All rights reserved.
-//
+/**
+ *  RootViewController.h
+ *  ShareMerge
+ *
+ *  Created by huangxp on 2014-03-01.
+ *
+ *  闪屏视图控制器
+ *
+ *  Copyright (c) www.sharemerge.com All rights reserved.
+ */
+
+/** @file */    // Doxygen marker
 
 #import "SplashViewController.h"
 #import <Colours/Colours.h>

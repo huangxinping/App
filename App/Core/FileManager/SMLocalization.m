@@ -1,10 +1,15 @@
-//
-//  HLMLocalization.m
-//  HLMZiniMini
-//
-//  Created by huangxinping on 3/3/14.
-//  Copyright (c) 2014 sharemerge. All rights reserved.
-//
+/**
+ *  HLMLocalization.h
+ *  ShareMerge
+ *
+ *  Created by huangxp on 2014-03-03.
+ *
+ *  本地化操作
+ *
+ *  Copyright (c) www.sharemerge.com All rights reserved.
+ */
+
+/** @file */    // Doxygen marker
 
 #import "SMLocalization.h"
 

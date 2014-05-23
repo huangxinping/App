@@ -1,10 +1,15 @@
-//
-//  UIEngine+Observer.m
-//  HLMZiniMini
-//
-//  Created by huangxinping on 3/2/14.
-//  Copyright (c) 2014 sharemerge. All rights reserved.
-//
+/**
+ *  UIEngine+Observer.h
+ *  ShareMerge
+ *
+ *  Created by huangxp on 2014-03-02.
+ *
+ *  UI引擎侦听
+ *
+ *  Copyright (c) www.sharemerge.com All rights reserved.
+ */
+
+/** @file */    // Doxygen marker
 
 #import "UIEngine+Observer.h"
 #import "CoreEngine+Send.h"
@@ -26,7 +31,7 @@
 
 #pragma mark - 接口相关
 - (void)exampleAPI:(NSNotification *)notification {
-    NSDictionary *params = notification.object;
+	NSDictionary *params = notification.object;
 	[self.coreEngine fetchExampleAPIWithOS:params[@"os"] uuid:params[@"uuid"]];
 }
 

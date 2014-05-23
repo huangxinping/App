@@ -1,10 +1,15 @@
-//
-//  CoreEngine+Receive.m
-//  ShareMerge
-//
-//  Created by huangxinping on 3/3/14.
-//  Copyright (c) 2014 sharemerge. All rights reserved.
-//
+/**
+ *  CoreEngine+Receive.h
+ *  ShareMerge
+ *
+ *  Created by huangxp on 2014-03-02.
+ *
+ *  收到数据
+ *
+ *  Copyright (c) www.sharemerge.com All rights reserved.
+ */
+
+/** @file */    // Doxygen marker
 
 #import "CoreEngine+Receive.h"
 

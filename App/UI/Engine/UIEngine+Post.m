@@ -1,10 +1,15 @@
-//
-//  UIEngine+Post.m
-//  HLMZiniMini
-//
-//  Created by huangxinping on 3/1/14.
-//  Copyright (c) 2014 sharemerge. All rights reserved.
-//
+/**
+ *  UIEngine+Post.h
+ *  ShareMerge
+ *
+ *  Created by huangxp on 2014-03-01.
+ *
+ *  UI引擎发送
+ *
+ *  Copyright (c) www.sharemerge.com All rights reserved.
+ */
+
+/** @file */    // Doxygen marker
 
 #import "UIEngine+Post.h"
 #import "UIEngine+Observer.h"
