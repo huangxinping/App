@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MobClick.h"
+#import <COSTouchVisualizerWindow.h>
 
 @implementation AppDelegate
 
@@ -16,6 +17,21 @@
 	[[UIEngine defaultUIEngine] registerObserver];
 	[MobClick startWithAppkey:@"535a27b356240b1768015126"];
 	return YES;
+}
+
+- (COSTouchVisualizerWindow *)window {
+	static COSTouchVisualizerWindow *customWindow = nil;
+	if (!customWindow) {
+		customWindow = [[COSTouchVisualizerWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+		[customWindow setFillColor:[UIColor yellowColor]];
+		[customWindow setStrokeColor:[UIColor purpleColor]];
+		[customWindow setTouchAlpha:0.4];
+
+		[customWindow setRippleFillColor:[UIColor yellowColor]];
+		[customWindow setRippleStrokeColor:[UIColor purpleColor]];
+		[customWindow setRippleAlpha:0.1];
+	}
+	return customWindow;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -18,6 +18,8 @@ App
 
 1. git submodule init
 2. git submodule update
+3. git submodule add -f https://github.com/huangxinping/QiniuSDK.git Vendor/QiniuSDK
+4. git submodule add -f https://github.com/huangxinping/SMMinizip.git Vendor/SMMinizip
 
 #### Be Used
 * My private project
@@ -44,6 +46,9 @@ App
 ## 可选操作
 1. 初始化子模块：git submodule init
 2. 更新子模块：git submodule update
+3. 下载QiniuSDK：git submodule add -f https://github.com/huangxinping/QiniuSDK.git Vendor/QiniuSDK
+4. 下载zipSDK：git submodule add -f https://github.com/huangxinping/SMMinizip.git Vendor/SMMinizip
+
 
 #### 被使用
 * 私人工程

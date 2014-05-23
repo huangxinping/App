@@ -1,8 +1,24 @@
 PODS:
+  - AGGeometryKit (1.0.1):
+    - AGGeometryKit/Default
+  - AGGeometryKit/Core (1.0.1)
+  - AGGeometryKit/Default (1.0.1):
+    - AGGeometryKit/Core
+  - Appirater (2.0.2)
+  - ASDepthModal (1.0.0)
+  - AutoLayoutKit (0.6.0)
+  - AutoLayoutShorthand (1.0)
+  - cdebug (0.1.1)
   - Colours (5.3.0)
   - COSTouchVisualizer (1.0.2)
   - CRNavigationController (1.1)
   - FontLabel (0.0.1)
+  - FoundationExtension/FoundationExtension (0.46):
+    - cdebug (~> 0.1)
+  - FoundationExtension/UIKitExtension (0.46):
+    - cdebug (~> 0.1)
+    - FoundationExtension/FoundationExtension
+  - GIKPopoverBackgroundView/Core (0.0.1)
   - JDStatusBarNotification (1.4.8)
   - JSErrorStackTrace (1.1.0)
   - Masonry (0.5.0)
@@ -11,10 +27,152 @@ PODS:
   - MLPAccessoryBadge (1.0)
   - PermissiveResearch (0.1.0)
   - RegExCategories (1.0)
+  - RRFPSBar (0.0.1)
+  - SevenSwitch (1.3.0)
+  - UI7Kit (0.9.18):
+    - UI7Kit/All
+  - UI7Kit/All (0.9.18):
+    - UI7Kit/UI7ActionSheet
+    - UI7Kit/UI7ActivityViewController
+    - UI7Kit/UI7AlertView
+    - UI7Kit/UI7BarButtonItem
+    - UI7Kit/UI7Button
+    - UI7Kit/UI7Color
+    - UI7Kit/UI7Font
+    - UI7Kit/UI7NavigationBar
+    - UI7Kit/UI7NavigationController
+    - UI7Kit/UI7PickerView
+    - UI7Kit/UI7PopoverController
+    - UI7Kit/UI7ProgressView
+    - UI7Kit/UI7SearchBar
+    - UI7Kit/UI7SegmentedControl
+    - UI7Kit/UI7Slider
+    - UI7Kit/UI7Stepper
+    - UI7Kit/UI7Switch/SevenSwitch
+    - UI7Kit/UI7TabBar
+    - UI7Kit/UI7TabBarController
+    - UI7Kit/UI7TabBarItem
+    - UI7Kit/UI7TableView
+    - UI7Kit/UI7TableViewCell
+    - UI7Kit/UI7TextField
+    - UI7Kit/UI7Toolbar
+    - UI7Kit/UI7View
+    - UI7Kit/UI7ViewController
+    - UI7Kit/UI7Window
+  - UI7Kit/Core (0.9.18):
+    - cdebug
+    - UI7Kit/UI7Color
+  - UI7Kit/UI7ActionSheet (0.9.18):
+    - UI7Kit/Core
+    - UI7Kit/UI7Color
+    - UI7Kit/UI7Font
+  - UI7Kit/UI7ActivityViewController (0.9.18):
+    - UI7Kit/Core
+    - UI7Kit/UI7Font
+  - UI7Kit/UI7AlertView (0.9.18):
+    - UI7Kit/Core
+    - UI7Kit/UI7Button
+    - UI7Kit/UI7Color
+    - UI7Kit/UI7Font
+  - UI7Kit/UI7BarButtonItem (0.9.18):
+    - UI7Kit/Core
+    - UI7Kit/UI7Font
+    - UIKitResources/UIButtonBar
+  - UI7Kit/UI7Button (0.9.18):
+    - UI7Kit/Core
+    - UI7Kit/UI7BarButtonItem
+    - UI7Kit/UI7Font
+    - UI7Kit/UI7View
+  - UI7Kit/UI7Color (0.9.18):
+    - FoundationExtension/UIKitExtension (~> 0.46)
+    - UIKitResources/UIAccessoryButton
+  - UI7Kit/UI7Font (0.9.18):
+    - UI7Kit/Core
+  - UI7Kit/UI7NavigationBar (0.9.18):
+    - UI7Kit/Core
+    - UI7Kit/UI7BarButtonItem
+    - UI7Kit/UI7Color
+    - UI7Kit/UI7Font
+  - UI7Kit/UI7NavigationController (0.9.18):
+    - UI7Kit/Core
+    - UI7Kit/UI7NavigationBar
+    - UI7Kit/UI7Toolbar
+  - UI7Kit/UI7PickerView (0.9.18):
+    - UI7Kit/Core
+    - UI7Kit/UI7Font
+    - UI7Kit/UI7TableView
+    - UI7Kit/UI7TableViewCell
+    - UI7Kit/UI7View
+  - UI7Kit/UI7PopoverController (0.9.18):
+    - GIKPopoverBackgroundView/Core
+    - UI7Kit/Core
+  - UI7Kit/UI7ProgressView (0.9.18):
+    - UI7Kit/Core
+    - UI7Kit/UI7Color
+    - UI7Kit/UI7View
+  - UI7Kit/UI7SearchBar (0.9.18):
+    - UI7Kit/Core
+    - UI7Kit/UI7Color
+  - UI7Kit/UI7SegmentedControl (0.9.18):
+    - UI7Kit/Core
+    - UI7Kit/UI7Font
+    - UI7Kit/UI7View
+  - UI7Kit/UI7Slider (0.9.18):
+    - UI7Kit/Core
+    - UI7Kit/UI7Color
+    - UI7Kit/UI7View
+  - UI7Kit/UI7Stepper (0.9.18):
+    - UI7Kit/Core
+    - UI7Kit/UI7View
+  - UI7Kit/UI7Switch/SevenSwitch (0.9.18):
+    - SevenSwitch (~> 1.3.0)
+    - UI7Kit/Core
+  - UI7Kit/UI7TabBar (0.9.18):
+    - UI7Kit/Core
+    - UI7Kit/UI7Color
+    - UI7Kit/UI7Font
+    - UI7Kit/UI7View
+  - UI7Kit/UI7TabBarController (0.9.18):
+    - UI7Kit/Core
+  - UI7Kit/UI7TabBarItem (0.9.18):
+    - UI7Kit/Core
+    - UIKitResources/UITabBar
+  - UI7Kit/UI7TableView (0.9.18):
+    - UI7Kit/Core
+    - UI7Kit/UI7Color
+    - UI7Kit/UI7Font
+    - UI7Kit/UI7View
+  - UI7Kit/UI7TableViewCell (0.9.18):
+    - UI7Kit/Core
+    - UI7Kit/UI7Color
+    - UI7Kit/UI7Font
+    - UI7Kit/UI7View
+  - UI7Kit/UI7TextField (0.9.18):
+    - UI7Kit/Core
+  - UI7Kit/UI7Toolbar (0.9.18):
+    - UI7Kit/Core
+    - UI7Kit/UI7Color
+  - UI7Kit/UI7View (0.9.18):
+    - UI7Kit/Core
+  - UI7Kit/UI7ViewController (0.9.18):
+    - UI7Kit/Core
+    - UI7Kit/UI7BarButtonItem
+    - UI7Kit/UI7NavigationBar
+  - UI7Kit/UI7Window (0.9.18):
+    - UI7Kit/Core
+    - UI7Kit/UI7View
+  - UIKitResources/UIAccessoryButton (7.0)
+  - UIKitResources/UIButtonBar (7.0)
+  - UIKitResources/UITabBar (7.0)
   - UITextView+UIControl (0.1.0)
   - UMengAnalytics (2.2.1)
 
 DEPENDENCIES:
+  - AGGeometryKit
+  - Appirater
+  - ASDepthModal
+  - AutoLayoutKit
+  - AutoLayoutShorthand
   - Colours
   - COSTouchVisualizer
   - CRNavigationController
@@ -27,14 +185,24 @@ DEPENDENCIES:
   - MLPAccessoryBadge
   - PermissiveResearch
   - RegExCategories
+  - RRFPSBar
+  - UI7Kit
   - UITextView+UIControl
   - UMengAnalytics
 
 SPEC CHECKSUMS:
+  AGGeometryKit: 767003ee71a82d6dc23d9062c8e4edd6ed2823e8
+  Appirater: a5e00fb01d47a9a6acf4b2f22323b4ccf4f23fbb
+  ASDepthModal: 643841a570c2e04bb195581dbee0a65ee40c98f3
+  AutoLayoutKit: 484cd5fc4df99cbff73a05c97caa39e3dbf766f9
+  AutoLayoutShorthand: 57aec55fcf79070e3b1627d941c4ac242e6f7c99
+  cdebug: 0404c00c53512b97358e13340b59dd465e4389ac
   Colours: 60b2e4dbdf2a0f077a98a07dae1ed18ac3333e21
   COSTouchVisualizer: d49c18c76475fb517dc87e93a471f23a9206b956
   CRNavigationController: e6f95ddaff76444a7083d546d5b9f08f915c6073
   FontLabel: cfda95de214f7f2a8dd45ba73ae2b4ccd0898948
+  FoundationExtension: 8fe9b8b991906bd8225fcde2554a4d4a10f66a33
+  GIKPopoverBackgroundView: 459aef9b0a17d10b831b1714f2d686e72bbcc63c
   JDStatusBarNotification: c68611370dedc0ef865fb0fc1768dfbaf8fd961f
   JSErrorStackTrace: 5ca6b7fc11540eaea8d938618c955c5fcc93a24c
   Masonry: eb26a0073a2c4b0df533c39fd623fb11d79a1bd9
@@ -43,6 +211,10 @@ SPEC CHECKSUMS:
   MLPAccessoryBadge: 7e553c0c3b74c1d6ae269c48fadc84ce0c4ac3dc
   PermissiveResearch: 94b5951881562321c9fd6591ecb6963cfa6e2a46
   RegExCategories: a6410301023ff81bd047c05fd8691d24ca5c7ea9
+  RRFPSBar: 3941b5c6986c511fddb8b0e7a666172347d8558d
+  SevenSwitch: 70af67d75bc2e477d45a984cf1f3123564b04eee
+  UI7Kit: 5fe658e3e185618f3968a4d0d8f9b28c2ee38f3e
+  UIKitResources: 834daec56f3546164cef79034ed9efc3bf6d2512
   UITextView+UIControl: 57c3bde36e8120a75f93da7b1d0665cc44647be2
   UMengAnalytics: d4154135487c209b23698841e55f0fbd536d383b
 

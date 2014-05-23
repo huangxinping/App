@@ -1,0 +1,21 @@
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#endif
+
+#import "Pods-environment.h"
+
+#include <cdebug/debug.h>
+#include <UIKitExtension/UIKitExtension.h>
+#include <UI7Kit/UI7Kit.h>
+    
+#define UI7SWITCH_SEVENSWITCH 1
+//
+// Prefix header for all source files of the 'UI7Kit' target in the 'UI7Kit' project
+//
+
+#ifdef __OBJC__
+//    #import <cdebug/debug.h>
+//    #import <UIKit/UIKit.h>
+//    #import <UIKitExtension/UIKitExtension.h>
+//    #import <UI7Kit/UI7Utilities.h>
+#endif

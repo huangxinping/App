@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "429817CA4D7C4748BFB99DB9"
+               BlueprintIdentifier = "3FFC15010D67440D87D401DE"
                BuildableName = "libPods-UITextView+UIControl.a"
                BlueprintName = "Pods-UITextView+UIControl"
                ReferencedContainer = "container:Pods.xcodeproj">

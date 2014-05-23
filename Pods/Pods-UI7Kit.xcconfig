@@ -1,0 +1,1 @@
+PODS_UI_KIT_OTHER_LDFLAGS = -framework QuartzCore
