@@ -8,14 +8,34 @@
 
 #import "AppDelegate.h"
 #import "MobClick.h"
+#import "DurexKit.h"
 #import <COSTouchVisualizerWindow.h>
+#import <Appirater/Appirater.h>
+#import <RRFPSBar/RRFPSBar.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	// Override point for customization after application launch.
-	[[UIEngine defaultUIEngine] registerObserver];
-	[MobClick startWithAppkey:@"535a27b356240b1768015126"];
+	{ // 注册UI引擎
+		[[UIEngine defaultUIEngine] registerObserver];
+	}
+	{ // 友盟分析
+		[MobClick startWithAppkey:@"535a27b356240b1768015126" reportPolicy:REALTIME channelId:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"]];
+	}
+	{ // 评价
+		[Appirater setAppId:@"552035781"];
+		[Appirater setDaysUntilPrompt:1];
+		[Appirater setUsesUntilPrompt:10];
+		[Appirater setSignificantEventsUntilPrompt:-1];
+		[Appirater setTimeBeforeReminding:2];
+		[Appirater setDebug:YES];
+	}
+
+	{ // fps
+#ifdef DEBUG
+		[[RRFPSBar sharedInstance] setHidden:YES];
+#endif
+	}
 	return YES;
 }
 

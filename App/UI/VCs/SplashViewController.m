@@ -7,6 +7,12 @@
 //
 
 #import "SplashViewController.h"
+#import <Colours/Colours.h>
+#import <AutoLayoutShorthand/AutoLayoutShorthand.h>
+#import <AutoLayoutKit/AutoLayoutKit.h>
+#import <FoundationExtension/FoundationExtension.h>
+#import <JDStatusBarNotification/JDStatusBarNotification.h>
+#import <RegExCategories/RegExCategories.h>
 
 #define DEFAULT_IMAGE_320X480   @"LaunchImage"
 #define DEFAULT_IMAGE_640X960   @"LaunchImage@2x"
@@ -33,6 +39,36 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+
+	self.view.backgroundColor = [UIColor coolPurpleColor];
+
+	[self.splashImageView als_addConstraints:@{
+	     @"left ==": als_superview,
+	     @"width ==": @(320),
+	     @"top ==": als_superview,
+	     @"height >=": @(568),
+	 }];
+    
+    [ALKConstraints layout:self.splashImageView do:^(ALKConstraints *c) {
+        [c make:ALKCenterX equalTo:self.view s:ALKCenterX];
+        [c make:ALKCenterY equalTo:self.view s:ALKCenterY];
+        [c set:ALKWidth to:30.f];
+        [c set:ALKHeight to:30.f];
+    }];
+    
+    [ALKConstraints layout:self.splashImageView do:^(ALKConstraints *c) {
+        [c centerIn:self.view];
+        [c setSize:CGSizeMake(30.f, 30.f)];
+    }];
+    
+    NSString *key = @"dsfont";
+    NSURL *URL = [[@"http://127.0.0.1/api/%@" format:key] URL];
+    NSLog(@"%@",URL);
+    
+    [JDStatusBarNotification showWithStatus:@"hello app" dismissAfter:2.0];
+    
+    BOOL isMatch = [@"I have 2 dogs." isMatch:RX(@"\\d+")];
+    NSLog(@"%d",isMatch);
 }
 
 - (void)didReceiveMemoryWarning {
