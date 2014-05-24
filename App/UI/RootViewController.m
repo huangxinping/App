@@ -33,12 +33,22 @@
 		[self setNeedsStatusBarAppearanceUpdate];
 		self.navigationController.interactivePopGestureRecognizer.enabled = YES;
 		self.navigationController.interactivePopGestureRecognizer.delegate = self;
+		[self.navigationController.navigationBar hideBottomHairline];
+	}
+	else {
+		[[UIApplication sharedApplication] setStatusBarHidden:NO];
+		[self.navigationController.navigationBar setFrame:CGRectMake(0, 20, 320, 44)];
+		[self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+		[self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
 	}
 
-	[self.navigationController.navigationBar hideBottomHairline];
-	[self.navigationController.navigationBar setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor],
-	                                                                   NSFontAttributeName : [UIFont systemFontOfSize:17] }];
-	[self.navigationController.navigationBar setArrowColor:[UIColor whiteColor]];
+	[self.navigationController.navigationBar setTitleTextAttributes:@{
+	     UITextAttributeTextColor: [UIColor whiteColor],
+	     UITextAttributeTextShadowColor: [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0],
+	     UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, 0.0f)],
+	     UITextAttributeFont: [UIFont fontWithName:@"Helvetica-Light" size:17.0f]
+	 }];
+	self.view.backgroundColor = [UIColor colorWithRed:0.606 green:0.832 blue:0.365 alpha:1.000];
 
 	[[UIEngine defaultUIEngine] bridgeExpressWithName:ExampleObserver
 	                                           params:@{

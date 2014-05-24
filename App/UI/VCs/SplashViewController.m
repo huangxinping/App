@@ -74,6 +74,21 @@
     
     BOOL isMatch = [@"I have 2 dogs." isMatch:RX(@"\\d+")];
     NSLog(@"%d",isMatch);
+    
+    { // DurexKit库实现数组、字典等插入空值不crash
+        //Array
+        NSMutableArray *array = [NSMutableArray arrayWithObjects:@"aa",@"bb",nil];
+        [array addObject:nil];
+        [array removeObjectAtIndex:4];
+        
+        //Dictionary
+        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"a",@"key1",@"b",@"key2", nil];
+        [dictionary setObject:nil forKey:nil];
+        [dictionary removeObjectForKey:nil];
+        
+        NSMutableString *str = [[NSMutableString alloc]initWithString:@"abc"];
+        [str appendString:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
