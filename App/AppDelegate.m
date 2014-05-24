@@ -33,7 +33,8 @@
 
 	{ // fps
 #ifdef DEBUG
-		[[RRFPSBar sharedInstance] setHidden:YES];
+		[[RRFPSBar sharedInstance] setHidden:NO];
+		[[RRFPSBar sharedInstance] setShowsAverage:YES];
 #endif
 	}
 	return YES;
