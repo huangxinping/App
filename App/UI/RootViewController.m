@@ -48,7 +48,6 @@
 	     UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, 0.0f)],
 	     UITextAttributeFont: [UIFont fontWithName:@"Helvetica-Light" size:17.0f]
 	 }];
-	self.view.backgroundColor = [UIColor colorWithRed:0.606 green:0.832 blue:0.365 alpha:1.000];
 
 	[[UIEngine defaultUIEngine] bridgeExpressWithName:ExampleObserver
 	                                           params:@{

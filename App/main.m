@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
 		[UI7Kit patchIfNeeded];
 		[[UI7Kit kit] setTintColor:[UIColor whiteColor]];
 //		[[UI7Kit kit] setBackgroundColor:[UIColor yellowColor]];
-		[[UINavigationBar appearance] setBackgroundColor:[UIColor colorWithRed:0.606 green:0.832 blue:0.365 alpha:1.000]];
+		[[UINavigationBar appearance] setBackgroundColor:[UIColor colorWithRed:145/255.0f green:80/255.0f blue:204/255.0f alpha:1.0f]];
 //		[[UINavigationBar appearance] setTitleVerticalPositionAdjustment:0 forBarMetrics:UIBarMetricsDefault];
 		return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
 	}
