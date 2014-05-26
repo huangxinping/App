@@ -12,10 +12,13 @@
 {
 }
 
-- (id)init {
-	if ((self = [super init])) {
-	}
-	return self;
+- (id)init
+{
+    if ((self = [super init]))
+    {
+    }
+
+    return self;
 }
 
 @end

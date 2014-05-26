@@ -15,7 +15,7 @@
 #define __DB_API__
 
 typedef NS_ENUM (NSUInteger, DBRequestType) {
-	DBRequestType_None = 0,
+    DBRequestType_None = 0,
 };
 
 #endif

@@ -16,8 +16,8 @@
 #import "DBController.h"
 
 @interface CoreEngine : NSObject <NetControllerDelegate, DBControllerDelegate> {
-	NetController *_netController;
-	DBController *_dbController;
+    NetController *_netController;
+    DBController *_dbController;
 }
 
 @end

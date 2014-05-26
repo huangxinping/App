@@ -22,19 +22,24 @@
 static UIEngine *uiEngine = nil;
 @implementation UIEngine
 
-- (id)init {
-	if ((self = [super init])) {
-		_coreEngine = [[CoreEngine alloc] init];
-	}
-	return self;
+- (id)init
+{
+    if ((self = [super init]))
+    {
+        _coreEngine = [[CoreEngine alloc] init];
+    }
+
+    return self;
 }
 
-+ (instancetype)defaultUIEngine {
-	static dispatch_once_t pred;
-	dispatch_once(&pred, ^{
-	    uiEngine = [[UIEngine alloc] init];
-	});
-	return uiEngine;
++ (instancetype)defaultUIEngine
+{
+    static dispatch_once_t pred;
+
+    dispatch_once(&pred, ^{
+        uiEngine = [[UIEngine alloc] init];
+    });
+    return uiEngine;
 }
 
 @end

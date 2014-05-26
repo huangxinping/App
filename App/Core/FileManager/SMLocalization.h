@@ -13,4 +13,4 @@
 
 #import <Foundation/Foundation.h>
 
-NSString *SMLocalization(NSString *key);
+NSString * SMLocalization(NSString *key);

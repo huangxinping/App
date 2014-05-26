@@ -16,19 +16,24 @@
 
 @implementation CoreEngine
 
-- (id)init {
-	self = [super init];
-	if (self) {
-		_netController = [[NetController alloc] init];
-		_netController.delegate = self;
+- (id)init
+{
+    self = [super init];
 
-		_dbController = [[DBController alloc] init];
-		_dbController.delegate = self;
-	}
-	return self;
+    if (self)
+    {
+        _netController = [[NetController alloc] init];
+        _netController.delegate = self;
+
+        _dbController = [[DBController alloc] init];
+        _dbController.delegate = self;
+    }
+
+    return self;
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
 }
 
 @end

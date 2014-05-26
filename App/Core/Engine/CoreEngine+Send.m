@@ -17,7 +17,7 @@
 
 - (void)fetchExampleAPIWithOS:(NSString *)os uuid:(NSString *)uuid;
 {
-	[_netController fetchExampleAPIWithOS:os uuid:uuid];
+    [_netController fetchExampleAPIWithOS:os uuid:uuid];
 }
 
 @end

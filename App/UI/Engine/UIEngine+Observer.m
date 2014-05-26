@@ -17,22 +17,29 @@
 
 @implementation UIEngine (Observer)
 
-- (void)registerObserver {
-	SM_BLOCK_RETAIN_CIRCLE typeof(self) weakSelf = self;
+- (void)registerObserver
+{
+    SM_BLOCK_RETAIN_CIRCLE typeof(self) weakSelf = self;
 
-	[[NSNotificationCenter defaultCenter] registerNotificationName:ExampleObserver notifiedBlock: ^(NSNotification *notification) {
-	    [weakSelf exampleAPI:notification];
-	} removeSame:YES];
+    [[NSNotificationCenter defaultCenter] registerNotificationName:ExampleObserver
+                                                     notifiedBlock: ^(NSNotification *notification) {
+                                                         [weakSelf exampleAPI:notification];
+                                                     }
+
+                                                        removeSame:YES];
 }
 
-- (void)unregisterObserver {
-	[[NSNotificationCenter defaultCenter] removeAllNotifications];
+- (void)unregisterObserver
+{
+    [[NSNotificationCenter defaultCenter] removeAllNotifications];
 }
 
 #pragma mark - 接口相关
-- (void)exampleAPI:(NSNotification *)notification {
-	NSDictionary *params = notification.object;
-	[self.coreEngine fetchExampleAPIWithOS:params[@"os"] uuid:params[@"uuid"]];
+- (void)exampleAPI:(NSNotification *)notification
+{
+    NSDictionary *params = notification.object;
+
+    [self.coreEngine fetchExampleAPIWithOS:params[@"os"] uuid:params[@"uuid"]];
 }
 
 #pragma mark - 数据提取相关
