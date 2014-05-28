@@ -47,17 +47,26 @@
     }
 
     [self.navigationController.navigationBar
-         setTitleTextAttributes:@{
+     setTitleTextAttributes:@{
          UITextAttributeTextColor: [UIColor whiteColor],
-         UITextAttributeTextShadowColor: [UIColor     colorWithRed:0.0
-                                                             green:0.0
-                                                              blue:0.0
-                                                             alpha:0.0],
+         UITextAttributeTextShadowColor: [UIColor colorWithRed:0.0
+                                                         green:0.0
+                                                          blue:0.0
+                                                         alpha:0.0],
          UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, 0.0f)],
-         UITextAttributeFont: [UIFont     fontWithName:@"Helvetica-Light"
-                                                  size:17.0f]
+         UITextAttributeFont: [UIFont fontWithName:@"Helvetica-Light"
+                                              size:17.0f]
      }];
 
+
+    { // UIEngine sample
+        UIEngineCompletionBlock cb = ^(id object) {
+            SMLog(@"%@", object);
+        };
+        UIEngineFailureBlock fb = ^(NSError *error) {
+            SMLog(@"%@", error);
+        };
+    }
     [[UIEngine defaultUIEngine] bridgeExpressWithName:ExampleObserver
                                                params:@{
          @"os": [[UIDevice systemName] urlEncodedString],
@@ -65,8 +74,8 @@
      }
                                           addObserver:self
                                              callback:@{
-         NetExampleSuccess: NSStringFromSelector(@selector(requestSuccess:)),
-         NetExampleFailure: NSStringFromSelector(@selector(requestFailure:))
+         NetExampleSuccess: [cb copy],
+         NetExampleFailure: [fb copy]
      }
                                          overrideSame:YES];
 }
@@ -85,15 +94,6 @@
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
     return YES;
-}
-
-- (void)requestSuccess:(NSNotification *)notification
-{
-    SMLog(@"%@", notification.object);
-}
-
-- (void)requestFailure:(NSNotification *)notification
-{
 }
 
 @end

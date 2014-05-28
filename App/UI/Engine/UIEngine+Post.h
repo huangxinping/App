@@ -13,6 +13,10 @@
 
 #import "UIEngine.h"
 
+typedef void (^UIEngineCompletionBlock)(id object);
+typedef void (^UIEngineFailureBlock)(NSError *error);
+
+
 @interface UIEngine (Post)
 
 /**
