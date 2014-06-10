@@ -12,6 +12,7 @@
 #import <COSTouchVisualizerWindow.h>
 #import <Appirater/Appirater.h>
 #import <RRFPSBar/RRFPSBar.h>
+#import "GT/GTInterface.h"
 
 @implementation AppDelegate
 
@@ -38,6 +39,12 @@
         [[RRFPSBar sharedInstance] setShowsAverage:YES];
 #endif
     }
+
+    {     // GT核心
+#ifdef DEBUG
+        [self initGT];
+#endif
+    }
     return YES;
 }
 
@@ -58,6 +65,85 @@
     }
 
     return customWindow;
+}
+
+- (void)initGT
+{
+//    GT_DEBUG_INIT;
+//    return;
+#ifndef GT_DEBUG_DISABLE
+    NSLog(@"Start GT");
+
+//    for (int i = 0; i < 10; i++) {
+//        GT_LOG_D("DEMO", "initGT i: %d multiLine multiLine multiLine multiLine multiLine multiLine multiLine multiLine multiLine multiLine  multiLine multiLine multiLine multiLine multiLine multiLine multiLine multiLine multiLine multiLine  multiLine multiLine multiLine multiLine multiLine multiLine multiLine multiLine multiLine multiLine  multiLine multiLine multiLine multiLine multiLine multiLine multiLine multiLine multiLine multiLine  multiLine multiLine multiLine multiLine multiLine multiLine multiLine multiLine multiLine multiLine  multiLine multiLine multiLine multiLine multiLine multiLine multiLine multiLine multiLine multiLine END", i);
+//    }
+
+    GT_LOG_START("icaftest");
+    GT_LOG_D("tagFun", "%.2lldMB", GT_UTIL_GET_APP_MEM / (1024 * 1024));
+    GT_LOG_END("icaftest");
+
+//    GT_LOG_D("UTIL","cpuUsage:69.");
+//    GT_LOG_D("UTIL","cpuUsage:%f", GT_UTIL_GET_CPU_USAGE);
+//    GT_OC_LOG_D(@"UTIL",@"cpuUsage:%f", GT_UTIL_GET_CPU_USAGE);
+    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait animated:NO];
+
+// GT Usage(合入) 初始化
+    GT_DEBUG_INIT;
+//    GT_LOGO_POINT_SET(300,200);
+//    GT_AC_SHOW;
+
+// GT Usage(合入) 设置GT logo不旋转及支持方向
+    GT_DEBUG_SET_AUTOROTATE(false);
+    GT_DEBUG_SET_SUPPORT_ORIENTATIONS(UIInterfaceOrientationMaskPortrait);
+
+// GT Usage(profiler) 打开profiler功能
+    GT_TIME_SWITCH_SET(YES);
+
+// GT Usage(输入参数) 注册输入参数
+    NSArray *array = [NSArray arrayWithObjects:@"1", @"2", @"3", nil];
+    GT_OC_IN_REGISTER(@"并发线程数", @"TN", array);
+
+    array = [NSArray arrayWithObjects:@"true", @"false", nil];
+    GT_OC_IN_REGISTER(@"KeepAlive", @"KA", array);
+
+    array = [NSArray arrayWithObjects:@"15", @"10", @"20", nil];
+    GT_OC_IN_REGISTER(@"读超时", @"超时", array);
+
+    array = [NSArray arrayWithObjects:@"false", @"true", nil];
+    GT_OC_IN_REGISTER(@"Cache缓存", @"缓存", array);
+
+    array = [NSArray arrayWithObjects:@"150", @"200", nil];
+    GT_OC_IN_REGISTER(@"AddedMem", @"ADDM", array);
+
+    array = [NSArray arrayWithObjects:@"5", @"4", @"3", @"2", @"1", nil];
+    GT_OC_IN_REGISTER(@"Interval", @"INTE", array);
+
+// GT Usage(输入参数) 设置在悬浮框上展示的输入参数
+    GT_OC_IN_DEFAULT_ON_AC(@"并发线程数", @"KeepAlive", nil);
+
+// GT Usage(输出参数) 注册输出参数
+    GT_OC_OUT_REGISTER(@"下载耗时", @"耗时");
+    GT_OC_OUT_REGISTER(@"实际带宽", @"带宽");
+    GT_OC_OUT_REGISTER(@"singlePicSpeed", @"SSPD");
+
+    GT_OC_OUT_HISTORY_CHECKED_SET(@"下载耗时", YES);
+
+    GT_OC_OUT_REGISTER(@"numberOfDownloadedPics", @"NDP");
+    GT_OC_OUT_REGISTER(@"本次消耗流量", @"流量");
+
+//    GT_OC_OUT_WARNING_OUT_OF_RANGE_SET(@"App Smoothness", 2, 60, M_GT_UPPER_WARNING_INVALID);
+//    GT_OC_OUT_WARNING_OUT_OF_RANGE_SET(@"App CPU", 1, M_GT_LOWER_WARNING_INVALID, 60);
+
+// GT Usage(输出参数) 设置在悬浮框上展示的输出参数
+    GT_OC_OUT_DEFAULT_ON_AC(@"App CPU", @"App Memory", @"App Smoothness");
+    GT_OC_OUT_DEFAULT_ON_DISABLED(@"singlePicSpeed", @"numberOfDownloadedPics", @"本次消耗流量", nil);
+
+//    GT_OUT_MONITOR_INTERVAL_SET(0.1);
+//    GT_OUT_GATHER_SWITCH_SET(YES);
+
+    GT_OC_LOG_D(@"DEMO", @"DEMO GT INIT FINISH.");
+    NSLog(@"End GT");
+#endif /* ifndef GT_DEBUG_DISABLE */
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

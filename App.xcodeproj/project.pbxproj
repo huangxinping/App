@@ -68,6 +68,8 @@
 		1E3E78E3190903AD004F052E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3E78E2190903AD004F052E /* CoreLocation.framework */; };
 		1E3E78E5190903B3004F052E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3E78E4190903B3004F052E /* MediaPlayer.framework */; };
 		1E3E78E7190903B8004F052E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3E78E6190903B8004F052E /* AVFoundation.framework */; };
+		1E6C35921946FDFC00EF5961 /* GT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E6C358F1946FDFC00EF5961 /* GT.framework */; };
+		1E6C35931946FDFD00EF5961 /* GT.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E6C35911946FDFC00EF5961 /* GT.bundle */; };
 		1E98498F190A6DA000BB5981 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E98498B190A6DA000BB5981 /* Main_iPad.storyboard */; };
 		1E984990190A6DA000BB5981 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E98498D190A6DA000BB5981 /* Main_iPhone.storyboard */; };
 		1E984992190A6DA700BB5981 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E984991190A6DA700BB5981 /* Images.xcassets */; };
@@ -190,6 +192,8 @@
 		1E3E78E2190903AD004F052E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1E3E78E4190903B3004F052E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		1E3E78E6190903B8004F052E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1E6C358F1946FDFC00EF5961 /* GT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GT.framework; sourceTree = "<group>"; };
+		1E6C35911946FDFC00EF5961 /* GT.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GT.bundle; sourceTree = "<group>"; };
 		1E98498C190A6DA000BB5981 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = App/Base.lproj/Main_iPad.storyboard; sourceTree = SOURCE_ROOT; };
 		1E98498E190A6DA000BB5981 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = App/Base.lproj/Main_iPhone.storyboard; sourceTree = SOURCE_ROOT; };
 		1E984991190A6DA700BB5981 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = App/Images.xcassets; sourceTree = SOURCE_ROOT; };
@@ -231,6 +235,7 @@
 				1E3E777A1908FF9B004F052E /* UIKit.framework in Frameworks */,
 				1E3E77761908FF9A004F052E /* Foundation.framework in Frameworks */,
 				22229BE5DE8E4CDDB54BB5CD /* libPods.a in Frameworks */,
+				1E6C35921946FDFC00EF5961 /* GT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,43 +546,72 @@
 			path = VCs;
 			sourceTree = "<group>";
 		};
-		1E984987190A6D9400BB5981 /* Resources */ = {
+		1E6C358E1946FDFC00EF5961 /* GT.embeddedframework */ = {
 			isa = PBXGroup;
 			children = (
-				1E98498B190A6DA000BB5981 /* Main_iPad.storyboard */,
-				1E98498D190A6DA000BB5981 /* Main_iPhone.storyboard */,
-				1E984991190A6DA700BB5981 /* Images.xcassets */,
-				1E984988190A6D9400BB5981 /* Asserts */,
-				1E984989190A6D9400BB5981 /* file */,
+				1E6C358F1946FDFC00EF5961 /* GT.framework */,
+				1E6C35901946FDFC00EF5961 /* Resources */,
+			);
+			name = GT.embeddedframework;
+			path = GTCore/GT.embeddedframework;
+			sourceTree = "<group>";
+		};
+		1E6C35901946FDFC00EF5961 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1E6C35911946FDFC00EF5961 /* GT.bundle */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		1E984988190A6D9400BB5981 /* Asserts */ = {
+		1E6C35941946FEF700EF5961 /* file */ = {
 			isa = PBXGroup;
 			children = (
+				1E6C35971946FF1800EF5961 /* config */,
+				1E6C35951946FEF700EF5961 /* db */,
 			);
-			path = Asserts;
-			sourceTree = "<group>";
+			name = file;
+			path = App/Asserts/file;
+			sourceTree = SOURCE_ROOT;
 		};
-		1E984989190A6D9400BB5981 /* file */ = {
-			isa = PBXGroup;
-			children = (
-				1E98498A190A6D9400BB5981 /* db */,
-			);
-			path = file;
-			sourceTree = "<group>";
-		};
-		1E98498A190A6D9400BB5981 /* db */ = {
+		1E6C35951946FEF700EF5961 /* db */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = db;
 			sourceTree = "<group>";
 		};
+		1E6C35961946FEF700EF5961 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			path = App/Asserts/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		1E6C35971946FF1800EF5961 /* config */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+		1E984987190A6D9400BB5981 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1E98498B190A6DA000BB5981 /* Main_iPad.storyboard */,
+				1E98498D190A6DA000BB5981 /* Main_iPhone.storyboard */,
+				1E984991190A6DA700BB5981 /* Images.xcassets */,
+				1E6C35941946FEF700EF5961 /* file */,
+				1E6C35961946FEF700EF5961 /* Resources */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		1EBBE6A9190A5B9D004004DC /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				1E6C358E1946FDFC00EF5961 /* GT.embeddedframework */,
 				1E0D8C6C192C90C90079BE90 /* DurexKit */,
 				1EBBE6F6190A5B9D004004DC /* ShareMerge */,
 			);
@@ -699,6 +733,7 @@
 				1EBBE7C6190A5B9D004004DC /* ShareMerge.bundle in Resources */,
 				1E98498F190A6DA000BB5981 /* Main_iPad.storyboard in Resources */,
 				1E984990190A6DA000BB5981 /* Main_iPhone.storyboard in Resources */,
+				1E6C35931946FDFD00EF5961 /* GT.bundle in Resources */,
 				1E984992190A6DA700BB5981 /* Images.xcassets in Resources */,
 				1E3E78AE190901BC004F052E /* Localizable.strings in Resources */,
 				1E3E77801908FF9B004F052E /* InfoPlist.strings in Resources */,
@@ -928,7 +963,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Vendor/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Vendor/**",
+					"$(PROJECT_DIR)/Vendor/GTCore/GT.embeddedframework",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "App/App-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -960,7 +998,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Vendor/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Vendor/**",
+					"$(PROJECT_DIR)/Vendor/GTCore/GT.embeddedframework",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "App/App-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
