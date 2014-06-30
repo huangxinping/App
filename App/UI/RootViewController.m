@@ -66,18 +66,19 @@
         UIEngineFailureBlock fb = ^(NSError *error) {
             SMLog(@"%@", error);
         };
+
+        [[UIEngine defaultUIEngine] bridgeExpressWithName:ExampleObserver
+                                                   params:@{
+             @"os": [[UIDevice systemName] urlEncodedString],
+             @"uuid": [@"A2A9DA84-7B56-4A51-99DD-374A8F9457AA" urlEncodedString]
+         }
+                                              addObserver:self
+                                                 callback:@{
+             NetExampleSuccess: [cb copy],
+             NetExampleFailure: [fb copy]
+         }
+                                             overrideSame:YES];
     }
-    [[UIEngine defaultUIEngine] bridgeExpressWithName:ExampleObserver
-                                               params:@{
-         @"os": [[UIDevice systemName] urlEncodedString],
-         @"uuid": [@"A2A9DA84-7B56-4A51-99DD-374A8F9457AA" urlEncodedString]
-     }
-                                          addObserver:self
-                                             callback:@{
-         NetExampleSuccess: [cb copy],
-         NetExampleFailure: [fb copy]
-     }
-                                         overrideSame:YES];
 }
 
 - (void)didReceiveMemoryWarning

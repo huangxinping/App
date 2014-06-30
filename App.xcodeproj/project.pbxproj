@@ -192,6 +192,7 @@
 		1E3E78E2190903AD004F052E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1E3E78E4190903B3004F052E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		1E3E78E6190903B8004F052E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1E5C04BB196102A100B28203 /* AppKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppKeys.h; sourceTree = "<group>"; };
 		1E6C358F1946FDFC00EF5961 /* GT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GT.framework; sourceTree = "<group>"; };
 		1E6C35911946FDFC00EF5961 /* GT.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GT.bundle; sourceTree = "<group>"; };
 		1E98498C190A6DA000BB5981 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = App/Base.lproj/Main_iPad.storyboard; sourceTree = SOURCE_ROOT; };
@@ -488,6 +489,7 @@
 		1E3E7881190901BC004F052E /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				1E5C04BB196102A100B28203 /* AppKeys.h */,
 			);
 			path = Other;
 			sourceTree = "<group>";

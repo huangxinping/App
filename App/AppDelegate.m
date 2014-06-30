@@ -21,6 +21,9 @@
     {     // 注册UI引擎
         [[UIEngine defaultUIEngine] registerObserver];
     }
+    {   // 注册该项目真实使用的语种列表
+        [SMLanguageManager registerActualSupportedLanguage:@[KSMChinese_Sim]];
+    }
     {     // 友盟分析
         [MobClick startWithAppkey:@"535a27b356240b1768015126" reportPolicy:REALTIME channelId:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"]];
     }
