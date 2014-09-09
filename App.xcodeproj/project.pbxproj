@@ -253,6 +253,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E00F9EE19BF07CA0071163E /* DataStruct */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataStruct;
+			sourceTree = "<group>";
+		};
+		1E00F9EF19BF07D80071163E /* OtherViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = OtherViews;
+			path = App/UI/OtherViews;
+			sourceTree = SOURCE_ROOT;
+		};
 		1E0D8C6C192C90C90079BE90 /* DurexKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,7 +419,7 @@
 		1E3E785D190901BC004F052E /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				1E3E785E190901BC004F052E /* DataStruct */,
+				1E00F9EE19BF07CA0071163E /* DataStruct */,
 				1E3E7863190901BC004F052E /* DB */,
 				1E3E786B190901BC004F052E /* Engine */,
 				1E3E7874190901BC004F052E /* FileManager */,
@@ -412,13 +427,6 @@
 				1E3E7881190901BC004F052E /* Other */,
 			);
 			path = Core;
-			sourceTree = "<group>";
-		};
-		1E3E785E190901BC004F052E /* DataStruct */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DataStruct;
 			sourceTree = "<group>";
 		};
 		1E3E7863190901BC004F052E /* DB */ = {
@@ -500,7 +508,7 @@
 				1E3E7899190901BC004F052E /* UIMacro.h */,
 				1E3E7887190901BC004F052E /* Engine */,
 				1E3E788F190901BC004F052E /* Other */,
-				1E3E7896190901BC004F052E /* OtherViews */,
+				1E00F9EF19BF07D80071163E /* OtherViews */,
 				1E3E789A190901BC004F052E /* VCs */,
 			);
 			path = UI;
@@ -528,13 +536,6 @@
 				1E3E7893190901BC004F052E /* PushNoAnimationSegue.m */,
 			);
 			path = Other;
-			sourceTree = "<group>";
-		};
-		1E3E7896190901BC004F052E /* OtherViews */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = OtherViews;
 			sourceTree = "<group>";
 		};
 		1E3E789A190901BC004F052E /* VCs */ = {
