@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sort-Xcode-project-file App.xcodeproj/project.pbxproj 
+sort-Xcode-project-file Pods/Pods.xcodeproj/project.pbxproj

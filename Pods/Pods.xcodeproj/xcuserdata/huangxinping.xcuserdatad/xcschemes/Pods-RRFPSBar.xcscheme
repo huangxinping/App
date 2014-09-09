@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "11D74777B391450094C574E2"
+               BlueprintIdentifier = "D9B01F4F881D4F7EB2607FF4"
                BuildableName = "libPods-RRFPSBar.a"
                BlueprintName = "Pods-RRFPSBar"
                ReferencedContainer = "container:Pods.xcodeproj">

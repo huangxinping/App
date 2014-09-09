@@ -1,0 +1,1 @@
+../../VCTransitionsLibrary/InteractionControllers/CEPinchInteractionController.h
