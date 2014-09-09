@@ -72,6 +72,9 @@
 		1E3E78E7190903B8004F052E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3E78E6190903B8004F052E /* AVFoundation.framework */; };
 		1E6C35921946FDFC00EF5961 /* GT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E6C358F1946FDFC00EF5961 /* GT.framework */; };
 		1E6C35931946FDFD00EF5961 /* GT.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E6C35911946FDFC00EF5961 /* GT.bundle */; };
+		1E9612BA19BF3847005E8F35 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9612B919BF3847005E8F35 /* libstdc++.6.0.9.dylib */; };
+		1E9612BC19BF384E005E8F35 /* libc++.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9612BB19BF384E005E8F35 /* libc++.1.dylib */; };
+		1E9612BE19BF3853005E8F35 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9612BD19BF3853005E8F35 /* libxml2.2.dylib */; };
 		1E98498F190A6DA000BB5981 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E98498B190A6DA000BB5981 /* Main_iPad.storyboard */; };
 		1E984990190A6DA000BB5981 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E98498D190A6DA000BB5981 /* Main_iPhone.storyboard */; };
 		1E984992190A6DA700BB5981 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E984991190A6DA700BB5981 /* Images.xcassets */; };
@@ -201,6 +204,9 @@
 		1E5C04BB196102A100B28203 /* AppKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppKeys.h; sourceTree = "<group>"; };
 		1E6C358F1946FDFC00EF5961 /* GT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GT.framework; sourceTree = "<group>"; };
 		1E6C35911946FDFC00EF5961 /* GT.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GT.bundle; sourceTree = "<group>"; };
+		1E9612B919BF3847005E8F35 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
+		1E9612BB19BF384E005E8F35 /* libc++.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.1.dylib"; path = "usr/lib/libc++.1.dylib"; sourceTree = SDKROOT; };
+		1E9612BD19BF3853005E8F35 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		1E98498C190A6DA000BB5981 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = App/Base.lproj/Main_iPad.storyboard; sourceTree = SOURCE_ROOT; };
 		1E98498E190A6DA000BB5981 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = App/Base.lproj/Main_iPhone.storyboard; sourceTree = SOURCE_ROOT; };
 		1E984991190A6DA700BB5981 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = App/Images.xcassets; sourceTree = SOURCE_ROOT; };
@@ -215,6 +221,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E9612BE19BF3853005E8F35 /* libxml2.2.dylib in Frameworks */,
+				1E9612BC19BF384E005E8F35 /* libc++.1.dylib in Frameworks */,
+				1E9612BA19BF3847005E8F35 /* libstdc++.6.0.9.dylib in Frameworks */,
 				1E3E78E7190903B8004F052E /* AVFoundation.framework in Frameworks */,
 				1E3E78E5190903B3004F052E /* MediaPlayer.framework in Frameworks */,
 				1E3E78E3190903AD004F052E /* CoreLocation.framework in Frameworks */,
@@ -353,6 +362,9 @@
 		1E3E77741908FF9A004F052E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1E9612BD19BF3853005E8F35 /* libxml2.2.dylib */,
+				1E9612BB19BF384E005E8F35 /* libc++.1.dylib */,
+				1E9612B919BF3847005E8F35 /* libstdc++.6.0.9.dylib */,
 				1E3E78E6190903B8004F052E /* AVFoundation.framework */,
 				1E3E78E4190903B3004F052E /* MediaPlayer.framework */,
 				1E3E78E2190903AD004F052E /* CoreLocation.framework */,
