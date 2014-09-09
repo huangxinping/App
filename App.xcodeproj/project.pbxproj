@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E00F9F219BF087E0071163E /* DSUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E00F9F119BF087E0071163E /* DSUserInfo.m */; };
+		1E00F9F519BF08940071163E /* LoginTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E00F9F419BF08940071163E /* LoginTableViewCell.m */; };
 		1E0D8C8A192C90C90079BE90 /* NSArray+SafeKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0D8C71192C90C90079BE90 /* NSArray+SafeKit.m */; };
 		1E0D8C8B192C90C90079BE90 /* NSDictionary+SafeKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0D8C73192C90C90079BE90 /* NSDictionary+SafeKit.m */; };
 		1E0D8C8C192C90C90079BE90 /* NSMutableArray+SafeKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0D8C75192C90C90079BE90 /* NSMutableArray+SafeKit.m */; };
@@ -89,6 +91,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E00F9F019BF087E0071163E /* DSUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSUserInfo.h; sourceTree = "<group>"; };
+		1E00F9F119BF087E0071163E /* DSUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSUserInfo.m; sourceTree = "<group>"; };
+		1E00F9F319BF08940071163E /* LoginTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTableViewCell.h; sourceTree = "<group>"; };
+		1E00F9F419BF08940071163E /* LoginTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTableViewCell.m; sourceTree = "<group>"; };
 		1E0D8C6D192C90C90079BE90 /* DurexKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DurexKit.h; sourceTree = "<group>"; };
 		1E0D8C6F192C90C90079BE90 /* Foundation+SafeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Foundation+SafeKit.h"; sourceTree = "<group>"; };
 		1E0D8C70192C90C90079BE90 /* NSArray+SafeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SafeKit.h"; sourceTree = "<group>"; };
@@ -256,6 +262,8 @@
 		1E00F9EE19BF07CA0071163E /* DataStruct */ = {
 			isa = PBXGroup;
 			children = (
+				1E00F9F019BF087E0071163E /* DSUserInfo.h */,
+				1E00F9F119BF087E0071163E /* DSUserInfo.m */,
 			);
 			path = DataStruct;
 			sourceTree = "<group>";
@@ -263,6 +271,8 @@
 		1E00F9EF19BF07D80071163E /* OtherViews */ = {
 			isa = PBXGroup;
 			children = (
+				1E00F9F319BF08940071163E /* LoginTableViewCell.h */,
+				1E00F9F419BF08940071163E /* LoginTableViewCell.m */,
 			);
 			name = OtherViews;
 			path = App/UI/OtherViews;
@@ -806,6 +816,7 @@
 				1E3E78B5190901BC004F052E /* UIEngine.m in Sources */,
 				1E3E78B6190901BC004F052E /* EmptySegue.m in Sources */,
 				1E3E78BB190901BC004F052E /* SplashViewController.m in Sources */,
+				1E00F9F519BF08940071163E /* LoginTableViewCell.m in Sources */,
 				1E3E78B0190901BC004F052E /* NetController.m in Sources */,
 				1E0D8C92192C90C90079BE90 /* NSObject+Swizzle.m in Sources */,
 				1E3E78B4190901BC004F052E /* UIEngine+Post.m in Sources */,
@@ -816,6 +827,7 @@
 				1E0D8C91192C90C90079BE90 /* NSException+SafeKit.m in Sources */,
 				1E0D8C8E192C90C90079BE90 /* NSMutableString+SafeKit.m in Sources */,
 				1E0D8C8D192C90C90079BE90 /* NSMutableDictionary+SafeKit.m in Sources */,
+				1E00F9F219BF087E0071163E /* DSUserInfo.m in Sources */,
 				1E3E78B7190901BC004F052E /* PushNoAnimationSegue.m in Sources */,
 				1E3E78B9190901BC004F052E /* RootViewController.m in Sources */,
 				1E3E77821908FF9B004F052E /* main.m in Sources */,
