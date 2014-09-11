@@ -589,46 +589,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		1E6C35941946FEF700EF5961 /* file */ = {
-			isa = PBXGroup;
-			children = (
-				1E6C35971946FF1800EF5961 /* config */,
-				1E6C35951946FEF700EF5961 /* db */,
-			);
-			name = file;
-			path = App/Asserts/file;
-			sourceTree = SOURCE_ROOT;
-		};
-		1E6C35951946FEF700EF5961 /* db */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = db;
-			sourceTree = "<group>";
-		};
-		1E6C35961946FEF700EF5961 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Resources;
-			path = App/Asserts/Resources;
-			sourceTree = SOURCE_ROOT;
-		};
-		1E6C35971946FF1800EF5961 /* config */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = config;
-			sourceTree = "<group>";
-		};
 		1E984987190A6D9400BB5981 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				1E98498B190A6DA000BB5981 /* Main_iPad.storyboard */,
 				1E98498D190A6DA000BB5981 /* Main_iPhone.storyboard */,
 				1E984991190A6DA700BB5981 /* Images.xcassets */,
-				1E6C35941946FEF700EF5961 /* file */,
-				1E6C35961946FEF700EF5961 /* Resources */,
+				1ED57FD819C154EE0097B443 /* Asserts */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -666,6 +633,46 @@
 				1EBBE79D190A5B9D004004DC /* ShareMerge.bundle */,
 			);
 			path = ShareMerge;
+			sourceTree = "<group>";
+		};
+		1ED57FD819C154EE0097B443 /* Asserts */ = {
+			isa = PBXGroup;
+			children = (
+				1ED57FD919C154EE0097B443 /* file */,
+				1ED57FDC19C154EE0097B443 /* Resources */,
+			);
+			name = Asserts;
+			path = App/Asserts;
+			sourceTree = SOURCE_ROOT;
+		};
+		1ED57FD919C154EE0097B443 /* file */ = {
+			isa = PBXGroup;
+			children = (
+				1ED57FDA19C154EE0097B443 /* config */,
+				1ED57FDB19C154EE0097B443 /* db */,
+			);
+			path = file;
+			sourceTree = "<group>";
+		};
+		1ED57FDA19C154EE0097B443 /* config */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+		1ED57FDB19C154EE0097B443 /* db */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = db;
+			sourceTree = "<group>";
+		};
+		1ED57FDC19C154EE0097B443 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
