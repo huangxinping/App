@@ -64,8 +64,6 @@
 		1E3E78E3190903AD004F052E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3E78E2190903AD004F052E /* CoreLocation.framework */; };
 		1E3E78E5190903B3004F052E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3E78E4190903B3004F052E /* MediaPlayer.framework */; };
 		1E3E78E7190903B8004F052E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E3E78E6190903B8004F052E /* AVFoundation.framework */; };
-		1E6C35921946FDFC00EF5961 /* GT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E6C358F1946FDFC00EF5961 /* GT.framework */; };
-		1E6C35931946FDFD00EF5961 /* GT.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E6C35911946FDFC00EF5961 /* GT.bundle */; };
 		1E9612BA19BF3847005E8F35 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9612B919BF3847005E8F35 /* libstdc++.6.0.9.dylib */; };
 		1E9612BC19BF384E005E8F35 /* libc++.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9612BB19BF384E005E8F35 /* libc++.1.dylib */; };
 		1E9612BE19BF3853005E8F35 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9612BD19BF3853005E8F35 /* libxml2.2.dylib */; };
@@ -74,6 +72,20 @@
 		1E984992190A6DA700BB5981 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E984991190A6DA700BB5981 /* Images.xcassets */; };
 		1EBBE7C6190A5B9D004004DC /* ShareMerge.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1EBBE79D190A5B9D004004DC /* ShareMerge.bundle */; };
 		1EBBE7C7190A5B9D004004DC /* ShareMergeQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EBBE7A0190A5B9D004004DC /* ShareMergeQ.a */; };
+		1EEEE23419E6929F00E426D5 /* ICETutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEE22F19E6929F00E426D5 /* ICETutorialController.m */; };
+		1EEEE23519E6929F00E426D5 /* ICETutorialPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEE23119E6929F00E426D5 /* ICETutorialPage.m */; };
+		1EEEE23619E6929F00E426D5 /* ICETutorialStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEE23319E6929F00E426D5 /* ICETutorialStyle.m */; };
+		1EEEE23B19E692B600E426D5 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 1EEEE23819E692B600E426D5 /* .gitkeep */; };
+		1EEEE23C19E692B600E426D5 /* MONActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEE23A19E692B600E426D5 /* MONActivityIndicatorView.m */; };
+		1EEEE27B19E692C600E426D5 /* NSString+TMOString.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEE24119E692C600E426D5 /* NSString+TMOString.m */; };
+		1EEEE27C19E692C600E426D5 /* TMOObjectVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEE24319E692C600E426D5 /* TMOObjectVerifier.m */; };
+		1EEEE27D19E692C600E426D5 /* UIImageView+TMOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEE24619E692C600E426D5 /* UIImageView+TMOImageView.m */; };
+		1EEEE27E19E692C600E426D5 /* UIView+TMOView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEE24819E692C600E426D5 /* UIView+TMOView.m */; };
+		1EEEE28219E692C600E426D5 /* Smarty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEE24F19E692C600E426D5 /* Smarty.m */; };
+		1EEEE28319E692C600E426D5 /* SmartyBinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEE25119E692C600E426D5 /* SmartyBinder.m */; };
+		1EEEE28419E692C600E426D5 /* SmartyFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEE25319E692C600E426D5 /* SmartyFunctions.m */; };
+		1EEEE28519E692C600E426D5 /* TMOSmarty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEE25519E692C600E426D5 /* TMOSmarty.m */; };
+		1EEEE28619E692C600E426D5 /* UIView+TMOSmarty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EEEE25719E692C600E426D5 /* UIView+TMOSmarty.m */; };
 		22229BE5DE8E4CDDB54BB5CD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD59969A505947ED9D3C1488 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -182,8 +194,6 @@
 		1E3E78E4190903B3004F052E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		1E3E78E6190903B8004F052E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1E5C04BB196102A100B28203 /* AppKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppKeys.h; sourceTree = "<group>"; };
-		1E6C358F1946FDFC00EF5961 /* GT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GT.framework; sourceTree = "<group>"; };
-		1E6C35911946FDFC00EF5961 /* GT.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GT.bundle; sourceTree = "<group>"; };
 		1E9612B919BF3847005E8F35 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		1E9612BB19BF384E005E8F35 /* libc++.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.1.dylib"; path = "usr/lib/libc++.1.dylib"; sourceTree = SDKROOT; };
 		1E9612BD19BF3853005E8F35 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
@@ -192,6 +202,34 @@
 		1E984991190A6DA700BB5981 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = App/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		1EBBE79D190A5B9D004004DC /* ShareMerge.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareMerge.bundle; sourceTree = "<group>"; };
 		1EBBE7A0190A5B9D004004DC /* ShareMergeQ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = ShareMergeQ.a; sourceTree = "<group>"; };
+		1EEEE22E19E6929F00E426D5 /* ICETutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICETutorialController.h; sourceTree = "<group>"; };
+		1EEEE22F19E6929F00E426D5 /* ICETutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICETutorialController.m; sourceTree = "<group>"; };
+		1EEEE23019E6929F00E426D5 /* ICETutorialPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICETutorialPage.h; sourceTree = "<group>"; };
+		1EEEE23119E6929F00E426D5 /* ICETutorialPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICETutorialPage.m; sourceTree = "<group>"; };
+		1EEEE23219E6929F00E426D5 /* ICETutorialStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICETutorialStyle.h; sourceTree = "<group>"; };
+		1EEEE23319E6929F00E426D5 /* ICETutorialStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICETutorialStyle.m; sourceTree = "<group>"; };
+		1EEEE23819E692B600E426D5 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		1EEEE23919E692B600E426D5 /* MONActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MONActivityIndicatorView.h; sourceTree = "<group>"; };
+		1EEEE23A19E692B600E426D5 /* MONActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MONActivityIndicatorView.m; sourceTree = "<group>"; };
+		1EEEE24019E692C600E426D5 /* NSString+TMOString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TMOString.h"; sourceTree = "<group>"; };
+		1EEEE24119E692C600E426D5 /* NSString+TMOString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TMOString.m"; sourceTree = "<group>"; };
+		1EEEE24219E692C600E426D5 /* TMOObjectVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOObjectVerifier.h; sourceTree = "<group>"; };
+		1EEEE24319E692C600E426D5 /* TMOObjectVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOObjectVerifier.m; sourceTree = "<group>"; };
+		1EEEE24419E692C600E426D5 /* TMOToolKitMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOToolKitMacro.h; sourceTree = "<group>"; };
+		1EEEE24519E692C600E426D5 /* UIImageView+TMOImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+TMOImageView.h"; sourceTree = "<group>"; };
+		1EEEE24619E692C600E426D5 /* UIImageView+TMOImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+TMOImageView.m"; sourceTree = "<group>"; };
+		1EEEE24719E692C600E426D5 /* UIView+TMOView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TMOView.h"; sourceTree = "<group>"; };
+		1EEEE24819E692C600E426D5 /* UIView+TMOView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TMOView.m"; sourceTree = "<group>"; };
+		1EEEE24E19E692C600E426D5 /* Smarty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Smarty.h; sourceTree = "<group>"; };
+		1EEEE24F19E692C600E426D5 /* Smarty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Smarty.m; sourceTree = "<group>"; };
+		1EEEE25019E692C600E426D5 /* SmartyBinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartyBinder.h; sourceTree = "<group>"; };
+		1EEEE25119E692C600E426D5 /* SmartyBinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartyBinder.m; sourceTree = "<group>"; };
+		1EEEE25219E692C600E426D5 /* SmartyFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartyFunctions.h; sourceTree = "<group>"; };
+		1EEEE25319E692C600E426D5 /* SmartyFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartyFunctions.m; sourceTree = "<group>"; };
+		1EEEE25419E692C600E426D5 /* TMOSmarty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMOSmarty.h; sourceTree = "<group>"; };
+		1EEEE25519E692C600E426D5 /* TMOSmarty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMOSmarty.m; sourceTree = "<group>"; };
+		1EEEE25619E692C600E426D5 /* UIView+TMOSmarty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TMOSmarty.h"; sourceTree = "<group>"; };
+		1EEEE25719E692C600E426D5 /* UIView+TMOSmarty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TMOSmarty.m"; sourceTree = "<group>"; };
 		941DF5B10D3C416590D157A5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		DD59969A505947ED9D3C1488 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -231,7 +269,6 @@
 				1E3E777A1908FF9B004F052E /* UIKit.framework in Frameworks */,
 				1E3E77761908FF9A004F052E /* Foundation.framework in Frameworks */,
 				22229BE5DE8E4CDDB54BB5CD /* libPods.a in Frameworks */,
-				1E6C35921946FDFC00EF5961 /* GT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,24 +596,6 @@
 			path = VCs;
 			sourceTree = "<group>";
 		};
-		1E6C358E1946FDFC00EF5961 /* GT.embeddedframework */ = {
-			isa = PBXGroup;
-			children = (
-				1E6C358F1946FDFC00EF5961 /* GT.framework */,
-				1E6C35901946FDFC00EF5961 /* Resources */,
-			);
-			name = GT.embeddedframework;
-			path = GTCore/GT.embeddedframework;
-			sourceTree = "<group>";
-		};
-		1E6C35901946FDFC00EF5961 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				1E6C35911946FDFC00EF5961 /* GT.bundle */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		1E984987190A6D9400BB5981 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -591,7 +610,9 @@
 		1EBBE6A9190A5B9D004004DC /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				1E6C358E1946FDFC00EF5961 /* GT.embeddedframework */,
+				1EEEE23D19E692C600E426D5 /* TMOSmarty */,
+				1EEEE23719E692B600E426D5 /* MONActivityIndicatorView */,
+				1EEEE22D19E6929F00E426D5 /* ICETutorial */,
 				1E0D8C6C192C90C90079BE90 /* DurexKit */,
 				1EBBE6F6190A5B9D004004DC /* ShareMerge */,
 			);
@@ -632,6 +653,73 @@
 			name = Asserts;
 			path = App/Asserts;
 			sourceTree = SOURCE_ROOT;
+		};
+		1EEEE22D19E6929F00E426D5 /* ICETutorial */ = {
+			isa = PBXGroup;
+			children = (
+				1EEEE22E19E6929F00E426D5 /* ICETutorialController.h */,
+				1EEEE22F19E6929F00E426D5 /* ICETutorialController.m */,
+				1EEEE23019E6929F00E426D5 /* ICETutorialPage.h */,
+				1EEEE23119E6929F00E426D5 /* ICETutorialPage.m */,
+				1EEEE23219E6929F00E426D5 /* ICETutorialStyle.h */,
+				1EEEE23319E6929F00E426D5 /* ICETutorialStyle.m */,
+			);
+			name = ICETutorial;
+			path = ICETutorial/ICETutorial/Libraries;
+			sourceTree = "<group>";
+		};
+		1EEEE23719E692B600E426D5 /* MONActivityIndicatorView */ = {
+			isa = PBXGroup;
+			children = (
+				1EEEE23819E692B600E426D5 /* .gitkeep */,
+				1EEEE23919E692B600E426D5 /* MONActivityIndicatorView.h */,
+				1EEEE23A19E692B600E426D5 /* MONActivityIndicatorView.m */,
+			);
+			name = MONActivityIndicatorView;
+			path = MONActivityIndicatorView/MONActivityIndicatorView;
+			sourceTree = "<group>";
+		};
+		1EEEE23D19E692C600E426D5 /* TMOSmarty */ = {
+			isa = PBXGroup;
+			children = (
+				1EEEE23F19E692C600E426D5 /* Depends */,
+				1EEEE24D19E692C600E426D5 /* Src */,
+			);
+			path = TMOSmarty;
+			sourceTree = "<group>";
+		};
+		1EEEE23F19E692C600E426D5 /* Depends */ = {
+			isa = PBXGroup;
+			children = (
+				1EEEE24019E692C600E426D5 /* NSString+TMOString.h */,
+				1EEEE24119E692C600E426D5 /* NSString+TMOString.m */,
+				1EEEE24219E692C600E426D5 /* TMOObjectVerifier.h */,
+				1EEEE24319E692C600E426D5 /* TMOObjectVerifier.m */,
+				1EEEE24419E692C600E426D5 /* TMOToolKitMacro.h */,
+				1EEEE24519E692C600E426D5 /* UIImageView+TMOImageView.h */,
+				1EEEE24619E692C600E426D5 /* UIImageView+TMOImageView.m */,
+				1EEEE24719E692C600E426D5 /* UIView+TMOView.h */,
+				1EEEE24819E692C600E426D5 /* UIView+TMOView.m */,
+			);
+			path = Depends;
+			sourceTree = "<group>";
+		};
+		1EEEE24D19E692C600E426D5 /* Src */ = {
+			isa = PBXGroup;
+			children = (
+				1EEEE24E19E692C600E426D5 /* Smarty.h */,
+				1EEEE24F19E692C600E426D5 /* Smarty.m */,
+				1EEEE25019E692C600E426D5 /* SmartyBinder.h */,
+				1EEEE25119E692C600E426D5 /* SmartyBinder.m */,
+				1EEEE25219E692C600E426D5 /* SmartyFunctions.h */,
+				1EEEE25319E692C600E426D5 /* SmartyFunctions.m */,
+				1EEEE25419E692C600E426D5 /* TMOSmarty.h */,
+				1EEEE25519E692C600E426D5 /* TMOSmarty.m */,
+				1EEEE25619E692C600E426D5 /* UIView+TMOSmarty.h */,
+				1EEEE25719E692C600E426D5 /* UIView+TMOSmarty.m */,
+			);
+			path = Src;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -723,10 +811,10 @@
 				1EBBE7C6190A5B9D004004DC /* ShareMerge.bundle in Resources */,
 				1E98498F190A6DA000BB5981 /* Main_iPad.storyboard in Resources */,
 				1E984990190A6DA000BB5981 /* Main_iPhone.storyboard in Resources */,
-				1E6C35931946FDFD00EF5961 /* GT.bundle in Resources */,
 				1E984992190A6DA700BB5981 /* Images.xcassets in Resources */,
 				1E3E78AE190901BC004F052E /* Localizable.strings in Resources */,
 				1E3E77801908FF9B004F052E /* InfoPlist.strings in Resources */,
+				1EEEE23B19E692B600E426D5 /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -780,25 +868,38 @@
 			files = (
 				1E0D8C8F192C90C90079BE90 /* NSObject+SafeKit.m in Sources */,
 				1E3E77861908FF9B004F052E /* AppDelegate.m in Sources */,
+				1EEEE23C19E692B600E426D5 /* MONActivityIndicatorView.m in Sources */,
+				1EEEE28219E692C600E426D5 /* Smarty.m in Sources */,
 				1E0D8C8B192C90C90079BE90 /* NSDictionary+SafeKit.m in Sources */,
+				1EEEE28419E692C600E426D5 /* SmartyFunctions.m in Sources */,
 				1E0D8C8C192C90C90079BE90 /* NSMutableArray+SafeKit.m in Sources */,
 				1E0D8C8A192C90C90079BE90 /* NSArray+SafeKit.m in Sources */,
+				1EEEE27C19E692C600E426D5 /* TMOObjectVerifier.m in Sources */,
 				1E0D8C94192C90C90079BE90 /* SafeKitLog.m in Sources */,
 				1E3E78AF190901BC004F052E /* SMLocalization.m in Sources */,
+				1EEEE23619E6929F00E426D5 /* ICETutorialStyle.m in Sources */,
+				1EEEE27D19E692C600E426D5 /* UIImageView+TMOImageView.m in Sources */,
 				1E0D8C93192C90C90079BE90 /* SafeKitConfig.m in Sources */,
 				1E3E78B6190901BC004F052E /* EmptySegue.m in Sources */,
 				1E3E78BB190901BC004F052E /* SplashViewController.m in Sources */,
+				1EEEE28519E692C600E426D5 /* TMOSmarty.m in Sources */,
 				1E3E78B0190901BC004F052E /* NetController.m in Sources */,
+				1EEEE27B19E692C600E426D5 /* NSString+TMOString.m in Sources */,
 				1E0D8C92192C90C90079BE90 /* NSObject+Swizzle.m in Sources */,
 				1E0D8C90192C90C90079BE90 /* NSString+SafeKit.m in Sources */,
 				1E0D8C95192C90C90079BE90 /* SafeKitMacro.m in Sources */,
 				1E0D8C91192C90C90079BE90 /* NSException+SafeKit.m in Sources */,
+				1EEEE28619E692C600E426D5 /* UIView+TMOSmarty.m in Sources */,
 				1E0D8C8E192C90C90079BE90 /* NSMutableString+SafeKit.m in Sources */,
 				1E0D8C8D192C90C90079BE90 /* NSMutableDictionary+SafeKit.m in Sources */,
+				1EEEE23419E6929F00E426D5 /* ICETutorialController.m in Sources */,
+				1EEEE23519E6929F00E426D5 /* ICETutorialPage.m in Sources */,
 				1E3E5AFE19E62725007F36D2 /* SharedActivityIndicatorView.m in Sources */,
+				1EEEE27E19E692C600E426D5 /* UIView+TMOView.m in Sources */,
 				1E3E5B1219E62B60007F36D2 /* RootViewController.m in Sources */,
 				1E00F9F219BF087E0071163E /* DSRootModel.m in Sources */,
 				1E3E5B0519E62820007F36D2 /* RootViewControllerModule.m in Sources */,
+				1EEEE28319E692C600E426D5 /* SmartyBinder.m in Sources */,
 				1E3E78B7190901BC004F052E /* PushNoAnimationSegue.m in Sources */,
 				1E3E77821908FF9B004F052E /* main.m in Sources */,
 				1E3E5B0219E627E0007F36D2 /* COPrivate.m in Sources */,
