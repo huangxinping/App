@@ -15,4 +15,4 @@
 #define APPSTORE_ID @"883959590"
 
 // 友盟KEY
-#define UMENG_KEY   @"54237ecffd98c501c7028ddf"
+#define UMENG_KEY   @"535a27b356240b1768015126"

@@ -23,7 +23,7 @@
 #import <Objection.h>
 #import "TMOSmarty.h"
 #import "TMOObjectVerifier.h"
-#import "DSUserInfo.h"
+#import "DSRootModel.h"
 #import "NetAPI.h"
 #import "AppKeys.h"
 #import "MobClick.h"
