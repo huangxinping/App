@@ -18,7 +18,10 @@
     }
 
     // support os < osx10.6 or ios4.0
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     return [NSPropertyListSerialization propertyListFromData:self mutabilityOption:NSPropertyListImmutable format:format errorDescription:NULL];
+    #pragma clang diagnostic pop
 }
 
 const char NSDataHexadecimalEncodingTable[16] = "0123456789abcdef";
@@ -50,7 +53,7 @@ static const char NSDataHexadecimalDecodingTable[0x80] =
  -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,//128
 };
 
-- (id)initWithHexadecimalString:(NSString *)hexadecimal {
+- (instancetype)initWithHexadecimalString:(NSString *)hexadecimal {
     NSData *hexData = [hexadecimal dataUsingEncoding:NSASCIIStringEncoding];
     const unsigned char *bytes = hexData.bytes;
     NSUInteger length = hexData.length;
@@ -66,7 +69,7 @@ static const char NSDataHexadecimalDecodingTable[0x80] =
     return [self initWithBytesNoCopy:buffer length:length / 2 freeWhenDone:YES];
 }
 
-+ (NSData *)dataWithHexadecimalString:(NSString *)hexadecimal {
++ (instancetype)dataWithHexadecimalString:(NSString *)hexadecimal {
     return [[[self alloc] initWithHexadecimalString:hexadecimal] autorelease];
 }
 
@@ -145,7 +148,7 @@ static void NSDataBase64DecodeData(const char *input, unsigned char *output) {
     output[2] = (char)(tmp1 << 6) | (tmp2);
 }
 
-- (id)initWithBase64String:(NSString *)base64 {
+- (instancetype)initWithBase64String:(NSString *)base64 {
     NSUInteger inlen = base64.length;
     NSUInteger datalen = inlen / 4 * 3;
     char *inpos = (char *)base64.UTF8String;
@@ -196,7 +199,7 @@ static void NSDataBase64DecodeData(const char *input, unsigned char *output) {
     return [self initWithBytesNoCopy:buffer length:datalen freeWhenDone:YES];
 }
 
-+ (id)dataWithBase64String:(NSString *)base64 {
++ (instancetype)dataWithBase64String:(NSString *)base64 {
     return [[[self alloc] initWithBase64String:base64] autorelease];
 }
 

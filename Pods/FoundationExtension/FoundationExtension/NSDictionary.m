@@ -12,12 +12,16 @@
 
 @implementation NSDictionary (Shortcuts)
 
-- (id):(id)key {
-    return self[key];
-}
-
 - (BOOL)containsKey:(id)key {
     return [self.allKeys containsObject:key];
+}
+
+- (id)anyKey {
+    return [self.keyEnumerator nextObject];
+}
+
+- (id)anyObject {
+    return [self.objectEnumerator nextObject];
 }
 
 @end
@@ -25,15 +29,15 @@
 
 @implementation NSDictionary (NSData)
 
-- (id)initWithData:(NSData *)data {
+- (instancetype)initWithData:(NSData *)data {
     return [self initWithData:data format:NULL error:NULL];
 }
 
-+ (id)dictionaryWithData:(NSData *)data {
++ (instancetype)dictionaryWithData:(NSData *)data {
     return [[[self alloc] initWithData:data] autorelease];
 }
 
-- (id)initWithData:(NSData *)data format:(NSPropertyListFormat *)format error:(NSError **)error {
+- (instancetype)initWithData:(NSData *)data format:(NSPropertyListFormat *)format error:(NSError **)error {
     NSDictionary *contents = [data propertyListObjectUsingFormat:format error:error];
     if (contents == nil) {
         [self release];
@@ -42,8 +46,17 @@
     return [self initWithDictionary:contents];
 }
 
-+ (id)dictionaryWithData:(NSData *)data format:(NSPropertyListFormat *)format error:(NSError **)error {
++ (instancetype)dictionaryWithData:(NSData *)data format:(NSPropertyListFormat *)format error:(NSError **)error {
     return [[[self alloc] initWithData:data format:format error:error] autorelease];
+}
+
+@end
+
+
+@implementation NSDictionary (Deprecated)
+
+- (id):(id)key {
+    return self[key];
 }
 
 @end

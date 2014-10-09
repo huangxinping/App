@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E4C68C83D59046259EAC9489"
+               BlueprintIdentifier = "FE81A7C5E8174DE8B307ED43"
                BuildableName = "libPods-NSObject-Tap.a"
                BlueprintName = "Pods-NSObject-Tap"
                ReferencedContainer = "container:Pods.xcodeproj">

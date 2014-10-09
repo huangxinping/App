@@ -28,6 +28,7 @@
 #import "IQNSArray+Sort.h"
 #import "IQToolbar.h"
 #import "IQBarButtonItem.h"
+#import "IQKeyboardManagerConstantsInternal.h"
 
 #import <UIKit/UITapGestureRecognizer.h>
 #import <UIKit/UITextField.h>
@@ -45,7 +46,6 @@
 @end
 
 @interface IQKeyboardManager()<UIGestureRecognizerDelegate>
-
 
 
 /*!
@@ -114,7 +114,7 @@
 }
 
 //KeyWindow
-@synthesize keyWindow                       = _keyWindow;
+@synthesize keyWindow                           = _keyWindow;
 
 //UIKeyboard handling
 @synthesize enable                              =   _enable;
@@ -148,21 +148,13 @@
 +(void)load
 {
     [super load];
+    
+    //Enabling Keyboard Manager.
     [[IQKeyboardManager sharedManager] setEnable:YES];
 }
 
-//Special TextView
-Class EKPlaceholderTextViewClass;
-
-+(void)initialize
-{
-    [super initialize];
-
-    EKPlaceholderTextViewClass = NSClassFromString(@"EKPlaceholderTextView");
-}
-
 /*  Singleton Object Initialization. */
--(id)init
+-(instancetype)init
 {
 	if (self = [super init])
     {
@@ -190,6 +182,7 @@ Class EKPlaceholderTextViewClass;
 			[self setKeyboardDistanceFromTextField:10.0];
             animationDuration = 0.25;
             
+            //Setting it's initial values
             _enable = NO;
             [self setCanAdjustTextView:NO];
             [self setShouldPlayInputClicks:NO];
@@ -210,7 +203,7 @@ Class EKPlaceholderTextViewClass;
 }
 
 /*  Automatically called from the `+(void)load` method. */
-+ (IQKeyboardManager*)sharedManager
++ (instancetype)sharedManager
 {
 	//Singleton instance
 	static IQKeyboardManager *kbManager;
@@ -232,6 +225,8 @@ Class EKPlaceholderTextViewClass;
 {
     //  Disable the keyboard manager.
 	[self setEnable:NO];
+    
+    //Removing notification observers on dealloc.
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -296,9 +291,13 @@ Class EKPlaceholderTextViewClass;
 /*! Getting keyWindow. */
 -(UIWindow *)keyWindow
 {
-    //If it is not initialized then return [[UIApplication sharedApplication] keyWindow], otherwise return it.
-    if (_keyWindow == nil)      _keyWindow = [[UIApplication sharedApplication] keyWindow];
+    /*  (Bug ID: #73)   */
+    UIWindow *_originalKeyWindow = [[UIApplication sharedApplication] keyWindow];
     
+    //If original key window is not nil and the cached keywindow is also not original keywindow then changing keywindow.
+    if (_originalKeyWindow != nil && _keyWindow != _originalKeyWindow)  _keyWindow = _originalKeyWindow;
+    
+    //Return KeyWindow
     return _keyWindow;
 }
 
@@ -309,6 +308,12 @@ Class EKPlaceholderTextViewClass;
     //  Getting topMost ViewController.
     UIViewController *controller = [[self keyWindow] topMostController];
     
+    //frame size needs to be adjusted on iOS8 due to orientation structure changes.
+    if (IQ_IS_IOS8_OR_GREATER)
+    {
+        frame.size = controller.view.size;
+    }
+
     //  If can't get rootViewController then printing warning to user.
     if (controller == nil)  NSLog(@"%@",IQLocalizedString(@"You must set UIWindow.rootViewController in your AppDelegate to work with IQKeyboardManager", nil));
     
@@ -316,11 +321,10 @@ Class EKPlaceholderTextViewClass;
     [UIView animateWithDuration:animationDuration delay:0 options:(animationCurve|UIViewAnimationOptionBeginFromCurrentState) animations:^{
         //  Setting it's new frame
         [controller.view setFrame:frame];
-    } completion:^(BOOL finished) {
-    }];
+    } completion:NULL];
 }
 
-/*  UIKeyboard Did show. Adjusting RootViewController's frame according to device orientation. */
+/* Adjusting RootViewController's frame according to device orientation. */
 -(void)adjustFrame
 {
     //  We are unable to get textField object while keyboard showing on UIWebView's textField.
@@ -334,6 +338,9 @@ Class EKPlaceholderTextViewClass;
     //  Getting RootViewController.
     UIViewController *rootController = [[self keyWindow] topMostController];
     
+    //If it's iOS8 then we should do calculations according to portrait orientations.
+    UIInterfaceOrientation interfaceOrientation = IQ_IS_IOS8_OR_GREATER ? UIInterfaceOrientationPortrait : [rootController interfaceOrientation];
+
     //  Converting Rectangle according to window bounds.
     CGRect textFieldViewRect = [[_textFieldView superview] convertRect:_textFieldView.frame toView:window];
     //  Getting RootViewRect.
@@ -343,17 +350,18 @@ Class EKPlaceholderTextViewClass;
     //  Move positive = textField is hidden.
     //  Move negative = textField is showing.
 	
+
     //  Calculating move position. Common for both normal and special cases.
-    switch ([rootController interfaceOrientation])
+    switch (interfaceOrientation)
     {
         case UIInterfaceOrientationLandscapeLeft:
-            move = CGRectGetMaxX(textFieldViewRect)-(CGRectGetWidth(window.frame)-kbSize.width);
+            move = CGRectGetMaxX(textFieldViewRect)-(window.width-kbSize.width);
             break;
         case UIInterfaceOrientationLandscapeRight:
             move = kbSize.width-CGRectGetMinX(textFieldViewRect);
             break;
         case UIInterfaceOrientationPortrait:
-            move = CGRectGetMaxY(textFieldViewRect)-(CGRectGetHeight(window.frame)-kbSize.height);
+            move = CGRectGetMaxY(textFieldViewRect)-(window.height-kbSize.height);
             break;
         case UIInterfaceOrientationPortraitUpsideDown:
             move = kbSize.height-CGRectGetMinY(textFieldViewRect);
@@ -409,7 +417,7 @@ Class EKPlaceholderTextViewClass;
                 CGFloat shouldOffsetY = superScrollView.contentOffset.y - MIN(superScrollView.contentOffset.y,-move);
                 
                 //Rearranging the expected Y offset according to the view.
-                shouldOffsetY = MIN(shouldOffsetY, lastViewRect.origin.y-5);   //-5 is for good UI.
+                shouldOffsetY = MIN(shouldOffsetY, lastViewRect.origin.y/*-5*/);   //-5 is for good UI.//Commenting -5 Bug ID #69
                 
                 //Subtracting the Y offset from the move variable, because we are going to change scrollView's contentOffset.y to shouldOffsetY.
                 move -= (shouldOffsetY-superScrollView.contentOffset.y);
@@ -417,8 +425,7 @@ Class EKPlaceholderTextViewClass;
                 //Getting problem while using `setContentOffset:animated:`, So I used animation API.
                 [UIView animateWithDuration:animationDuration delay:0 options:(animationCurve|UIViewAnimationOptionBeginFromCurrentState) animations:^{
                     superScrollView.contentOffset = CGPointMake(superScrollView.contentOffset.x, shouldOffsetY);
-                } completion:^(BOOL finished) {
-                }];
+                } completion:NULL];
 
                 //  Getting next lastView & superScrollView.
                 lastView = superScrollView;
@@ -433,7 +440,8 @@ Class EKPlaceholderTextViewClass;
         CGFloat initialMove = move;
         
         CGFloat adjustment = 5;
-        switch ([rootController interfaceOrientation])
+        
+        switch (interfaceOrientation)
         {
             case UIInterfaceOrientationLandscapeLeft:
                 adjustment += [[UIApplication sharedApplication] statusBarFrame].size.width;
@@ -441,7 +449,7 @@ Class EKPlaceholderTextViewClass;
                 break;
             case UIInterfaceOrientationLandscapeRight:
                 adjustment += [[UIApplication sharedApplication] statusBarFrame].size.width;
-                move = MIN(CGRectGetWidth(window.frame)-CGRectGetMaxX(textFieldViewRect)-adjustment, move);
+                move = MIN(window.width-CGRectGetMaxX(textFieldViewRect)-adjustment, move);
                 break;
             case UIInterfaceOrientationPortrait:
                 adjustment += [[UIApplication sharedApplication] statusBarFrame].size.height;
@@ -449,7 +457,7 @@ Class EKPlaceholderTextViewClass;
                 break;
             case UIInterfaceOrientationPortraitUpsideDown:
                 adjustment += [[UIApplication sharedApplication] statusBarFrame].size.height;
-                move = MIN(CGRectGetHeight(window.frame)-CGRectGetMaxY(textFieldViewRect)-adjustment, move);
+                move = MIN(window.height-CGRectGetMaxY(textFieldViewRect)-adjustment, move);
                 break;
             default:
                 break;
@@ -459,11 +467,9 @@ Class EKPlaceholderTextViewClass;
         //If we have permission to adjust the textView, then let's do it on behalf of user.
         if (_canAdjustTextView)
         {
-            //Getting problem while using `setContentOffset:animated:`, So I used animation API.
             [UIView animateWithDuration:animationDuration delay:0 options:(animationCurve|UIViewAnimationOptionBeginFromCurrentState) animations:^{
-                [_textFieldView setFrame:CGRectMake(CGRectGetMinX(_textFieldView.frame),CGRectGetMinY(_textFieldView.frame), CGRectGetWidth(_textFieldView.frame),CGRectGetHeight(_textFieldView.frame)-(initialMove-move))];
-            } completion:^(BOOL finished) {
-            }];
+                _textFieldView.height = _textFieldView.height-(initialMove-move);
+            } completion:NULL];
         }
     }
     
@@ -501,8 +507,7 @@ Class EKPlaceholderTextViewClass;
         //  Positive or zero.
         if (move>=0)
         {
-            //  adjusting rootViewRect
-            switch (rootController.interfaceOrientation)
+            switch (interfaceOrientation)
             {
                 case UIInterfaceOrientationLandscapeLeft:       rootViewRect.origin.x -= move;  break;
                 case UIInterfaceOrientationLandscapeRight:      rootViewRect.origin.x += move;  break;
@@ -517,10 +522,9 @@ Class EKPlaceholderTextViewClass;
         //  Negative
         else
         {
-            CGFloat disturbDistance;
+            CGFloat disturbDistance = 0;
             
-            //  Calculating disturbed distance
-			switch (rootController.interfaceOrientation)
+            switch (interfaceOrientation)
             {
                 case UIInterfaceOrientationLandscapeLeft:
                     disturbDistance = CGRectGetMinX(rootViewRect)-CGRectGetMinX(topViewBeginRect);
@@ -542,8 +546,7 @@ Class EKPlaceholderTextViewClass;
             //  disturbDistance positive = frame not disturbed.
             if(disturbDistance<0)
             {
-                //  adjusting rootViewRect
-                switch (rootController.interfaceOrientation)
+                switch (interfaceOrientation)
                 {
                     case UIInterfaceOrientationLandscapeLeft:       rootViewRect.origin.x -= MAX(move, disturbDistance);  break;
                     case UIInterfaceOrientationLandscapeRight:      rootViewRect.origin.x += MAX(move, disturbDistance);  break;
@@ -560,71 +563,6 @@ Class EKPlaceholderTextViewClass;
 }
 
 #pragma mark - UIKeyboad Notification methods
-/*  UIKeyboardWillHideNotification. So setting rootViewController to it's default frame. */
-- (void)keyboardWillHide:(NSNotification*)aNotification
-{
-	//If it's not a fake notification generated by [self setEnable:NO].
-	if (aNotification != nil)	kbShowNotification = nil;
-	
-    //If not enabled then do nothing.
-	if (_enable == NO)	return;
-	
-    //  We are unable to get textField object while keyboard showing on UIWebView's textField.
-    if (_textFieldView == nil)   return;
-    
-    //If textFieldViewInitialRect is saved then restore it.(UITextView case @canAdjustTextView)
-    if (!CGRectEqualToRect(textFieldViewIntialFrame, CGRectZero))
-    {
-        //Due to orientation callback we need to set it's original position.
-        [UIView animateWithDuration:animationDuration delay:0 options:(animationCurve|UIViewAnimationOptionBeginFromCurrentState) animations:^{
-            _textFieldView.frame = textFieldViewIntialFrame;
-        } completion:^(BOOL finished) {
-            
-        }];
-    }
-    
-    //  Boolean to know keyboard is showing/hiding
-    isKeyboardShowing = NO;
-    
-    //  Getting keyboard animation duration
-    CGFloat aDuration = [[[aNotification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
-    if (aDuration!= 0.0f)
-    {
-        //  Setitng keyboard animation duration
-        animationDuration = [[[aNotification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
-    }
-	
-    //Restoring the contentOffset of the lastScrollView
-    [UIView animateWithDuration:animationDuration delay:0 options:(animationCurve|UIViewAnimationOptionBeginFromCurrentState) animations:^{
-        lastScrollView.contentOffset = startingContentOffset;
-        
-        // TODO: This is temporary solution. Have to implement the save and restore scrollView state
-        UIScrollView *superscrollView = lastScrollView;
-        while ((superscrollView = [superscrollView superScrollView]))
-        {
-            CGSize contentSize = CGSizeMake(MAX(superscrollView.contentSize.width, superscrollView.frame.size.width), MAX(superscrollView.contentSize.height, superscrollView.frame.size.height));
-            
-            CGFloat minimumY = contentSize.height-superscrollView.frame.size.height;
-            
-            if (minimumY<superscrollView.contentOffset.y)
-            {
-                superscrollView.contentOffset = CGPointMake(superscrollView.contentOffset.x, minimumY);
-            }
-        }
-        
-    } completion:^(BOOL finished) {
-
-    }];
-    
-    //Reset all values
-    lastScrollView = nil;
-    kbSize = CGSizeZero;
-    startingContentOffset = CGPointZero;
-    
-    //  Setting rootViewController frame to it's original position.
-    [self setRootViewFrame:topViewBeginRect];
-}
-
 /*  UIKeyboardWillShowNotification. */
 -(void)keyboardWillShow:(NSNotification*)aNotification
 {
@@ -638,7 +576,7 @@ Class EKPlaceholderTextViewClass;
     if (_shouldAdoptDefaultKeyboardAnimation)
     {
         //  Getting keyboard animation.
-        animationCurve = [[[aNotification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
+        animationCurve = [[aNotification userInfo][UIKeyboardAnimationCurveUserInfoKey] integerValue];
         animationCurve = animationCurve<<16;
     }
     else
@@ -647,7 +585,7 @@ Class EKPlaceholderTextViewClass;
     }
 
     //  Getting keyboard animation duration
-    CGFloat duration = [[[aNotification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    CGFloat duration = [[aNotification userInfo][UIKeyboardAnimationDurationUserInfoKey] floatValue];
     
     //Saving animation duration
     if (duration != 0.0)    animationDuration = duration;
@@ -655,10 +593,12 @@ Class EKPlaceholderTextViewClass;
     CGSize oldKBSize = kbSize;
     
     //  Getting UIKeyboardSize.
-    kbSize = [[[aNotification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    kbSize = [[aNotification userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     
     // Adding Keyboard distance from textField.
-    switch ([[[self keyWindow] topMostController] interfaceOrientation])
+    UIInterfaceOrientation interfaceOrientation = IQ_IS_IOS8_OR_GREATER ? UIInterfaceOrientationPortrait : [[[self keyWindow] topMostController] interfaceOrientation];
+    
+    switch (interfaceOrientation)
     {
         case UIInterfaceOrientationLandscapeLeft:
             kbSize.width += _keyboardDistanceFromTextField;
@@ -679,33 +619,83 @@ Class EKPlaceholderTextViewClass;
     //If last restored keyboard size is different(any orientation accure), then refresh. otherwise not.
     if (!CGSizeEqualToSize(kbSize, oldKBSize))
     {
-        //If it is EventKit textView object then let EventKit to adjust it. (Bug ID: #37)
-        if ([_textFieldView isKindOfClass:EKPlaceholderTextViewClass] == NO)
+        //If _textFieldView is inside UITableViewController then let UITableViewController to handle it (Bug ID: #37) (Bug ID: #76) See notes:- https://developer.apple.com/Library/ios/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/KeyboardManagement/KeyboardManagement.html. If it is UIAlertView textField then do not affect anything (Bug ID: #70).
+        if (_textFieldView != nil && [[_textFieldView viewController] isKindOfClass:[UITableViewController class]] == NO && [_textFieldView isAlertViewTextField] == NO)
         {
             [self adjustFrame];
         }
     }
 }
 
-#pragma mark - UITextFieldView Delegate methods
-/*!  UITextFieldTextDidEndEditingNotification, UITextViewTextDidEndEditingNotification. Removing fetched object. */
--(void)textFieldViewDidEndEditing:(NSNotification*)notification
+/*  UIKeyboardWillHideNotification. So setting rootViewController to it's default frame. */
+- (void)keyboardWillHide:(NSNotification*)aNotification
 {
-    [_textFieldView.window removeGestureRecognizer:tapGesture];
+    //If it's not a fake notification generated by [self setEnable:NO].
+    if (aNotification != nil)	kbShowNotification = nil;
     
-	// We check if there's a valid frame before resetting the textview's frame
-	if(!CGRectEqualToRect(textFieldViewIntialFrame, CGRectZero)){
-		[UIView animateWithDuration:animationDuration delay:0 options:(animationCurve|UIViewAnimationOptionBeginFromCurrentState) animations:^{
-			_textFieldView.frame = textFieldViewIntialFrame;
-		} completion:^(BOOL finished) {
-		}];
-	}
+    //If not enabled then do nothing.
+    if (_enable == NO)	return;
     
-    //Setting object to nil
-    _textFieldView = nil;
+    //Commented due to #56. Added all the conditions below to handle UIWebView's textFields
+//    //  We are unable to get textField object while keyboard showing on UIWebView's textField. If it's alertView textField then also do nothing.
+//    if (_textFieldView == nil)   return;
+
+    //If textFieldViewInitialRect is saved then restore it.(UITextView case @canAdjustTextView)
+    if (!CGRectEqualToRect(textFieldViewIntialFrame, CGRectZero))
+    {
+        //Due to orientation callback we need to set it's original position.
+        [UIView animateWithDuration:animationDuration delay:0 options:(animationCurve|UIViewAnimationOptionBeginFromCurrentState) animations:^{
+            _textFieldView.frame = textFieldViewIntialFrame;
+        } completion:NULL];
+    }
+    
+    //  Boolean to know keyboard is showing/hiding
+    isKeyboardShowing = NO;
+    
+    //  Getting keyboard animation duration
+    CGFloat aDuration = [[aNotification userInfo][UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    if (aDuration!= 0.0f)
+    {
+        //  Setitng keyboard animation duration
+        animationDuration = aDuration;
+    }
+    
+    //Restoring the contentOffset of the lastScrollView
+    if (lastScrollView)
+    {
+        [UIView animateWithDuration:animationDuration delay:0 options:(animationCurve|UIViewAnimationOptionBeginFromCurrentState) animations:^{
+            lastScrollView.contentOffset = startingContentOffset;
+            
+            // TODO: This is temporary solution. Have to implement the save and restore scrollView state
+            UIScrollView *superscrollView = lastScrollView;
+            while ((superscrollView = [superscrollView superScrollView]))
+            {
+                CGSize contentSize = CGSizeMake(MAX(superscrollView.contentSize.width, superscrollView.width), MAX(superscrollView.contentSize.height, superscrollView.height));
+                
+                CGFloat minimumY = contentSize.height-superscrollView.height;
+                
+                if (minimumY<superscrollView.contentOffset.y)
+                {
+                    superscrollView.contentOffset = CGPointMake(superscrollView.contentOffset.x, minimumY);
+                }
+            }
+        } completion:NULL];
+    }
+    
+    //  Setting rootViewController frame to it's original position.
+    if (!CGRectEqualToRect(topViewBeginRect, CGRectZero))
+    {
+        [self setRootViewFrame:topViewBeginRect];
+    }
+
+    //Reset all values
+    lastScrollView = nil;
+    kbSize = CGSizeZero;
+    startingContentOffset = CGPointZero;
+    topViewBeginRect = CGRectZero;
 }
 
-
+#pragma mark - UITextFieldView Delegate methods
 /*!  UITextFieldTextDidBeginEditingNotification, UITextViewTextDidBeginEditingNotification. Fetching UITextFieldView object. */
 -(void)textFieldViewDidBeginEditing:(NSNotification*)notification
 {
@@ -749,12 +739,28 @@ Class EKPlaceholderTextViewClass;
         topViewBeginRect = rootController.view.frame;
     }
     
-    //If it is EventKit textView object then let EventKit to adjust it. (Bug ID: #37)
-    if ([_textFieldView isKindOfClass:EKPlaceholderTextViewClass] == NO)
+    //If _textFieldView is inside UITableViewController then let UITableViewController to handle it (Bug ID: #37) (Bug ID: #76) See note:- https://developer.apple.com/Library/ios/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/KeyboardManagement/KeyboardManagement.html. If it is UIAlertView textField then do not affect anything (Bug ID: #70).
+    if (_textFieldView != nil && [[_textFieldView viewController] isKindOfClass:[UITableViewController class]] == NO && [_textFieldView isAlertViewTextField] == NO)
     {
         //  keyboard is already showing. adjust frame.
         [self adjustFrame];
     }
+}
+
+/*!  UITextFieldTextDidEndEditingNotification, UITextViewTextDidEndEditingNotification. Removing fetched object. */
+-(void)textFieldViewDidEndEditing:(NSNotification*)notification
+{
+    [_textFieldView.window removeGestureRecognizer:tapGesture];
+    
+    // We check if there's a valid frame before resetting the textview's frame
+    if(!CGRectEqualToRect(textFieldViewIntialFrame, CGRectZero)){
+        [UIView animateWithDuration:animationDuration delay:0 options:(animationCurve|UIViewAnimationOptionBeginFromCurrentState) animations:^{
+            _textFieldView.frame = textFieldViewIntialFrame;
+        } completion:NULL];
+    }
+    
+    //Setting object to nil
+    _textFieldView = nil;
 }
 
 /* UITextViewTextDidChangeNotificationBug,  fix for iOS 7.0.x - http://stackoverflow.com/questions/18966675/uitextview-in-ios7-clips-the-last-line-of-text-string */
@@ -775,9 +781,7 @@ Class EKPlaceholderTextViewClass;
         // Cannot animate with setContentOffset:animated: or caret will not appear
         [UIView animateWithDuration:animationDuration delay:0 options:(animationCurve|UIViewAnimationOptionBeginFromCurrentState) animations:^{
             [textView setContentOffset:offset];
-        } completion:^(BOOL finished) {
-
-        }];
+        } completion:NULL];
     }
 }
 
@@ -863,6 +867,11 @@ Class EKPlaceholderTextViewClass;
         case IQAutoToolbarByTag:
             return [textFields sortedArrayByTag];
             break;
+            
+            //If autoToolbar behaviour is by tag, then sorting it according to tag property.
+        case IQAutoToolbarByPosition:
+            return [textFields sortedArrayByPosition];
+            break;
     }
 }
 
@@ -884,7 +893,7 @@ Class EKPlaceholderTextViewClass;
         NSUInteger index = [textFields indexOfObject:_textFieldView];
         
         //If it is not first textField. then it's previous object becomeFirstResponder.
-        if (index > 0)	[[textFields objectAtIndex:index-1] becomeFirstResponder];
+        if (index > 0)	[textFields[index-1] becomeFirstResponder];
     }
 }
 
@@ -905,7 +914,7 @@ Class EKPlaceholderTextViewClass;
         NSUInteger index = [textFields indexOfObject:_textFieldView];
         
         //If it is not last textField. then it's next object becomeFirstResponder.
-        if (index < textFields.count-1)	[[textFields objectAtIndex:index+1] becomeFirstResponder];
+        if (index < textFields.count-1)	[textFields[index+1] becomeFirstResponder];
     }
 }
 
@@ -929,8 +938,8 @@ Class EKPlaceholderTextViewClass;
 	//	If only one object is found, then adding only Done button.
 	if (siblings.count==1)
 	{
-        UIView *textField = [siblings objectAtIndex:0];
-		if (![textField inputAccessoryView])
+        UIView *textField = [siblings firstObject];
+		if (![textField inputAccessoryView] || [[textField inputAccessoryView] tag] != kIQDoneButtonToolbarTag)
 		{
 			[textField addDoneOnKeyboardWithTarget:self action:@selector(doneAction:) shouldShowPlaceholder:_shouldShowTextFieldPlaceholder];
 
@@ -948,7 +957,7 @@ Class EKPlaceholderTextViewClass;
 		//	If more than 1 textField is found. then adding previous/next/done buttons on it.
 		for (UITextField *textField in siblings)
 		{
-			if (![textField inputAccessoryView])
+			if (![textField inputAccessoryView] || [[textField inputAccessoryView] tag] != kIQPreviousNextButtonToolbarTag)
 			{
 				[textField addPreviousNextDoneOnKeyboardWithTarget:self previousAction:@selector(previousAction:) nextAction:@selector(nextAction:) doneAction:@selector(doneAction:) shouldShowPlaceholder:_shouldShowTextFieldPlaceholder];
 
@@ -963,7 +972,7 @@ Class EKPlaceholderTextViewClass;
             
             //In case of UITableView (Special), the next/previous buttons has to be refreshed everytime.
             //	If firstTextField, then previous should not be enabled.
-            if ([siblings objectAtIndex:0] == textField)
+            if (siblings[0] == textField)
             {
                 [textField setEnablePrevious:NO next:YES];
             }

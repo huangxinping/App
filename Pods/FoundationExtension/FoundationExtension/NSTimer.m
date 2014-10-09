@@ -35,23 +35,24 @@
 
 @implementation NSTimer (Delegate)
 
-static void NSTimerDelegateCallback(CFRunLoopTimerRef timer, void *info) {
+static void _NSATimerDelegateCallback(CFRunLoopTimerRef timer, void *info) {
     id<NSTimerDelegate> delegate = info;
-    [delegate timerDidFire:(NSTimer *)timer];
+    [delegate timerHasFired:(NSTimer *)timer];
     if (![delegate timerShouldRepeat:(NSTimer *)timer]) {
         CFRunLoopTimerInvalidate(timer);
     };
 }
 
 - (id)initWithFireDate:(NSDate *)date interval:(NSTimeInterval)ti delegate:(id)delegate {
-    //[self release]; // Please do not try this!
+    //[[self init] release]; // This removes warning, but stupid
     CFRunLoopTimerContext context = {0, delegate, NULL, NULL, NULL};
-    self = (NSTimer *)CFRunLoopTimerCreate(kCFAllocatorDefault, [date timeIntervalSinceReferenceDate], ti, 0, 0, &NSTimerDelegateCallback, &context);
+    self = (NSTimer *)CFRunLoopTimerCreate(kCFAllocatorDefault, [date timeIntervalSinceReferenceDate], ti, 0, 0, &_NSATimerDelegateCallback, &context);
     return self;
 }
 
 + (id)timerWithTimeInterval:(NSTimeInterval)ti delegate:(id<NSTimerDelegate>)delegate {
-    id timer = [[self alloc] initWithFireDate:[NSDate dateWithTimeIntervalSinceNow:ti] interval:ti delegate:delegate];
+    NSDate *fireDate = [NSDate dateWithTimeIntervalSinceNow:ti];
+    NSTimer *timer = [[self alloc] initWithFireDate:fireDate interval:ti delegate:delegate];
     return [timer autorelease];
 }
 

@@ -11,7 +11,7 @@
 
 @implementation UIImage (Creations)
 
-- (id)initWithContentsOfURL:(NSURL *)URL {
+- (instancetype)initWithContentsOfURL:(NSURL *)URL {
     NSData *data = [NSData dataWithContentsOfURL:URL];
     if (data == nil) {
         [self release];
@@ -20,11 +20,11 @@
     return [self initWithData:data];
 }
 
-+ (id)imageWithContentsOfURL:(NSURL *)URL {
++ (instancetype)imageWithContentsOfURL:(NSURL *)URL {
     return [[[self alloc] initWithContentsOfURL:URL] autorelease];
 }
 
-- (id)initWithContentsOfURLRequest:(NSURLRequest *)request {
+- (instancetype)initWithContentsOfURLRequest:(NSURLRequest *)request {
     NSData *data = [NSData dataWithContentsOfURLRequest:request];
     if (data == nil) {
         [self release];
@@ -33,16 +33,16 @@
     return [self initWithData:data];
 }
 
-+ (id)imageWithContentsOfURLRequest:(NSURLRequest *)request {
++ (instancetype)imageWithContentsOfURLRequest:(NSURLRequest *)request {
     return [[[self alloc] initWithContentsOfURLRequest:request] autorelease];
 }
 
-- (id)initWithContentsOfURL:(NSURL *)URL cachePolicy:(NSURLRequestCachePolicy)cachePolicy {
+- (instancetype)initWithContentsOfURL:(NSURL *)URL cachePolicy:(NSURLRequestCachePolicy)cachePolicy {
     NSURLRequest *request = [NSURLRequest requestWithURL:URL cachePolicy:cachePolicy timeoutInterval:60.0];
     return [self initWithContentsOfURLRequest:request];
 }
 
-+ (id)imageWithContentsOfURL:(NSURL *)URL cachePolicy:(NSURLRequestCachePolicy)cachePolicy {
++ (instancetype)imageWithContentsOfURL:(NSURL *)URL cachePolicy:(NSURLRequestCachePolicy)cachePolicy {
     return [[[self alloc] initWithContentsOfURL:URL cachePolicy:cachePolicy] autorelease];
 }
 
@@ -57,6 +57,19 @@
     UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return result;
+}
+
+- (UIImage *)imageByCroppedToRect:(CGRect)rect {
+    CGFloat scale = self.scale;
+    CGRect scaledRect = rect;
+    scaledRect.origin.x *= scale;
+    scaledRect.origin.y *= scale;
+    scaledRect.size.width *= scale;
+    scaledRect.size.height *= scale;
+    CGImageRef ref = CGImageCreateWithImageInRect(self.CGImage, scaledRect);
+    UIImage *image = [UIImage imageWithCGImage:ref scale:self.scale orientation:self.imageOrientation];
+    CGImageRelease(ref);
+    return image;
 }
 
 - (UIImage *)imageByFilledWithColor:(UIColor *)color {

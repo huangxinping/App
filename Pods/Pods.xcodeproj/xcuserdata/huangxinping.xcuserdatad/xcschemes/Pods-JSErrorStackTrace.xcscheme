@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "34EA6C130E954BA38DC49A1B"
+               BlueprintIdentifier = "FF3BFE890A674CEDB5DECBD7"
                BuildableName = "libPods-JSErrorStackTrace.a"
                BlueprintName = "Pods-JSErrorStackTrace"
                ReferencedContainer = "container:Pods.xcodeproj">

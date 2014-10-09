@@ -18,17 +18,23 @@
 @interface NSDictionary (Shortcuts)
 
 /*!
- *  @brief Extreme short form of 'ObjectForKey:'
- *  @deprecated Use (array)[index] syntax instead of this.
- */
-- (id):(id)key __deprecated;
-
-/*!
  *  @brief Returns a Boolean value that indicates whether a given object is present in the keys.
  *  @param aKey A key to test dictionary has it.
  *  @return YES if aKey is present in the dictionary, otherwise NO.
  */
 - (BOOL)containsKey:(id)aKey;
+
+/*!
+ *  @brief Returns one of the keys in the dictionary, or nil if the dictionary contains no objects.
+ *  @return One of the keys in the dictionary, or nil if the dictionary contains no objects. The key returned is chosen at the dictionary's convenience—the selection is not guaranteed to be random.
+ */
+- (id)anyKey;
+
+/*!
+ *  @brief Returns one of the objects in the dictionary, or nil if the dictionary contains no objects.
+ *  @return One of the objects in the dictionary, or nil if the dictionary contains no objects. The object returned is chosen at the dictionary's convenience—the selection is not guaranteed to be random.
+ */
+- (id)anyObject;
 
 @end
 
@@ -48,7 +54,7 @@
  *  @see initWithData:format:error:
  *  @see dictionaryWithData:
  */
-- (id)initWithData:(NSData *)data;
+- (instancetype)initWithData:(NSData *)data;
 
 /*!
  *  @brief Initializes a newly allocated dictionary with the contents of data. Data must be property list.
@@ -60,7 +66,7 @@
  *  @see dictionaryWithData:format:error:
  *      [1]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSPropertyListSerialization_Class/Reference/Reference.html#//apple_ref/c/tdef/NSPropertyListFormat
  */
-- (id)initWithData:(NSData *)data format:(NSPropertyListFormat *)format error:(NSError **)error;
+- (instancetype)initWithData:(NSData *)data format:(NSPropertyListFormat *)format error:(NSError **)error;
 
 /*! @name Creating a Dictionary */
 
@@ -68,12 +74,26 @@
  *  @brief Creates and returns a dictionary containing the contents of data. Data must be property list.
  *  @see initWithData:
  */
-+ (id)dictionaryWithData:(NSData *)data;
++ (instancetype)dictionaryWithData:(NSData *)data;
 
 /*!
  *  @brief Creates and returns a dictionary containing the contents of data. Data must be property list.
  *  @see initWithData:format:error:
  */
-+ (id)dictionaryWithData:(NSData *)data format:(NSPropertyListFormat *)format error:(NSError **)error;
++ (instancetype)dictionaryWithData:(NSData *)data format:(NSPropertyListFormat *)format error:(NSError **)error;
+
+@end
+
+
+/*!
+ *  @brief Deprecated methods of NSDictionary extensions.
+ */
+@interface NSDictionary (Deprecated)
+
+/*!
+ *  @brief Extreme short form of 'ObjectForKey:'
+ *  @deprecated Use (array)[key] syntax of Modern Objective-C instead of this method.
+ */
+- (id):(id)key __deprecated;
 
 @end

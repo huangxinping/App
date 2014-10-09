@@ -1,7 +1,9 @@
 IQKeyboardManager
 ==========================
 
-Often while developing an app, We ran into an issues where the iPhone UIKeyboard slide up and cover the `UITextField/UITextView`.
+Often while developing an app, We ran into an issues where the iPhone `UIKeyboard` slide up and cover the `UITextField/UITextView`. `IQKeyboardManager` allows you to prevent issues of the keyboard sliding up and covering a text field without needing you to enter any code. One of the Speciality of this Library is `It Works Automatically`. `ZERO LINE OF CODE`, `No More imports`, `No More Subclasses`, `No More Manual Work`. To use `IQKeyboardManager` you simply need to add the framework to your project or add the source files to your project.
+
+`IQKeyboardManager` works on all orientations, and with the toolbar. There are also nice optional features allowing you to customize the distance from the text field, add the next/previous done button as a keyboard UIToolbar, play sounds when the user navigations through the form and more.
 
 ## Screen Shot
 [![image](./KeyboardTextFieldDemo/Screenshot/IQKeyboardManagerScreenshot.png)](http://youtu.be/6nhLw6hju2A)
@@ -16,19 +18,32 @@ alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 Installation
 ==========================
 
-Cocoapod
----
+#### Cocoapod:-
+
 IQKeyboardManager is available through [CocoaPods](http://cocoapods.org), to install
 it simply add the following line to your Podfile:
 
     pod 'IQKeyboardManager'
 
-Framework:-
----
-Link your project against `KeyboardManager.framework` found in "IQKeyboardManager Framework" directory. Drag and drop the resource bundle `IQKeyboardManager.bundle` found in same directory. add `-ObjC` flag in `other linker flag`. That's it. No need to write any single line of code.
+#### Framework:-
 
-Source Code:-
----
+**Step1:-** Link project against `KeyboardManager.framework` found in "IQKeyboardManager Framework" directory.
+
+[Linking to a Library or Framework](https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/AddingaLibrarytoaTarget.html)
+
+If you need to port your project to another location you may need to adjust `Framework Search Paths` settings in `Project Settings`.
+
+[Framework Search Path](http://stackoverflow.com/questions/19130744/xcode-5-framework-library-search-path-absolute-address)
+
+**Step2:-** Drag and drop the resource bundle `IQKeyboardManager.bundle` found in same directory to your project. `Resources` folder is the best place to put it but you can put it anywhere.
+
+**Step3:-** Add `-ObjC` flag in `other linker flag`. That's it. Now you can build your project to see the magic.
+
+[Adding Linker Flag](http://docs.millennialmedia.com/iOS-SDK/iOSAddingLinkerFlag.html)
+
+
+#### Source Code:-
+
 Just drag and drop `IQKeyBoardManager` directory from demo project to your project. That's it. No need to write any single line of code. It will enable automatically.
 
 Manual Management:-
@@ -49,7 +64,35 @@ Manual Management:-
         self.view = scrollView;
     }
  
- 
+#### Keyboard Return Key Handling
+  If you would like to implement keyboard `Return Key` as `Next` button, then you can use `IQKeyboardReturnKeyHandler`.
+  
+  1) Create an instance variable of `IQKeyboardReturnKeyHandler` and instantiate it in `viewDidLoad` with ViewController object like this:-
+  
+```
+@implementation ViewController
+{
+    IQKeyboardReturnKeyHandler *returnKeyHandler;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    returnKeyHandler = [[IQKeyboardReturnKeyHandler alloc] initWithViewController:self];
+}
+```
+   It assign all the responderView delegates to self, and change keybord Return Key to Next key.
+
+2) set instance variable to nil in `dealloc` method.
+
+```
+-(void)dealloc
+{
+    returnKeyHandler = nil;
+}
+```
+
 
 #### UIToolbar(IQToolbar):-
 
@@ -114,26 +157,38 @@ Set Distance between keyboard & textField. Can't be less than zero. Default is 1
 4)	`enableAutoToolbar`
 Enable autoToolbar behaviour. If It is set to NO. You have to manually create UIToolbar for keyboard. Default is YES.
 
-5)	`canAdjustTextView`
-Giving permission to modify TextView's frame. Adjust textView's frame when it is too big in height. Default is NO.
+5)	`toolbarManageBehaviour`
+Setting toolbar behaviour to IQAutoToolbarBySubviews to manage previous/next according to UITextField's hierarchy in it's SuperView. Set it to IQAutoToolbarByTag to manage previous/next according to UITextField's tag property in increasing order. Default is IQAutoToolbarBySubviews.
 
-6)	`shouldResignOnTouchOutside`
-Resign textField if touched outside of UITextField/UITextView.
+6)	`shouldToolbarUsesTextFieldTintColor`
+If YES, then uses textField's tintColor property for IQToolbar, otherwise tintColor is black. Default is NO.
 
 7)	`shouldShowTextFieldPlaceholder`
 If YES, then it add the textField's placeholder text on IQToolbar. Default is YES.
 
-8)	`shouldPlayInputClicks`
+8)	`placeholderFont`
+placeholder Font. Default is nil.
+
+9)	`canAdjustTextView`
+Giving permission to modify TextView's frame. Adjust textView's frame when it is too big in height. Default is NO.
+
+10)	`overrideKeyboardAppearance`
+Override the keyboardAppearance for all textField/textView. Default is NO.
+
+11)	`keyboardAppearance`
+If overrideKeyboardAppearance is YES, then all the textField keyboardAppearance is set using this property.
+
+12)	`shouldResignOnTouchOutside`
+Resign textField if touched outside of UITextField/UITextView.
+
+13)	`-resignFirstResponder`
+Resigns currently first responder field.
+
+14)	`shouldPlayInputClicks`
 If YES, then it plays inputClick sound on next/previous/done click. Default is NO.
 
-9)	`toolbarUsesCurrentWindowTintColor`
-If YES, then uses textField's tintColor property for IQToolbar, otherwise tintColor is black. Default is NO.
-
-10)	`toolbarManageStyle`
-Setting toolbar behaviour to IQAutoToolbarBySubviews to manage previous/next according to UITextField's hierarchy in it's SuperView. Set it to IQAutoToolbarByTag to manage previous/next according to UITextField's tag property in increasing order. Default is IQAutoToolbarBySubviews.
-
-11)	`-resignFirstResponder`
-Resigns currently first responder field.
+15)	`shouldAdoptDefaultKeyboardAnimation`
+If YES, then uses keyboard default animation curve style to move view, otherwise uses UIViewAnimationOptionCurveEaseOut animation style. Default is YES.
 
 
 

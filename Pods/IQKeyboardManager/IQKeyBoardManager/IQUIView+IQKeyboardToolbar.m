@@ -35,6 +35,11 @@
 
 IQ_LoadCategory(IQUIViewToolbar)
 
+NSInteger const kIQRightButtonToolbarTag            =   -1001;
+NSInteger const kIQDoneButtonToolbarTag             =   -1002;
+NSInteger const kIQRightLeftButtonToolbarTag        =   -1003;
+NSInteger const kIQCancelDoneButtonToolbarTag       =   -1004;
+NSInteger const kIQPreviousNextButtonToolbarTag     =   -1005;
 
 /*UIKeyboardToolbar Category implementation*/
 @implementation UIView (IQToolbarAddition)
@@ -43,7 +48,7 @@ NSString const *IQ_shouldHideTitleKey = @"IQ_shouldHideTitle";
 
 -(void)setShouldHideTitle:(BOOL)shouldHideTitle
 {
-    objc_setAssociatedObject(self, &IQ_shouldHideTitleKey, [NSNumber numberWithBool:shouldHideTitle], OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, &IQ_shouldHideTitleKey, @(shouldHideTitle), OBJC_ASSOCIATION_ASSIGN);
 }
 
 -(BOOL)shouldHideTitle
@@ -60,7 +65,8 @@ NSString const *IQ_shouldHideTitleKey = @"IQ_shouldHideTitle";
     
     //  Creating a toolBar for keyboard
     IQToolbar *toolbar = [[IQToolbar alloc] init];
-	
+	toolbar.tag = kIQRightButtonToolbarTag;
+    
 	NSMutableArray *items = [[NSMutableArray alloc] init];
     
     if ([titleText length] && self.shouldHideTitle == NO)
@@ -84,7 +90,7 @@ NSString const *IQ_shouldHideTitleKey = @"IQ_shouldHideTitle";
             buttonFrame = CGRectMake(0, 0, toolbar.frame.size.width-57.0-8, 44);
         }
         
-        IQTitleBarButtonItem *title = [[IQTitleBarButtonItem alloc] initWithFrame:buttonFrame Title:titleText];
+        IQTitleBarButtonItem *title = [[IQTitleBarButtonItem alloc] initWithFrame:buttonFrame title:titleText];
         [items addObject:title];
     }
     
@@ -125,7 +131,8 @@ NSString const *IQ_shouldHideTitleKey = @"IQ_shouldHideTitle";
     
     //  Creating a toolBar for keyboard
     IQToolbar *toolbar = [[IQToolbar alloc] init];
-	
+	toolbar.tag = kIQDoneButtonToolbarTag;
+ 	
 	NSMutableArray *items = [[NSMutableArray alloc] init];
     
     if ([titleText length] && self.shouldHideTitle == NO)
@@ -149,7 +156,7 @@ NSString const *IQ_shouldHideTitleKey = @"IQ_shouldHideTitle";
             buttonFrame = CGRectMake(0, 0, toolbar.frame.size.width-57.0-8, 44);
         }
         
-        IQTitleBarButtonItem *title = [[IQTitleBarButtonItem alloc] initWithFrame:buttonFrame Title:titleText];
+        IQTitleBarButtonItem *title = [[IQTitleBarButtonItem alloc] initWithFrame:buttonFrame title:titleText];
         [items addObject:title];
     }
     
@@ -191,6 +198,7 @@ NSString const *IQ_shouldHideTitleKey = @"IQ_shouldHideTitle";
     
     //  Creating a toolBar for keyboard
     IQToolbar *toolbar = [[IQToolbar alloc] init];
+	toolbar.tag = kIQRightLeftButtonToolbarTag;
     
     NSMutableArray *items = [[NSMutableArray alloc] init];
     
@@ -221,7 +229,7 @@ NSString const *IQ_shouldHideTitleKey = @"IQ_shouldHideTitle";
             buttonFrame = CGRectMake(0, 0, toolbar.frame.size.width-66-57.0-16, 44);
         }
         
-        IQTitleBarButtonItem *title = [[IQTitleBarButtonItem alloc] initWithFrame:buttonFrame Title:titleText];
+        IQTitleBarButtonItem *title = [[IQTitleBarButtonItem alloc] initWithFrame:buttonFrame title:titleText];
         [items addObject:title];
     }
     
@@ -261,6 +269,7 @@ NSString const *IQ_shouldHideTitleKey = @"IQ_shouldHideTitle";
     
     //  Creating a toolBar for keyboard
     IQToolbar *toolbar = [[IQToolbar alloc] init];
+	toolbar.tag = kIQCancelDoneButtonToolbarTag;
     
     NSMutableArray *items = [[NSMutableArray alloc] init];
     
@@ -291,7 +300,7 @@ NSString const *IQ_shouldHideTitleKey = @"IQ_shouldHideTitle";
             buttonFrame = CGRectMake(0, 0, toolbar.frame.size.width-66-57.0-16, 44);
         }
         
-        IQTitleBarButtonItem *title = [[IQTitleBarButtonItem alloc] initWithFrame:buttonFrame Title:titleText];
+        IQTitleBarButtonItem *title = [[IQTitleBarButtonItem alloc] initWithFrame:buttonFrame title:titleText];
         [items addObject:title];
     }
     
@@ -331,6 +340,8 @@ NSString const *IQ_shouldHideTitleKey = @"IQ_shouldHideTitle";
     
     //  Creating a toolBar for phoneNumber keyboard
     IQToolbar *toolbar = [[IQToolbar alloc] init];
+	toolbar.tag = kIQPreviousNextButtonToolbarTag;
+ 
 	NSMutableArray *items = [[NSMutableArray alloc] init];
 	
 	//  Create a done button to show on keyboard to resign it. Adding a selector to resign it.
@@ -383,7 +394,7 @@ NSString const *IQ_shouldHideTitleKey = @"IQ_shouldHideTitle";
             buttonFrame = CGRectMake(0, 0, toolbar.frame.size.width-135-57.0-16, 44);
         }
         
-        IQTitleBarButtonItem *title = [[IQTitleBarButtonItem alloc] initWithFrame:buttonFrame Title:titleText];
+        IQTitleBarButtonItem *title = [[IQTitleBarButtonItem alloc] initWithFrame:buttonFrame title:titleText];
         [items addObject:title];
     }
     
@@ -425,8 +436,8 @@ NSString const *IQ_shouldHideTitleKey = @"IQ_shouldHideTitle";
 		if (IQ_IS_IOS7_OR_GREATER && [[inputAccessoryView items] count]>3)
 		{
 			//  Getting first item from inputAccessoryView.
-			IQBarButtonItem *prevButton = (IQBarButtonItem*)[[inputAccessoryView items] objectAtIndex:0];
-			IQBarButtonItem *nextButton = (IQBarButtonItem*)[[inputAccessoryView items] objectAtIndex:2];
+			IQBarButtonItem *prevButton = (IQBarButtonItem*)[inputAccessoryView items][0];
+			IQBarButtonItem *nextButton = (IQBarButtonItem*)[inputAccessoryView items][2];
 			
 			//  If it is UIBarButtonItem and it's customView is not nil.
 			if ([prevButton isKindOfClass:[IQBarButtonItem class]] && [nextButton isKindOfClass:[IQBarButtonItem class]])
@@ -440,7 +451,7 @@ NSString const *IQ_shouldHideTitleKey = @"IQ_shouldHideTitle";
 		else
 		{
 			//  Getting first item from inputAccessoryView.
-			IQBarButtonItem *barButtonItem = (IQBarButtonItem*)[[inputAccessoryView items] objectAtIndex:0];
+			IQBarButtonItem *barButtonItem = (IQBarButtonItem*)[inputAccessoryView items][0];
 			
 			//  If it is IQBarButtonItem and it's customView is not nil.
 			if ([barButtonItem isKindOfClass:[IQBarButtonItem class]] && [barButtonItem customView] != nil)

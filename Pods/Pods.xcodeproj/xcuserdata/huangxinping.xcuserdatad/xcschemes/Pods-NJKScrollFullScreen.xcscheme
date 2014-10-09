@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "61B38315FDC44CE1AECEAF63"
+               BlueprintIdentifier = "50522C8044BB48858B003A57"
                BuildableName = "libPods-NJKScrollFullScreen.a"
                BlueprintName = "Pods-NJKScrollFullScreen"
                ReferencedContainer = "container:Pods.xcodeproj">

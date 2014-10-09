@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0A945EEA7DD041EAB74547C0"
+               BlueprintIdentifier = "FEDCE0D7073D4A89B434D880"
                BuildableName = "libPods-A2StoryboardSegueContext.a"
                BlueprintName = "Pods-A2StoryboardSegueContext"
                ReferencedContainer = "container:Pods.xcodeproj">

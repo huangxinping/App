@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Splash View Controller-->
@@ -31,11 +32,33 @@
                     <connections>
                         <outlet property="splashImageView" destination="gzf-WH-Ovf" id="vau-rI-YqT"/>
                         <segue destination="BTn-sM-oTb" kind="modal" identifier="embed_root" animates="NO" id="emX-q0-zs7"/>
+                        <segue destination="YfX-yO-RZf" kind="modal" identifier="embed_usehelp" id="eli-Jn-Z4Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="154" y="158"/>
+            <point key="canvasLocation" x="-82" y="158"/>
+        </scene>
+        <!--Usehelp View Controller-->
+        <scene sceneID="pRc-9m-C8Y">
+            <objects>
+                <viewController id="YfX-yO-RZf" customClass="UsehelpViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4V7-aj-ngQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zqo-Vh-0GD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="shU-n9-YJm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="BTn-sM-oTb" kind="modal" identifier="embed_root" id="uCd-5I-HUt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P3W-2g-uvF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="464" y="546"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="ZMx-BY-gz8">
@@ -54,7 +77,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8LZ-5y-fWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1179" y="158"/>
+            <point key="canvasLocation" x="1379" y="-188"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ihd-OX-Nu9">
@@ -73,7 +96,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y2j-mR-whF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="653" y="158"/>
+            <point key="canvasLocation" x="853" y="-188"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -81,4 +104,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="uCd-5I-HUt"/>
+    </inferredMetricsTieBreakers>
 </document>

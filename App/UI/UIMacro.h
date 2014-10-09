@@ -17,3 +17,4 @@
 
 // segue
 #define EMBED_ROOT           @"embed_root"
+#define EMBED_USEHELP        @"embed_usehelp"

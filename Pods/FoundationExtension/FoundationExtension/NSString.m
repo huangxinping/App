@@ -10,7 +10,7 @@
 
 @implementation NSString (Creations)
 
-- (id)initWithInteger:(NSInteger)value {
+- (instancetype)initWithInteger:(NSInteger)value {
     #ifdef __LP64__
         #define __NSINTEGER_FORMAT @"%ld"
     #else
@@ -20,19 +20,15 @@
     #undef __NSINTEGER_FORMAT
 }
 
-+ (id)stringWithInteger:(NSInteger)value {
++ (instancetype)stringWithInteger:(NSInteger)value {
     return [[[self alloc] initWithInteger:value] autorelease];
 }
 
-+ (NSString *)stringWithFormat:(NSString *)format arguments:(va_list)argList {
-    return [[[self alloc] initWithFormat:format arguments:argList] autorelease];
-}
-
-+ (NSString *)stringWithData:(NSData *)data encoding:(NSStringEncoding)encoding {
++ (instancetype)stringWithData:(NSData *)data encoding:(NSStringEncoding)encoding {
     return [[[self alloc] initWithData:data encoding:encoding] autorelease];
 }
 
-- (id)initWithConcatnatingStrings:(NSString *)first, ... {
+- (instancetype)initWithConcatnatingStrings:(NSString *)first, ... {
     NSMutableArray *array = [NSMutableArray array];
     va_list args;
     va_start(args, first);
@@ -44,7 +40,7 @@
     return [self initWithString:[array componentsJoinedByString:@""]];
 }
 
-+ (id)stringWithConcatnatingStrings:(NSString *)first, ... {
++ (instancetype)stringWithConcatnatingStrings:(NSString *)first, ... {
     NSMutableArray *array = [NSMutableArray array];
     va_list args;
     va_start(args, first);
@@ -53,6 +49,11 @@
     }
     va_end(args);
     return [array componentsJoinedByString:@""];
+}
+
++ (instancetype)stringWithFormat:(NSString *)format arguments:(va_list)argList {
+    NSString *string = [[[NSString alloc] initWithFormat:format arguments:argList] autorelease];
+    return string;
 }
 
 @end
@@ -90,7 +91,7 @@
     } else {
         va_list args;
         va_start(args, first);
-        NSString *result = [[NSString stringWithFormat:[self substringToIndex:index], first] stringByAppendingString:[NSString stringWithFormat:[self substringFromIndex:index] arguments:args]];
+        id result = [[NSString stringWithFormat:[self substringToIndex:index], first] stringByAppendingString:[NSString stringWithFormat:[self substringFromIndex:index] arguments:args]];
         va_end(args);
         return result;
     }
@@ -99,7 +100,7 @@
 - (NSString *)format0:(id)dummy, ... {
     va_list args;
     va_start(args, dummy);
-    NSString *result = [NSString stringWithFormat:self arguments:args];
+    id result = [NSString stringWithFormat:self arguments:args];
     va_end(args);
     return result;
 }
@@ -116,21 +117,25 @@
     return [self substringWithRange:NSMakeRange(from, to - from)];
 }
 
+- (NSString *)stringByTrimmingWhitespaceCharacters {
+    return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+}
+
+- (NSString *)stringByTrimmingWhitespaceAndNewlineCharacters {
+    return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
+- (NSString *)stringByTrimmingNewlineCharacters {
+    return [self stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+}
+
 @end
 
 
 @implementation NSString (NSUTF8StringEncoding)
 
-+ (NSString *)stringWithUTF8Data:(NSData *)data {
++ (instancetype)stringWithUTF8Data:(NSData *)data {
     return [[[self alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-}
-
-- (NSString *) stringByAddingPercentEscapesUsingUTF8Encoding {
-    return [self stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-}
-
-- (NSString *) stringByReplacingPercentEscapesUsingUTF8Encoding {
-    return [self stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
 - (NSData *) dataUsingUTF8Encoding {
@@ -168,9 +173,19 @@
 @end
 
 
+@implementation NSMutableString (Creations)
+
++ (instancetype)stringWithFormat:(NSString *)format arguments:(va_list)argList {
+    id string = [[[NSMutableString alloc] initWithFormat:format arguments:argList] autorelease];
+    return string;
+}
+
+@end
+
+
 @implementation NSMutableString (Shortcuts)
 
-- (id)initWithConcatnatingStrings:(NSString *)first, ... {
+- (instancetype)initWithConcatnatingStrings:(NSString *)first, ... {
     self = [self initWithString:first];
     if (self != nil) {
         va_list args;
@@ -183,7 +198,7 @@
     return self;
 }
 
-+ (id)stringWithConcatnatingStrings:(NSString *)first, ... {
++ (instancetype)stringWithConcatnatingStrings:(NSString *)first, ... {
     NSMutableString *aString = [self stringWithString:first];
     va_list args;
     va_start(args, first);

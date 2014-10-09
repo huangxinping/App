@@ -21,12 +21,6 @@
 @interface NSArray (Shortcuts)
 
 /*!
- *  @brief Extreme short form of 'ObjectAtIndex:'
- *  @deprecated Use (array)[index] syntax instead of this.
- */
-- (id):(NSUInteger)index __deprecated;
-
-/*!
  *  @brief index < self.count
  */
 - (BOOL)hasIndex:(NSUInteger)index;
@@ -50,7 +44,7 @@
  *  @see initWithData:format:error:
  *  @see arrayWithData:format:error:
  */
-- (id)initWithData:(NSData *)data;
+- (instancetype)initWithData:(NSData *)data;
 
 /*!
  *  @brief Initializes a newly allocated array with the contents of data. Data must be property list.
@@ -62,7 +56,7 @@
  *  @see arrayWithData:
  *      [1]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSPropertyListSerialization_Class/Reference/Reference.html#//apple_ref/c/tdef/NSPropertyListFormat
  */
-- (id)initWithData:(NSData *)data format:(NSPropertyListFormat *)format error:(NSError **)error;
+- (instancetype)initWithData:(NSData *)data format:(NSPropertyListFormat *)format error:(NSError **)error;
 
 /*!
  *  @brief Initializes a newly allocated array by placing in it the objects enumerated in a given enumerator.
@@ -71,7 +65,7 @@
  *  @return An array initialized to contain the objects — or if flag is YES, copies of the objects - enumerated in a given enumerator.
  *  @see initWithEnumerator:copyItems:
  */
-- (id)initWithEnumerator:(id<NSFastEnumeration>)enumerator;
+- (instancetype)initWithEnumerator:(id<NSFastEnumeration>)enumerator;
 /*!
  *  @brief Initializes a newly allocated array by placing in it the objects enumerated in a given enumerator.
  *  @warning This initilizer is not optimized.
@@ -84,7 +78,24 @@
  *      [0]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Protocols/NSCopying_Protocol/Reference/Reference.html#//apple_ref/occ/intfm/NSCopying/copyWithZone:
  *      [1]: https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Protocols/NSCopying_Protocol/Reference/Reference.html
  */
-- (id)initWithEnumerator:(id<NSFastEnumeration>)enumerator copyItems:(BOOL)flag;
+- (instancetype)initWithEnumerator:(id<NSFastEnumeration>)enumerator copyItems:(BOOL)flag;
+
+/*!
+ *  @brief Initializes a newly allocated array to include a given number of retained given object.
+ *  @param object An object to retain.
+ *  @param count The number of values.
+ *  @return A newly allocated array including the count objects from object. The returned object might be different than the original receiver.
+ */
+- (instancetype)initWithObject:(id)object count:(NSUInteger)count;
+
+/*!
+ *  @brief Initializes a newly allocated array to include a given number of copied given object.
+ *  @param object An object to copy.
+ *  @param count The number of values.
+ *  @param flag A flag to notice mutable or immutable copy.
+ *  @return A newly allocated array including the count objects from object. The returned object might be different than the original receiver.
+ */
+- (instancetype)initWithObjectCopy:(id)object count:(NSUInteger)count mutable:(BOOL)flag;
 
 /*! @name Creating an Array */
 
@@ -92,19 +103,60 @@
  *  @brief Creates and returns an array containing the contents of data. Data must be property list.
  *  @see initWithData:
  */
-+ (id)arrayWithData:(NSData *)data;
++ (instancetype)arrayWithData:(NSData *)data;
 
 /*!
  *  @brief Creates and returns an array containing the contents of data. Data must be property list.
  *  @see initWithData:format:error:
  */
-+ (id)arrayWithData:(NSData *)data format:(NSPropertyListFormat *)format error:(NSError **)error;
++ (instancetype)arrayWithData:(NSData *)data format:(NSPropertyListFormat *)format error:(NSError **)error;
 
 /*!
  *  @brief Creates and returns an array containing the objects enumerated in a given enumerator.
  *  @see initWithEnumerator:
  */
-+ (id)arrayWithEnumerator:(id<NSFastEnumeration>)enumerator;
++ (instancetype)arrayWithEnumerator:(id<NSFastEnumeration>)enumerator;
+
+/*!
+ *  @brief Returns a newly allocated array to include a given number of retained given object.
+ *  @param object An object to retain.
+ *  @param count The number of values.
+ *  @return A newly allocated array including the count objects from object. The returned object might be different than the original receiver.
+ */
++ (instancetype)arrayWithObject:(id)object count:(NSUInteger)count;
+
+/*!
+ *  @brief Returns a new array containing the receiving array’s elements from the one at a given index to the end.
+ *  @param index An index. The value must lie within the bounds of the receiver, or be equal to the length of the receiver.
+ *  @return A new array containing the elements of the receiver from the one at index to the end. If index is equal to the length of the array, returns an empty array.
+ *  @details Raises an NSRangeException if (index - 1) lies beyond the end of the receiver.
+ */
+- (NSArray *)subarrayFromIndex:(NSUInteger)index;
+
+/*!
+ *  @brief Returns a new array containing the receiving array’s elements of the receiver up to, but not including, the one at a given index.
+ *  @param index An index. The value must lie within the bounds of the receiver, or be equal to the length of the receiver.
+ *  @return A new array containing the receiving array’s elements of the receiver up to, but not including, the one at anIndex. If anIndex is equal to the length of the array, returns a copy of the receiver.
+ *  @details Raises an NSRangeException if (anIndex - 1) lies beyond the end of the receiver.
+ */
+- (NSArray *)subarrayToIndex:(NSUInteger)index;
+
+/*!
+ *  @brief Returns a new array containing the receiving array’s elements of the receiver from the one at a given index to up to, but not including, the one at a given index.
+ *  @param fromIndex An index. The value must lie within the bounds of the receiver, or be equal to the length of the receiver.
+ *  @param toIndex An index. The value must lie within the bounds of the receiver, or be equal to the length of the receiver.
+ *  @return A new array containing the receiving array’s elements of the receiver from the one at fromIndex to up to, but not including, the one at toIndex.
+ *  @details Raises an NSRangeException if (toIndex - 1) lies beyond the end of the receiver.
+ */
+- (NSArray *)subarrayFromIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex;
+
+/*!
+ *  @brief Returns a new array containing the receiving array’s elements that fall within the limits specified by a given range made by fromIndex and length.
+ *  @param fromIndex An index. The value must lie within the bounds of the receiver, or be equal to the length of the receiver.
+ *  @param length A length. The summation of the value and fromIndex must lie within the bounds of the receiver, or be equal to the length of the receiver.
+ *  @return A new array containing the receiving array’s elements that fall within the limits specified by range made by fromIndex and length.
+ */
+- (NSArray *)subarrayFromIndex:(NSUInteger)fromIndex length:(NSUInteger)length;
 
 @end
 
@@ -161,15 +213,22 @@
 @interface NSArray (Random)
 
 /*!
- *  @brief Select random object from NSArray.
+ *  @brief Returns one of the objects in the array, or nil if the array contains no objects.
+ *  @return One of the objects in the array, or nil if the array contains no objects.
  */
 - (id)randomObject;
 
 /*!
- *  @brief Select the given count number of random objects form NSArray.
- *  @param count The number of items to select.
+ *  @brief Returns an array of random objects of given number in the array without duplication.
+ *  @param count A number of items to select.
+ *  @return An array of random objects of given number in the array without duplication. If given count is bigger than the size of receiver array, it returns a shuffled array of the array.
  */
 - (NSArray *)randomObjectsOfCount:(NSUInteger)count;
+
+/*!
+ *  @brief Returns a new shuffled array from the array;
+ */
+- (NSArray *)shuffledArray;
 
 @end
 
@@ -179,13 +238,40 @@
 @interface NSMutableArray (Random)
 
 /*!
- *  @brief Pop random object from NSArray.
+ *  @brief Removes a random object in the array
  */
-- (id)popRandomObject;
+- (id)removeRandomObject;
 
 /*!
  *  @brief Shuffle
  */
 - (void)shuffle;
+
+@end
+
+
+/*!
+ *  @brief Deprecated methods of NSArray extensions.
+ */
+@interface NSArray (Deprecated)
+
+/*!
+ *  @brief Extreme short form of 'ObjectAtIndex:'
+ *  @deprecated Use (array)[index] syntax of Modern Objective-C instead of this method.
+ */
+- (id):(NSUInteger)index __deprecated;
+
+@end
+
+/*!
+ *  @brief Deprecated methods of NSMutableArray extensions.
+ */
+@interface NSMutableArray (Deprecated)
+
+/*!
+ *  @brief Pop random object from NSArray.
+ *  @deprecated Use @ref removeRandomObject
+ */
+- (id)popRandomObject __deprecated;
 
 @end

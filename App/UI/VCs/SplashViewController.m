@@ -18,6 +18,8 @@
 #import <FoundationExtension/FoundationExtension.h>
 #import <JDStatusBarNotification/JDStatusBarNotification.h>
 #import <RegExCategories/RegExCategories.h>
+#import "COPrivate.h"
+#import <NSObject-Tap/NSObject+Tap.h>
 
 #define DEFAULT_IMAGE_320X480   @"LaunchImage"
 #define DEFAULT_IMAGE_640X960   @"LaunchImage@2x"
@@ -35,110 +37,127 @@
 
 @implementation SplashViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-	if (self) {
-	}
-	return self;
-}
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 
-- (void)viewDidLoad {
-	[super viewDidLoad];
-
-	self.view.backgroundColor = [UIColor coolPurpleColor];
-
-	[self.splashImageView als_addConstraints:@{
-	     @"left ==": als_superview,
-	     @"width ==": @(320),
-	     @"top ==": als_superview,
-	     @"height >=": @(568),
-	 }];
-    
-    [ALKConstraints layout:self.splashImageView do:^(ALKConstraints *c) {
-        [c make:ALKCenterX equalTo:self.view s:ALKCenterX];
-        [c make:ALKCenterY equalTo:self.view s:ALKCenterY];
-        [c set:ALKWidth to:30.f];
-        [c set:ALKHeight to:30.f];
-    }];
-    
-    [ALKConstraints layout:self.splashImageView do:^(ALKConstraints *c) {
-        [c centerIn:self.view];
-        [c setSize:CGSizeMake(30.f, 30.f)];
-    }];
-    
-    NSString *key = @"dsfont";
-    NSURL *URL = [[@"http://127.0.0.1/api/%@" format:key] URL];
-    NSLog(@"%@",URL);
-    
-    [JDStatusBarNotification showWithStatus:@"hello app" dismissAfter:2.0];
-    
-    BOOL isMatch = [@"I have 2 dogs." isMatch:RX(@"\\d+")];
-    NSLog(@"%d",isMatch);
-    
-    { // DurexKit库实现数组、字典等插入空值不crash
-        //Array
-        NSMutableArray *array = [NSMutableArray arrayWithObjects:@"aa",@"bb",nil];
-        [array addObject:nil];
-        [array removeObjectAtIndex:4];
-        
-        //Dictionary
-        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"a",@"key1",@"b",@"key2", nil];
-        [dictionary setObject:nil forKey:nil];
-        [dictionary removeObjectForKey:nil];
-        
-        NSMutableString *str = [[NSMutableString alloc]initWithString:@"abc"];
-        [str appendString:nil];
+    if (self)
+    {
     }
+
+    return self;
 }
 
-- (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning];
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    self.view.backgroundColor = [UIColor colorWithRed:0.071 green:0.596 blue:0.667 alpha:1.000];
+
+//	[self.splashImageView als_addConstraints:@{
+//	     @"left ==": als_superview,
+//	     @"width ==": @(320),
+//	     @"top ==": als_superview,
+//	     @"height >=": @(568),
+//	 }];
+//
+//    [ALKConstraints layout:self.splashImageView do:^(ALKConstraints *c) {
+//        [c make:ALKCenterX equalTo:self.view s:ALKCenterX];
+//        [c make:ALKCenterY equalTo:self.view s:ALKCenterY];
+//        [c set:ALKWidth to:30.f];
+//        [c set:ALKHeight to:30.f];
+//    }];
+//
+//    [ALKConstraints layout:self.splashImageView do:^(ALKConstraints *c) {
+//        [c centerIn:self.view];
+//        [c setSize:CGSizeMake(30.f, 30.f)];
+//    }];
+
+    NSString *key = @"dsfont";
+    NSURL *URL = [[@"http://127.0.0.1/api/%@" format : key] URL];
+    NSLog(@"%@", URL);
+
+    [JDStatusBarNotification showWithStatus:@"hello app" dismissAfter:2.0];
+
+    BOOL isMatch = [@"I have 2 dogs." isMatch : RX(@"\\d+")];
+    NSLog(@"%d", isMatch);
+
+//    { // DurexKit库实现数组、字典等插入空值不crash
+//        //Array
+//        NSMutableArray *array = [NSMutableArray arrayWithObjects:@"aa",@"bb",nil];
+//        [array addObject:nil];
+//        [array removeObjectAtIndex:4];
+//
+//        //Dictionary
+//        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"a",@"key1",@"b",@"key2", nil];
+//        [dictionary setObject:nil forKey:nil];
+//        [dictionary removeObjectForKey:nil];
+//
+//        NSMutableString *str = [[NSMutableString alloc]initWithString:@"abc"];
+//        [str appendString:nil];
+//    }
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-
-	if (IS_IPHONE) {
-		if (IS_IPHONE_5_SCREEN) {
-			[self.splashImageView setImage:[UIImage imageNamed:DEFAULT_IMAGE_640X1136]];
-		}
-		else {
-			[self.splashImageView setImage:[UIImage imageNamed:DEFAULT_IMAGE_640X960]];
-		}
-	}
-	else {
-		UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-		switch (orientation) {
-			case UIInterfaceOrientationPortrait:
-			case UIInterfaceOrientationPortraitUpsideDown:
-			{
-				[self.splashImageView setImage:[UIImage imageNamed:DEFAULT_IMAGE_1536X2048]];
-				break;
-			}
-
-			case UIInterfaceOrientationLandscapeLeft:
-			case UIInterfaceOrientationLandscapeRight:
-			{
-				[self.splashImageView setImage:[UIImage imageNamed:DEFAULT_IMAGE_2048X1536]];
-			}
-
-			default:
-				break;
-		}
-	}
-
-	SM_BLOCK_RETAIN_CIRCLE typeof(self) weakSelf = self;
-
-	[UIView animateWithDuration:2.0f animations: ^{
-	    weakSelf.splashImageView.alpha = 0.0f;
-	} completion: ^(BOOL finished) {
-	    [weakSelf performSegueWithIdentifier:EMBED_ROOT sender:self];
-	    [[UIApplication sharedApplication] setStatusBarHidden:NO];
-	}];
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
 }
 
-- (BOOL)prefersStatusBarHidden {
-	return YES;
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    if (IS_IPHONE)
+    {
+        if (IS_IPHONE_5_SCREEN)
+        {
+            [self.splashImageView setImage:[UIImage imageNamed:DEFAULT_IMAGE_640X1136]];
+        }
+        else
+        {
+            [self.splashImageView setImage:[UIImage imageNamed:DEFAULT_IMAGE_640X960]];
+        }
+    }
+    else
+    {
+        UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+        switch (orientation)
+        {
+            case UIInterfaceOrientationPortrait:
+            case UIInterfaceOrientationPortraitUpsideDown:
+            {
+                [self.splashImageView setImage:[UIImage imageNamed:DEFAULT_IMAGE_1536X2048]];
+                break;
+            }
+
+            case UIInterfaceOrientationLandscapeLeft:
+            case UIInterfaceOrientationLandscapeRight:
+            {
+                [self.splashImageView setImage:[UIImage imageNamed:DEFAULT_IMAGE_2048X1536]];
+            }
+
+            default:
+                break;
+        }
+    }
+
+    SM_BLOCK_RETAIN_CIRCLE typeof(self) weakSelf = self;
+
+    [UIView animateWithDuration:2.0f
+                     animations: ^{
+                         weakSelf.splashImageView.alpha = 0.0f;
+                     }
+
+                     completion: ^(BOOL finished) {
+                         [weakSelf  performSegueWithIdentifier:EMBED_ROOT
+                                       sender:self];
+                         [[UIApplication sharedApplication] setStatusBarHidden:NO];
+                     }];
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
 }
 
 @end

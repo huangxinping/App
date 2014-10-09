@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C58B4B925AE54DA8A910DB59"
+               BlueprintIdentifier = "42B2EADF827846B389A903E7"
                BuildableName = "libPods-ios-realtimeblur.a"
                BlueprintName = "Pods-ios-realtimeblur"
                ReferencedContainer = "container:Pods.xcodeproj">

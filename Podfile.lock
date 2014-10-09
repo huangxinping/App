@@ -7,7 +7,7 @@ PODS:
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking-RACExtensions (0.1.4):
+  - AFNetworking-RACExtensions (0.1.6):
     - AFNetworking (~> 2.0)
     - ReactiveCocoa (~> 2.0)
   - AFNetworking/NSURLConnection (2.4.1):
@@ -24,7 +24,7 @@ PODS:
   - AFNetworking/UIKit (2.4.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - Appirater (2.0.3)
+  - Appirater (2.0.4)
   - ASIHTTPRequest (1.8.2):
     - ASIHTTPRequest/ASIWebPageRequest
     - ASIHTTPRequest/CloudFiles
@@ -41,22 +41,24 @@ PODS:
   - AutoLayoutKit (0.6.0)
   - AutoLayoutShorthand (1.0)
   - cdebug (0.1.1)
-  - CHTCollectionViewWaterfallLayout (0.7)
+  - CHTCollectionViewWaterfallLayout (0.8)
   - Colours (5.5.0)
   - COSTouchVisualizer (1.0.2)
+  - EasyMailSender (0.0.1)
   - Expecta (0.3.1)
   - FastAnimationWithPOP (0.0.2):
     - pop (~> 1.0.5)
   - FontLabel (0.0.1)
-  - FoundationExtension/FoundationExtension (0.46):
+  - FoundationExtension/FoundationExtension (0.59):
     - cdebug (~> 0.1)
-  - FoundationExtension/UIKitExtension (0.46):
+  - FoundationExtension/UIKitExtension (0.59):
     - cdebug (~> 0.1)
     - FoundationExtension/FoundationExtension
   - GIKPopoverBackgroundView/Core (0.0.1)
   - HexColors (2.2.1)
+  - INTUAnimationEngine (1.1.0)
   - ios-realtimeblur (1.0.0)
-  - IQKeyboardManager (3.1.0)
+  - IQKeyboardManager (3.2.0)
   - JDStatusBarNotification (1.4.8)
   - JSErrorStackTrace (1.1.0)
   - JSONModel (1.0.1)
@@ -75,7 +77,7 @@ PODS:
   - NUIParse (1.2.1)
   - Objection (1.4)
   - OCMock (3.1.1)
-  - pop (1.0.6)
+  - pop (1.0.7)
   - Reachability (3.1.1)
   - ReactiveCocoa (2.3.1):
     - ReactiveCocoa/UI
@@ -87,19 +89,21 @@ PODS:
   - ReactiveViewModel (0.2):
     - ReactiveCocoa (~> 2.1)
   - RegExCategories (1.0)
-  - RESideMenu (4.0.6)
+  - RESideMenu (4.0.7)
   - RRFPSBar (0.0.1)
+  - RTLabel (1.0)
   - SDWebImage (3.7.1):
     - SDWebImage/Core
   - SDWebImage/Core (3.7.1)
   - SevenSwitch (1.3.0)
   - SMQuickSegue (0.2.0)
+  - SVProgressHUD (1.0)
   - TAPKeyboardPop (0.1.2)
   - TSMessages (0.9.10):
     - HexColors
-  - UI7Kit (0.9.18):
+  - UI7Kit (0.9.19):
     - UI7Kit/All
-  - UI7Kit/All (0.9.18):
+  - UI7Kit/All (0.9.19):
     - UI7Kit/UI7ActionSheet
     - UI7Kit/UI7ActivityViewController
     - UI7Kit/UI7AlertView
@@ -127,106 +131,106 @@ PODS:
     - UI7Kit/UI7View
     - UI7Kit/UI7ViewController
     - UI7Kit/UI7Window
-  - UI7Kit/Core (0.9.18):
+  - UI7Kit/Core (0.9.19):
     - cdebug
     - UI7Kit/UI7Color
-  - UI7Kit/UI7ActionSheet (0.9.18):
+  - UI7Kit/UI7ActionSheet (0.9.19):
     - UI7Kit/Core
     - UI7Kit/UI7Color
     - UI7Kit/UI7Font
-  - UI7Kit/UI7ActivityViewController (0.9.18):
+  - UI7Kit/UI7ActivityViewController (0.9.19):
     - UI7Kit/Core
     - UI7Kit/UI7Font
-  - UI7Kit/UI7AlertView (0.9.18):
+  - UI7Kit/UI7AlertView (0.9.19):
     - UI7Kit/Core
     - UI7Kit/UI7Button
     - UI7Kit/UI7Color
     - UI7Kit/UI7Font
-  - UI7Kit/UI7BarButtonItem (0.9.18):
+  - UI7Kit/UI7BarButtonItem (0.9.19):
     - UI7Kit/Core
     - UI7Kit/UI7Font
     - UIKitResources/UIButtonBar
-  - UI7Kit/UI7Button (0.9.18):
+  - UI7Kit/UI7Button (0.9.19):
     - UI7Kit/Core
     - UI7Kit/UI7BarButtonItem
     - UI7Kit/UI7Font
     - UI7Kit/UI7View
-  - UI7Kit/UI7Color (0.9.18):
-    - FoundationExtension/UIKitExtension (~> 0.46)
+  - UI7Kit/UI7Color (0.9.19):
+    - FoundationExtension/UIKitExtension (~> 0.48)
     - UIKitResources/UIAccessoryButton
-  - UI7Kit/UI7Font (0.9.18):
+  - UI7Kit/UI7Font (0.9.19):
     - UI7Kit/Core
-  - UI7Kit/UI7NavigationBar (0.9.18):
+  - UI7Kit/UI7NavigationBar (0.9.19):
     - UI7Kit/Core
     - UI7Kit/UI7BarButtonItem
     - UI7Kit/UI7Color
     - UI7Kit/UI7Font
-  - UI7Kit/UI7NavigationController (0.9.18):
+  - UI7Kit/UI7NavigationController (0.9.19):
     - UI7Kit/Core
     - UI7Kit/UI7NavigationBar
     - UI7Kit/UI7Toolbar
-  - UI7Kit/UI7PickerView (0.9.18):
+  - UI7Kit/UI7PickerView (0.9.19):
     - UI7Kit/Core
     - UI7Kit/UI7Font
     - UI7Kit/UI7TableView
     - UI7Kit/UI7TableViewCell
     - UI7Kit/UI7View
-  - UI7Kit/UI7PopoverController (0.9.18):
+  - UI7Kit/UI7PopoverController (0.9.19):
     - GIKPopoverBackgroundView/Core
     - UI7Kit/Core
-  - UI7Kit/UI7ProgressView (0.9.18):
+  - UI7Kit/UI7ProgressView (0.9.19):
     - UI7Kit/Core
     - UI7Kit/UI7Color
     - UI7Kit/UI7View
-  - UI7Kit/UI7SearchBar (0.9.18):
+  - UI7Kit/UI7SearchBar (0.9.19):
     - UI7Kit/Core
     - UI7Kit/UI7Color
-  - UI7Kit/UI7SegmentedControl (0.9.18):
+  - UI7Kit/UI7SegmentedControl (0.9.19):
     - UI7Kit/Core
     - UI7Kit/UI7Font
     - UI7Kit/UI7View
-  - UI7Kit/UI7Slider (0.9.18):
+  - UI7Kit/UI7Slider (0.9.19):
     - UI7Kit/Core
     - UI7Kit/UI7Color
     - UI7Kit/UI7View
-  - UI7Kit/UI7Stepper (0.9.18):
+  - UI7Kit/UI7Stepper (0.9.19):
     - UI7Kit/Core
     - UI7Kit/UI7View
-  - UI7Kit/UI7Switch/SevenSwitch (0.9.18):
+  - UI7Kit/UI7Switch/SevenSwitch (0.9.19):
     - SevenSwitch (~> 1.3.0)
     - UI7Kit/Core
-  - UI7Kit/UI7TabBar (0.9.18):
+  - UI7Kit/UI7TabBar (0.9.19):
     - UI7Kit/Core
     - UI7Kit/UI7Color
     - UI7Kit/UI7Font
     - UI7Kit/UI7View
-  - UI7Kit/UI7TabBarController (0.9.18):
+  - UI7Kit/UI7TabBarController (0.9.19):
     - UI7Kit/Core
-  - UI7Kit/UI7TabBarItem (0.9.18):
+  - UI7Kit/UI7TabBarItem (0.9.19):
     - UI7Kit/Core
     - UIKitResources/UITabBar
-  - UI7Kit/UI7TableView (0.9.18):
+  - UI7Kit/UI7TableView (0.9.19):
     - UI7Kit/Core
     - UI7Kit/UI7Color
     - UI7Kit/UI7Font
     - UI7Kit/UI7View
-  - UI7Kit/UI7TableViewCell (0.9.18):
+  - UI7Kit/UI7TableViewCell (0.9.19):
     - UI7Kit/Core
     - UI7Kit/UI7Color
     - UI7Kit/UI7Font
     - UI7Kit/UI7View
-  - UI7Kit/UI7TextField (0.9.18):
+  - UI7Kit/UI7TextField (0.9.19):
     - UI7Kit/Core
-  - UI7Kit/UI7Toolbar (0.9.18):
+  - UI7Kit/UI7Toolbar (0.9.19):
     - UI7Kit/Core
     - UI7Kit/UI7Color
-  - UI7Kit/UI7View (0.9.18):
+  - UI7Kit/UI7View (0.9.19):
     - UI7Kit/Core
-  - UI7Kit/UI7ViewController (0.9.18):
+  - UI7Kit/UI7ViewController (0.9.19):
     - UI7Kit/Core
     - UI7Kit/UI7BarButtonItem
     - UI7Kit/UI7NavigationBar
-  - UI7Kit/UI7Window (0.9.18):
+  - UI7Kit/UI7Window (0.9.19):
     - UI7Kit/Core
     - UI7Kit/UI7View
   - UIKitResources/UIAccessoryButton (7.0)
@@ -246,9 +250,11 @@ DEPENDENCIES:
   - CHTCollectionViewWaterfallLayout
   - Colours
   - COSTouchVisualizer
+  - EasyMailSender
   - Expecta
   - FastAnimationWithPOP
   - FontLabel
+  - INTUAnimationEngine
   - ios-realtimeblur (from `https://github.com/alexdrone/ios-realtimeblur.git`, commit `8cb978decc2036813830413b5a5f59deb7b2e0eb`)
   - IQKeyboardManager
   - JDStatusBarNotification
@@ -271,8 +277,10 @@ DEPENDENCIES:
   - RegExCategories
   - RESideMenu
   - RRFPSBar
+  - RTLabel
   - SDWebImage
   - SMQuickSegue
+  - SVProgressHUD
   - TAPKeyboardPop
   - TSMessages
   - UI7Kit
@@ -291,23 +299,25 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   A2StoryboardSegueContext: 289f5ffbdb4935682616159f57d039870c253798
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
-  AFNetworking-RACExtensions: 1d7fbc98d11e9e02ae26faed0c777c6e840464b5
-  Appirater: 793f3723354b1b155f7ddc87fc6017bea889ce50
+  AFNetworking-RACExtensions: dd55d08dbfa013b9e118d5c1a5e4b58b63e734e1
+  Appirater: cbdb7f305562cfde585300bfff86da01ae559deb
   ASIHTTPRequest: 2c8335b49410c0e2ad42829c438e74d454b77590
   AutoLayoutKit: 484cd5fc4df99cbff73a05c97caa39e3dbf766f9
   AutoLayoutShorthand: 57aec55fcf79070e3b1627d941c4ac242e6f7c99
   cdebug: 0404c00c53512b97358e13340b59dd465e4389ac
-  CHTCollectionViewWaterfallLayout: 184d3b6d5456b48e93ac97e93e606bd8b68aedcc
+  CHTCollectionViewWaterfallLayout: 14b7950cbe45ae9297e7759148d69b022bac047d
   Colours: 7abeb0fdebe2da3d8bd7305aee0798375f51f5d8
   COSTouchVisualizer: d49c18c76475fb517dc87e93a471f23a9206b956
+  EasyMailSender: 768915186195579f709001f5b811f4da1e695590
   Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
   FastAnimationWithPOP: 453cac7e3671d27c57db04abec4f6c08a930f413
   FontLabel: cfda95de214f7f2a8dd45ba73ae2b4ccd0898948
-  FoundationExtension: 8fe9b8b991906bd8225fcde2554a4d4a10f66a33
+  FoundationExtension: 4377c16a096f5b51021e03f8f3749388089f2247
   GIKPopoverBackgroundView: 459aef9b0a17d10b831b1714f2d686e72bbcc63c
   HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
+  INTUAnimationEngine: 3f64f18fde02998d98a45b768cbd4c7741b3a39c
   ios-realtimeblur: 6ceb18b5cc79ecc80c6d9d5265989b03c89132ea
-  IQKeyboardManager: f2b81e951c7cff883c6bac397eb4942f60d47014
+  IQKeyboardManager: 79e80782b444784b224bb6bc7ddaf57918cd29e7
   JDStatusBarNotification: c68611370dedc0ef865fb0fc1768dfbaf8fd961f
   JSErrorStackTrace: 5ca6b7fc11540eaea8d938618c955c5fcc93a24c
   JSONModel: 634100aaacbd89811bc8a03da209356e5989c569
@@ -324,19 +334,21 @@ SPEC CHECKSUMS:
   NUIParse: f29eb240cfc9848b216c827884f37ae64abd19e4
   Objection: 8176a996209cdcd23490c57d6e807a25faa8d54d
   OCMock: f6cb8c162ab9d5620dddf411282c7b2c0ee78854
-  pop: e518794da38942c05255eb64b36d894e70cb4f00
+  pop: 2f14a1ea61339767af9e66741b418c831b3844df
   Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
   ReactiveViewModel: 78387196df2e7535bb2776c41df15dbb17300f8a
   RegExCategories: a6410301023ff81bd047c05fd8691d24ca5c7ea9
-  RESideMenu: 1d9293d36a2b23cac86c86033b80ee06c7dc9e71
+  RESideMenu: a9c1cd2e64e60e1d3166ddac01a83e215a0e4d30
   RRFPSBar: 3941b5c6986c511fddb8b0e7a666172347d8558d
+  RTLabel: 03deb1a0c2784e987d6e5b731d7e29f5125301e3
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   SevenSwitch: 70af67d75bc2e477d45a984cf1f3123564b04eee
   SMQuickSegue: 87bbbc34d109eebdddea689ad96e195a9cf1c4ff
+  SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
   TAPKeyboardPop: 1d57b5b8e7521454164c5e9e9e4e9cf19a375f37
   TSMessages: 8598a0645e9d54847f6e5f3b070bef39c493bbf8
-  UI7Kit: 5fe658e3e185618f3968a4d0d8f9b28c2ee38f3e
+  UI7Kit: 82a9ed053e7c69572d9a489adc0c6147b9ccd8c1
   UIKitResources: 834daec56f3546164cef79034ed9efc3bf6d2512
   UITextField+Shake: d98b471f0f686021795a8797aeec3658d12fdae2
   UITextView+UIControl: 57c3bde36e8120a75f93da7b1d0665cc44647be2

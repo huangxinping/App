@@ -46,7 +46,7 @@
     }
 }
 
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self)
@@ -56,7 +56,7 @@
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)coder
+- (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];
     if (self)
@@ -66,32 +66,14 @@
     return self;
 }
 
+-(CGSize)sizeThatFits:(CGSize)size
+{
+    CGSize sizeThatFit = [super sizeThatFits:size];
 
-//-(CGSize)sizeThatFits:(CGSize)size
-//{
-//    CGSize sizeThatFit = [super sizeThatFits:size];
-//
-//    UIView *view = [[self viewController] view];
-//    
-//    if (view)
-//    {
-//        //Issue #52 fix
-//        sizeThatFit.width = [view width];
-//    }
-//    
-//    return sizeThatFit;
-//}
-
-//To resize IQToolbar on device rotation.
-//- (void) layoutSubviews
-//{
-//    [super layoutSubviews];
-//    CGRect origFrame = self.frame;
-//    [self sizeToFit];
-//    CGRect newFrame = self.frame;
-//    newFrame.origin.y += origFrame.size.height - newFrame.size.height;
-//    self.frame = newFrame;
-//}
+    sizeThatFit.height = 44;
+    
+    return sizeThatFit;
+}
 
 -(void)setTintColor:(UIColor *)tintColor
 {
@@ -115,7 +97,6 @@
         }
     }
 }
-
 
 #pragma mark - UIInputViewAudioFeedback delegate
 - (BOOL) enableInputClicksWhenVisible

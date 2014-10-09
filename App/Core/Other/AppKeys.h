@@ -10,3 +10,9 @@
  */
 
 /** @file */    // Doxygen marker
+
+// AppStore ID
+#define APPSTORE_ID @"883959590"
+
+// 友盟KEY
+#define UMENG_KEY   @"54237ecffd98c501c7028ddf"

@@ -7,13 +7,14 @@
 //
 
 #import <objc/runtime.h>
+#import <objc/message.h>
 
 #import "NSObject.h"
 
 @interface NSAMethod ()
 
-- (id)initWithMethod:(Method)method;
-+ (id)methodWithMethod:(Method)method;
+- (instancetype)initWithMethod:(Method)method;
++ (instancetype)methodWithMethod:(Method)method;
 
 @end
 
@@ -38,23 +39,28 @@
     object_setInstanceVariable(self, name.UTF8String, value);
 }
 
-
-- (id)performSelector:(SEL)aSelector withObject:(id)object1 withObject:(id)object2 withObject:(id)object3 {
-    IMP msg;
-    msg = class_getMethodImplementation(self.class, aSelector);
-    if (msg == 0) {
-        return nil;
-    }
-    return (*msg)(self, aSelector, object1, object2, object3);
+- (void)setAndRetainVariable:(id)value forName:(NSString *)name {
+    [value retain];
+    id stored = [self variableForName:name];
+    [stored release];
+    [self setVariable:value forName:name];
 }
 
-- (id)performSelector:(SEL)aSelector withObject:(id)object1 withObject:(id)object2 withObject:(id)object3 withObject:(id)object4 {
-    IMP msg;
-    msg = class_getMethodImplementation(self.class, aSelector);
-    if (msg == 0) {
-        return nil;
-    }
-    return (*msg)(self, aSelector, object1, object2, object3, object4);
+- (void)setAndCopyVariable:(id)value forName:(NSString *)name {
+    id copy = [value copy];
+    id stored = [self variableForName:name];
+    [stored release];
+    [self setVariable:copy forName:name];
+}
+
+- (id)performSelector:(SEL)sel withObject:(id)obj1 withObject:(id)obj2 withObject:(id)obj3 {
+    if (!sel) [self doesNotRecognizeSelector:sel];
+    return objc_msgSend(self, sel, obj1, obj2, obj3);
+}
+
+- (id)performSelector:(SEL)sel withObject:(id)obj1 withObject:(id)obj2 withObject:(id)obj3 withObject:(id)obj4 {
+    if (!sel) [self doesNotRecognizeSelector:sel];
+    return objc_msgSend(self, sel, obj1, obj2, obj3, obj4);
 }
 
 - (id)associatedObjectForKey:(void *)key {
@@ -133,7 +139,7 @@
 @implementation NSAMethod
 @synthesize method=_method;
 
-- (id)initWithMethod:(Method)method {
+- (instancetype)initWithMethod:(Method)method {
     if (method == nil) {
         [self release];
         return nil;
@@ -145,7 +151,7 @@
     return self;
 }
 
-+ (id)methodWithMethod:(Method)method {
++ (instancetype)methodWithMethod:(Method)method {
     return [[[self alloc] initWithMethod:method] autorelease];
 }
 

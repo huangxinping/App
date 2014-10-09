@@ -12,9 +12,11 @@
 /** @file */    // Doxygen marker
 
 #import "NetController.h"
-#import "SMHTTPRequestDelegate.h"
+#import "NetBase/NetAPI.h"
+#import <NSObject-Tap/NSObject+Tap.h>
+#import "SharedActivityIndicatorView.h"
 
-@interface NetController () <SMHTTPRequestDelegate> {
+@interface NetController () {
 }
 
 @end
@@ -22,76 +24,44 @@
 
 @implementation NetController
 
-- (id)init
++ (instancetype)sharedInstance
 {
-    self = [super init];
+    static NetController *instance;
+    static dispatch_once_t onceToken;
 
-    if (self)
-    {
-    }
-
-    return self;
+    dispatch_once(&onceToken, ^{
+        instance = [self manager];
+    });
+    return instance;
 }
 
-- (void)dealloc
+#pragma mark - requests
+- (RACSignal *)fetchExampleAPIWithOS:(NSString *)os uuid:(NSString *)uuid
 {
-}
+    [[SharedActivityIndicatorView sharedInstance] startActivity];
 
-- (void)httpRequestMagicWithType:(NSString *)url requestType:(SMRequestType)rt useCache:(BOOL)useCache activityText:(NSString *)activityText params:(NSDictionary *)params netRequestType:(NetRequestType)nrt
-{
-    [SMBlockRequestInstance makeRequest:rt
-                              urlBuffer:url
-                               useCache:useCache
-                                timeOut:HOST_CONNECTION_TIMEOUT
-                           activityText:activityText
-                     activityOpenCancel:NO
-                       activityOpenMask:NO
-                        parametersBlock: ^NSDictionary *{
-        __block NSMutableDictionary *p = [NSMutableDictionary dictionaryWithDictionary:params];
-        return p;
-    }
+    @weakify(self);
+    return [RACSignal createSignal:^RACDisposable *(id < RACSubscriber > subscriber) {
+        @strongify(self);
+        [[self  rac_GET:EXAMPLE_API(os, uuid)
+             parameters:nil] subscribeNext:^(id objects) {
+                                 if (objects)
+                                 {
+                                 [subscriber sendNext:objects];
+                                 [subscriber sendCompleted];
+                                 }
+                                 else
+                                 {
+                                 [subscriber sendError:[NSError               errorWithDomain:[self className]
+                                                                        code:500
+                                                                    userInfo:@{ @"message": @"data error." }]];
+                                 }
 
-                             startBlock: ^UIView *{
-        return activityText ? [UIApplication sharedApplication].keyWindow : nil;
-    }
-
-                              stopBlock: ^(id object) {
-                                  if ([object isKindOfClass:[NSString class]])
-                                  {
-                                  if ([self.delegate
-                                  respondsToSelector:@selector(netController:netRequestType:requestResult:)])
-                                  {
-                                  [self.delegate
-                                   netController:self
-                                                    netRequestType:nrt
-                                    requestResult:object];
-                                  }
-                                  }
-                                  else
-                                  {
-                                  if ([self.delegate
-                                  respondsToSelector:@selector(netController:netRequestType:requestError:)])
-                                  {
-                                  [self.delegate
-                                   netController:self
-                                                    netRequestType:nrt
-                                     requestError:object];
-                                  }
-                                  }
-                              }
-
-                       cancelRetryBlock: ^{
-                       }];
-}
-
-- (void)fetchExampleAPIWithOS:(NSString *)os uuid:(NSString *)uuid
-{
-    [self httpRequestMagicWithType:EXAMPLE_API(os, uuid)
-                       requestType:REQUEST_GET
-                          useCache:NO
-                      activityText:SMLocalization(@"capability.network.wait")
-                            params:nil
-                    netRequestType:NetRequestType_Example];
+                                 [[SharedActivityIndicatorView sharedInstance] stopActivity];
+                             }];
+        return [RACDisposable disposableWithBlock:^{
+                              }];
+    }];
 }
 
 @end

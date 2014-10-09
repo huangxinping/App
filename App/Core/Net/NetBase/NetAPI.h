@@ -25,10 +25,6 @@
                 #define HOST_CONNECTION_TIMEOUT 30
 #endif
 
-typedef NS_ENUM (NSUInteger, NetRequestType) {
-    NetRequestType_None = 0,
-    NetRequestType_Example = 1,
-};
 
 #define EXAMPLE_API(os, uuid) [NSString stringWithFormat : @"%@:%@/myspace/Client_example/example.php?os=%@&uuid=%@", HOST_WEB_IP, HOST_WEB_PORT, os, uuid]
 

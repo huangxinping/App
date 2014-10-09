@@ -79,6 +79,24 @@
  *      [1]: [https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/Reference/reference.html#//apple_ref/c/func/object_setInstanceVariable]
  */
 - (void)setVariable:(void *)value forName:(NSString *)name;
+/*!
+ *  @brief Changes the value of an instance variable of a class instance and ratain the value.
+ *  @param value The new value for the instance variable.
+ *  @param name A string. Pass the name of the instance variable whose value you wish to modify.
+ *  @see setVariable:forName:
+ *  @see [object_setInstanceVariable][1]
+ *      [1]: [https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/Reference/reference.html#//apple_ref/c/func/object_setInstanceVariable]
+ */
+- (void)setAndRetainVariable:(id)value forName:(NSString *)name;
+/*!
+ *  @brief Changes the value of an instance variable of a class instance with a copied value of given value.
+ *  @param value The new value for the instance variable.
+ *  @param name A string. Pass the name of the instance variable whose value you wish to modify.
+ *  @see setVariable:forName:
+ *  @see [object_setInstanceVariable][1]
+ *      [1]: [https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/Reference/reference.html#//apple_ref/c/func/object_setInstanceVariable]
+ */
+- (void)setAndCopyVariable:(id)value forName:(NSString *)name;
 
 /*!
  *  @brief Implement property assign setter for an instance variable.
@@ -86,7 +104,8 @@
  *  @param nameString A C String to represent the name of instance variable.
  *  @see setVariable:forName:
  */
-#define NSAPropertyAssignSetter(methodName, nameString) - (void)methodName:(id)value { [self setVariable:value forName:nameString]; }
+#define NSAPropertyAssignSetter(METHOD, PROPERTY) \
+    - (void)METHOD:(id)value { [self setVariable:(__bridge void *)value forName:PROPERTY]; }
 
 /*!
  *  @brief Implement property retain setter for an instance variable.
@@ -94,7 +113,8 @@
  *  @param nameString A C String to represent the name of instance variable.
  *  @see setVariable:forName:
  */
-#define NSAPropertyRetainSetter(methodName, nameString) - (void)methodName:(id)value { [value retain]; [[self variableForName:nameString] release]; [self setVariable:value forName:nameString]; }
+#define NSAPropertyRetainSetter(METHOD, PROPERTY) \
+    - (void)METHOD:(id)value { [self setAndRetainVariable:value forName:PROPERTY]; }
 
 /*!
  *  @brief Implement property copy setter for an instance variable.
@@ -102,39 +122,40 @@
  *  @param nameString A C String to represent the name of instance variable.
  *  @see setVariable:forName:
  */
-#define NSAPropertyCopySetter(methodName, nameString) - (void)methodName:(id)value { id copied = [value copy]; [[self variableForName:nameString] release]; [self setVariable:copied forName:nameString]; }
+#define NSAPropertyCopySetter(METHOD, PROPERTY) \
+    - (void)METHOD:(__weak id)value { [self setAndCopyVariable:value forName:PROPERTY]; }
 
 
 /*! @name performSelector */
 
 /*!
  *  @brief Invokes a method of the receiver with 3 parameter
- *  @param aSelector A selector that identifies the method to invoke. The method should take 3 argument of type id.
- *  @param object1 a parameter
- *  @param object2 a parameter
- *  @param object3 a parameter
+ *  @param sel A selector that identifies the method to invoke. The method should take 3 argument of type id.
+ *  @param obj1 a parameter
+ *  @param obj2 a parameter
+ *  @param obj3 a parameter
  *  @see [performSelector:withObject:][1]
  *  @see [performSelector:withObject:withObject:][2]
  *  @see performSelector:withObject:withObject:withObject:withObject:
  *      [1]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Protocols/NSObject_Protocol/Reference/NSObject.html#//apple_ref/occ/intfm/NSObject/performSelector:withObject:
  *      [2]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Protocols/NSObject_Protocol/Reference/NSObject.html#//apple_ref/occ/intfm/NSObject/performSelector:withObject:withObject:
  */
-- (id)performSelector:(SEL)aSelector withObject:(id)object1 withObject:(id)object2 withObject:(id)object3;
+- (id)performSelector:(SEL)sel withObject:(id)obj1 withObject:(id)obj2 withObject:(id)obj3;
 
 /*!
  *  @brief Invokes a method of the receiver with 4 parameter
- *  @param aSelector A selector that identifies the method to invoke. The method should take 4 argument of type id.
- *  @param object1 a parameter
- *  @param object2 a parameter
- *  @param object3 a parameter
- *  @param object4 a parameter
+ *  @param sel A selector that identifies the method to invoke. The method should take 4 argument of type id.
+ *  @param obj1 a parameter
+ *  @param obj2 a parameter
+ *  @param obj3 a parameter
+ *  @param obj4 a parameter
  *  @see [performSelector:withObject:][1]
  *  @see [performSelector:withObject:withObject:][2]
  *  @see performSelector:withObject:withObject:withObject:
  *      [1]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Protocols/NSObject_Protocol/Reference/NSObject.html#//apple_ref/occ/intfm/NSObject/performSelector:withObject:
  *      [2]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Protocols/NSObject_Protocol/Reference/NSObject.html#//apple_ref/occ/intfm/NSObject/performSelector:withObject:withObject:
  */
-- (id)performSelector:(SEL)aSelector withObject:(id)object1 withObject:(id)object2 withObject:(id)object3 withObject:(id)object4;
+- (id)performSelector:(SEL)sel withObject:(id)obj1 withObject:(id)obj2 withObject:(id)obj3 withObject:(id)obj4;
 
 /*!
  *  @name Associative References

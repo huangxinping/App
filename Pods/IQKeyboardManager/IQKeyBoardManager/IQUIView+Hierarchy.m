@@ -36,18 +36,25 @@ IQ_LoadCategory(IQUIViewHierarchy)
 @implementation UIView (IQ_UIView_Hierarchy)
 
 //Special textFields,textViews,scrollViews
-Class UISearchBarTextFieldClass;
 Class UIAlertSheetTextFieldClass;
-Class UITableViewCellScrollViewClass;
+Class UIAlertSheetTextFieldClass_iOS8;
 
+Class UITableViewCellScrollViewClass;
+Class UITableViewWrapperViewClass;
+
+Class UISearchBarTextFieldClass;
 
 +(void)initialize
 {
     [super initialize];
+    
+    UIAlertSheetTextFieldClass          = NSClassFromString(@"UIAlertSheetTextField");
+    UIAlertSheetTextFieldClass_iOS8     = NSClassFromString(@"_UIAlertControllerTextField");
+    
+    UITableViewCellScrollViewClass      = NSClassFromString(@"UITableViewCellScrollView");
+    UITableViewWrapperViewClass         = NSClassFromString(@"UITableViewWrapperView");
 
-    UISearchBarTextFieldClass       = NSClassFromString(@"UISearchBarTextField");
-    UIAlertSheetTextFieldClass      = NSClassFromString(@"UIAlertSheetTextField");
-    UITableViewCellScrollViewClass  = NSClassFromString(@"UITableViewCellScrollView");
+    UISearchBarTextFieldClass           = NSClassFromString(@"UISearchBarTextField");
 }
 
 -(UIViewController*)viewController
@@ -88,7 +95,8 @@ Class UITableViewCellScrollViewClass;
     
     while (superview)
     {
-        if ([superview isKindOfClass:[UIScrollView class]] && ([superview isKindOfClass:UITableViewCellScrollViewClass] == NO))
+        //UITableViewWrapperView
+        if ([superview isKindOfClass:[UIScrollView class]] && ([superview isKindOfClass:UITableViewCellScrollViewClass] == NO) && ([superview isKindOfClass:UITableViewWrapperViewClass] == NO))
         {
             return (UIScrollView*)superview;
         }
@@ -107,7 +115,7 @@ Class UITableViewCellScrollViewClass;
     NSMutableArray *tempTextFields = [[NSMutableArray alloc] init];
     
     for (UITextField *textField in siblings)
-        if ([textField canBecomeFirstResponder] && ![textField isAlertViewTextField]  && ![textField isSearchBarTextField])
+        if ([textField canBecomeFirstResponder] && [textField isUserInteractionEnabled] && ![textField isAlertViewTextField]  && ![textField isSearchBarTextField])
             [tempTextFields addObject:textField];
     
     return tempTextFields;
@@ -118,11 +126,11 @@ Class UITableViewCellScrollViewClass;
     NSMutableArray *textFields = [[NSMutableArray alloc] init];
     
     //subviews are returning in opposite order. So I sorted it according the frames 'y'.
-    NSArray *subViews = [self.subviews sortedArrayUsingComparator:^NSComparisonResult(UIView *obj1, UIView *obj2) {
+    NSArray *subViews = [self.subviews sortedArrayUsingComparator:^NSComparisonResult(UIView *view1, UIView *view2) {
         
-        if (obj1.frame.origin.y < obj2.frame.origin.y)	return NSOrderedAscending;
+        if (view1.y < view2.y)	return NSOrderedAscending;
         
-        else if (obj1.frame.origin.y > obj2.frame.origin.y)	return NSOrderedDescending;
+        else if (view1.y > view2.y)	return NSOrderedDescending;
         
         else	return NSOrderedSame;
     }];
@@ -130,7 +138,7 @@ Class UITableViewCellScrollViewClass;
     
     for (UITextField *textField in subViews)
     {
-        if ([textField canBecomeFirstResponder] && ![textField isAlertViewTextField]  && ![textField isSearchBarTextField])
+        if ([textField canBecomeFirstResponder] && [textField isUserInteractionEnabled] && ![textField isAlertViewTextField]  && ![textField isSearchBarTextField])
         {
             [textFields addObject:textField];
         }
@@ -143,6 +151,88 @@ Class UITableViewCellScrollViewClass;
     return textFields;
 }
 
+-(CGAffineTransform)convertTransformToView:(UIView*)toView
+{
+    if (toView == nil)
+    {
+        toView = self.window;
+    }
+    
+    CGAffineTransform myTransform = CGAffineTransformIdentity;
+    
+    //My Transform
+    {
+        UIView *superView = [self superview];
+        
+        if (superView)  myTransform = CGAffineTransformConcat(self.transform, [superView convertTransformToView:nil]);
+        else            myTransform = self.transform;
+    }
+    
+    CGAffineTransform viewTransform = CGAffineTransformIdentity;
+    
+    //view Transform
+    {
+        UIView *superView = [toView superview];
+        
+        if (superView)  viewTransform = CGAffineTransformConcat(toView.transform, [superView convertTransformToView:nil]);
+        else if (toView)  viewTransform = toView.transform;
+    }
+    
+    return CGAffineTransformConcat(myTransform, CGAffineTransformInvert(viewTransform));
+}
+
+
+- (NSInteger)depth
+{
+    NSInteger depth = 0;
+    
+    if ([self superview])
+    {
+        depth = [[self superview] depth] + 1;
+    }
+    
+    return depth;
+}
+
+- (NSString *)subHierarchy
+{
+    NSMutableString *debugInfo = [[NSMutableString alloc] initWithString:@"\n"];
+    NSInteger depth = [self depth];
+    
+    for (int counter = 0; counter < depth; counter ++)  [debugInfo appendString:@"|  "];
+    
+    [debugInfo appendFormat:@"%@: ( %.0f, %.0f, %.0f, %.0f )",NSStringFromClass([self class]),self.x,self.y,self.width,self.height];
+    
+    for (UIView *subview in self.subviews)
+    {
+        [debugInfo appendString:[subview subHierarchy]];
+    }
+    
+    return debugInfo;
+}
+
+- (NSString *)superHierarchy
+{
+    NSMutableString *debugInfo = [[NSMutableString alloc] init];
+
+    if (self.superview)
+    {
+        [debugInfo appendString:[self.superview superHierarchy]];
+    }
+    else
+    {
+        [debugInfo appendString:@"\n"];
+    }
+    
+    NSInteger depth = [self depth];
+    
+    for (int counter = 0; counter < depth; counter ++)  [debugInfo appendString:@"|  "];
+    
+    [debugInfo appendFormat:@"%@: ( %.0f, %.0f, %.0f, %.0f )\n",NSStringFromClass([self class]),self.x,self.y,self.width,self.height];
+    
+    return debugInfo;
+}
+
 -(BOOL)isSearchBarTextField
 {
     return ([self isKindOfClass:UISearchBarTextFieldClass] || [self isKindOfClass:[UISearchBar class]]);
@@ -150,17 +240,17 @@ Class UITableViewCellScrollViewClass;
 
 -(BOOL)isAlertViewTextField
 {
-    return [self isKindOfClass:UIAlertSheetTextFieldClass];
+    return ([self isKindOfClass:UIAlertSheetTextFieldClass] || [self isKindOfClass:UIAlertSheetTextFieldClass_iOS8]);
 }
 
 @end
 
 @implementation UIView (IQ_UIView_Frame)
 
--(CGFloat)x         {   return self.frame.origin.x;         }
--(CGFloat)y         {   return self.frame.origin.y;         }
--(CGFloat)width     {   return self.frame.size.width;       }
--(CGFloat)height    {   return self.frame.size.height;      }
+-(CGFloat)x         {   return CGRectGetMinX(self.frame);   }
+-(CGFloat)y         {   return CGRectGetMinY(self.frame);   }
+-(CGFloat)width     {   return CGRectGetWidth(self.frame);  }
+-(CGFloat)height    {   return CGRectGetHeight(self.frame); }
 -(CGPoint)origin    {   return self.frame.origin;           }
 -(CGSize)size       {   return self.frame.size;             }
 -(CGFloat)left      {   return CGRectGetMinX(self.frame);   }

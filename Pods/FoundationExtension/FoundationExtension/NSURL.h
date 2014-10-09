@@ -24,21 +24,21 @@
  *  @param path The path that the NSURL object will represent. path should be a valid system path. If path begins with the prefix 'res://', it will be removed. path should be a relative path from main bundle resource directory.
  *  @return An NSURL object initialized with path based on resource directory of main bundle.
  */
-- (id)initResourceURLWithPath:(NSString *)path;
+- (instancetype)initResourceURLWithPath:(NSString *)path;
 
 /*!
  *  @brief Initializes a newly created NSURL referencing the local file or directory at path based on configuration directory.
  *  @param path The path that the NSURL object will represent. path should be a valid system path. If path begins with the prefix 'conf://', it will be removed. path should be a relative path from configuration directory
  *  @return An NSURL object initialized with path based on configuration directory.
  */
-- (id)initConfigurationURLWithPath:(NSString *)path;
+- (instancetype)initConfigurationURLWithPath:(NSString *)path;
 
 /*!
  *  @brief Initializes a newly created NSURL referencing the local file or directory at path based on temporary directory.
  *  @param path The path that the NSURL object will represent. path should be a valid system path. If path begins with the prefix 'conf://', it will be removed. path should be a relative path from temporary directory
  *  @return An NSURL object initialized with path based on temporary directory.
  */
-- (id)initTemporaryURLWithPath:(NSString *)path;
+- (instancetype)initTemporaryURLWithPath:(NSString *)path;
 
 /*!
  *  @brief Initializes a newly created NSURL referencing any URL decodable by protocol prefix.
@@ -47,7 +47,7 @@
  *      [1]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSURL_Class/Reference/Reference.html#//apple_ref/occ/instm/NSURL/initWithString:
  *      [2]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSURL_Class/Reference/Reference.html#//apple_ref/occ/instm/NSURL/initFileURLWithPath:
  */
-- (id)initSmartURLWithPath:(NSString *)path;
+- (instancetype)initSmartURLWithPath:(NSString *)path;
 
 /*! @name Creating an URL */
 
@@ -55,25 +55,25 @@
  *  @brief Initializes and returns a newly created NSURL object as a file URL with a specified path based on resource directory of main bundle.
  *  @see initResourceURLWithPath:
  */
-+ (id)resourceURLWithPath:(NSString *)path;
++ (instancetype)resourceURLWithPath:(NSString *)path;
 
 /*!
  *  @brief Initializes and returns a newly created NSURL object as a file URL with a specified path based on configuration directory.
  *  @see initConfigurationURLWithPath:
  */
-+ (id)configurationURLWithPath:(NSString *)path;
++ (instancetype)configurationURLWithPath:(NSString *)path;
 
 /*!
  *  @brief Initializes and returns a newly created NSURL object as a file URL with a specified path based on temporary directory.
  *  @see initTemporaryURLWithPath:
  */
-+ (id)temporaryURLWithPath:(NSString *)path;
++ (instancetype)temporaryURLWithPath:(NSString *)path;
 
 /*!
  *  @brief Initializes and returns a newly created NSURL referencing any URL decodable by protocol prefix.
  *  @see initSmartURLWithPath:
  */
-+ (id)smartURLWithPath:(NSString *)path;
++ (instancetype)smartURLWithPath:(NSString *)path;
 
 /*! @name Deprecated */
 
@@ -116,7 +116,29 @@
  */
 @interface NSString (NSURL)
 
-/*! URL prefix */
+/*! @name UTF8 shortcuts */
+
+/*!
+ *  @brief Returns a representation of the receiver using UTF8 encoding to determine the percent escapes necessary to convert the receiver into a legal URL string.
+ *  @see [stringByAddingPercentEscapesUsingEncoding:][0]
+ *      [0]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/Reference/NSString.html#//apple_ref/occ/instm/NSString/stringByAddingPercentEscapesUsingEncoding:
+ */
+- (NSString *)stringByAddingPercentEscapesUsingUTF8Encoding;
+/*!
+ *  @brief Returns a new string made by replacing in the receiver all percent escapes with the matching characters as determined by UTF8 encoding.
+ *  @see [stringByReplacingPercentEscapesUsingEncoding:][0]
+ *      [0]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/Reference/NSString.html#//apple_ref/occ/instm/NSString/stringByAddingPercentEscapesUsingEncoding:
+ */
+- (NSString *)stringByReplacingPercentEscapesUsingUTF8Encoding;
+
+/*!
+ *  @brief Returns a new string made from the receiver by replacing all characters with percent encoded characters. UTF-8 encoding is used to determine the correct percent encoded characters. Entire URL strings cannot be percent-encoded. This method is intended to percent-encode an URL component or subcomponent string, NOT the entire URL string.
+ *  @see [stringByAddingPercentEncodingWithAllowedCharacters:][0]
+ *      [0]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/Reference/NSString.html#//apple_ref/occ/instm/NSString/stringByAddingPercentEncodingWithAllowedCharacters:
+ */
+- (NSString *)stringByAddingPercentEncodingWithoutAllowedCharacters;
+
+/*! @name URL prefix */
 
 /*!
  *  @brief Returns a Boolean value that indicates whether 'http://' or 'https://' matches the beginning characters of the receiver.
@@ -138,7 +160,7 @@
  */
 - (NSString *)URLProtocol;
 
-/*! @brief Creating an URL */
+/*! @name Creating an URL */
 
 /*!
  *  @brief Returns a URL from self value.

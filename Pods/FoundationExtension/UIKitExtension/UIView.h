@@ -48,9 +48,9 @@ typedef void (^UIAViewAnimationCompletionBlock)(BOOL finished);
  *  @brief Pick a view from nib file.
  *  @warning This method load view from UIViewController or UIViewHolder nib file.
  */
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
 
-- (id)initWithPlatformSuffixedNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
+- (instancetype)initWithPlatformSuffixedNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
 
 @end
 
@@ -79,6 +79,22 @@ typedef void (^UIAViewAnimationCompletionBlock)(BOOL finished);
     [0]: http://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/UIView/UIView.html#//apple_ref/occ/instp/UIView/hidden
  */
 - (void)setHidden:(BOOL)hidden animated:(BOOL)animated;
+
+@end
+
+/*!
+ *  @brief See UIView layer for more informations.
+ */
+@interface UIView (CALayer)
+
+@property(assign) CGFloat borderWidth;
+@property(copy) UIColor *borderColor;
+@property(assign) CGFloat cornerRadius;
+
+@property(retain) UIColor *shadowColor;
+@property(assign) CGSize shadowOffset;
+@property(assign) float shadowAlpha;
+@property(assign) CGFloat shadowRadius;
 
 @end
 

@@ -23,10 +23,11 @@
 
 #import <UIKit/UIBarButtonItem.h>
 
+//Bar button item with title
 @interface IQTitleBarButtonItem : UIBarButtonItem
 
 @property(nonatomic, strong) UIFont *font;  //Default is (system font 12.0 bold)
 
--(id)initWithFrame:(CGRect)frame Title:(NSString *)title;
+-(instancetype)initWithFrame:(CGRect)frame title:(NSString *)title;
 
 @end

@@ -10,6 +10,7 @@
 
 #import "NSBundle.h"
 #import "NSPathUtilities.h"
+#import "NSCharacterSet.h"
 #import "NSString.h"
 #import "NSURL.h"
 
@@ -17,7 +18,7 @@
 
 @implementation NSURL (Creations)
 
-- (id)initResourceURLWithPath:(NSString *)path {
+- (instancetype)initResourceURLWithPath:(NSString *)path {
     if (path == nil) {
         [self release];
         return nil;
@@ -34,7 +35,7 @@
     return [self initFileURLWithPath:resPath];
 }
 
-- (id)initConfigurationURLWithPath:(NSString *)path {
+- (instancetype)initConfigurationURLWithPath:(NSString *)path {
     if (path == nil) {
         [self release];
         return nil;
@@ -48,7 +49,7 @@
     return [self initFileURLWithPath:confPath];
 }
 
-- (id)initTemporaryURLWithPath:(NSString *)path {
+- (instancetype)initTemporaryURLWithPath:(NSString *)path {
     if (path == nil) {
         [self release];
         return nil;
@@ -62,7 +63,7 @@
     return [self initFileURLWithPath:tempPath];
 }
 
-- (id)initSmartURLWithPath:(NSString *)path {
+- (instancetype)initSmartURLWithPath:(NSString *)path {
     if ([path hasHTTPPrefix]) {
         return [self initWithString:path];
     }
@@ -78,19 +79,19 @@
     return [self initFileURLWithPath:path];
 }
 
-+ (id)resourceURLWithPath:(NSString *)path {
++ (instancetype)resourceURLWithPath:(NSString *)path {
     return [[[self alloc] initResourceURLWithPath:path] autorelease];
 }
 
-+ (id)configurationURLWithPath:(NSString *)path {
++ (instancetype)configurationURLWithPath:(NSString *)path {
     return [[[self alloc] initConfigurationURLWithPath:path] autorelease];
 }
 
-+ (id)temporaryURLWithPath:(NSString *)path {
++ (instancetype)temporaryURLWithPath:(NSString *)path {
     return [[[self alloc] initTemporaryURLWithPath:path] autorelease];
 }
 
-+ (id)smartURLWithPath:(NSString *)path {
++ (instancetype)smartURLWithPath:(NSString *)path {
     return [[[self alloc] initSmartURLWithPath:path] autorelease];
 }
 
@@ -164,6 +165,20 @@
 
 
 @implementation NSString (NSURL)
+
+- (NSString *)stringByAddingPercentEscapesUsingUTF8Encoding {
+    return [self stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+}
+
+- (NSString *)stringByReplacingPercentEscapesUsingUTF8Encoding {
+    return [self stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+}
+
+- (NSString *)stringByAddingPercentEncodingWithoutAllowedCharacters {
+    NSCharacterSet *characterSet = [NSCharacterSet emptyCharacterSet];
+    NSString *escaped = [self stringByAddingPercentEncodingWithAllowedCharacters:characterSet];
+    return escaped;
+}
 
 - (BOOL)hasHTTPPrefix {
     NSString *regexkey = @"^https?://.*";

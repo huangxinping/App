@@ -19,7 +19,7 @@
     self = [super initWithFrame:frame];
     if (self != nil) {
         self.backgroundColor = [UIColor blackColor];
-        self.alpha = 0.7;
+        self.alpha = 0.7f;
         self.contentMode = UIViewContentModeScaleToFill;
     }
     return self;
@@ -42,7 +42,7 @@
 @synthesize contentsController=_contentsController;
 @synthesize inputView=_inputView;
 
-- (id)initWithContentsController:(UIViewController *)viewController {
+- (instancetype)initWithContentsController:(UIViewController *)viewController {
     self = [super init];
     if (self != nil) {
         self->_contentsController = [viewController retain];

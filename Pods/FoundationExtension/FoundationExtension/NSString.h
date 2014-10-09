@@ -27,13 +27,13 @@
  *  @details Implemented with [NSString initWithFormat:][0]
  *      [0]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/Reference/NSString.html#//apple_ref/occ/instm/NSString/initWithFormat:
  */
-- (id)initWithInteger:(NSInteger)value;
+- (instancetype)initWithInteger:(NSInteger)value;
 
 /*!
  *  @brief Initialize an NSString object with concatnating given arguments.
  *  @details Appends all arguments to first string one by one by order.
  */
-- (id)initWithConcatnatingStrings:(NSString *)first, ... NS_REQUIRES_NIL_TERMINATION;
+- (instancetype)initWithConcatnatingStrings:(NSString *)first, ... NS_REQUIRES_NIL_TERMINATION;
 
 /*! @name Creating a String */
 
@@ -41,26 +41,26 @@
  *  @brief Creates and returns an NSString from integer value.
  *  @see initWithInteger:
  */
-+ (id)stringWithInteger:(NSInteger)value;
++ (instancetype)stringWithInteger:(NSInteger)value;
 
 /*!
  *  @brief Creates and returns an NSString object initialized by using a given format string as a template into which the remaining argument values are substituted according to the user’s default locale.
  *  @see [initWithFormat:arguments:][0]
  *      [0]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/Reference/NSString.html#//apple_ref/occ/instm/NSString/initWithFormat:arguments:
  */
-+ (id)stringWithFormat:(NSString *)format arguments:(va_list)argList NS_FORMAT_FUNCTION(1,0);
++ (instancetype)stringWithFormat:(NSString *)format arguments:(va_list)argList NS_FORMAT_FUNCTION(1,0);
 
 /*!
  *  @brief Creates and returns an NSString object initialized by converting given data into Unicode characters using a given encoding.
  *  @see [initWithData:encoding:][0]
  *      [0]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/Reference/NSString.html#//apple_ref/occ/instm/NSString/initWithData:encoding:
  */
-+ (id)stringWithData:(NSData *)data encoding:(NSStringEncoding)encoding;
++ (instancetype)stringWithData:(NSData *)data encoding:(NSStringEncoding)encoding;
 
 /*!
  *  @brief Creates and returns an NSString object with concatnating given arguments.
  */
-+ (id)stringWithConcatnatingStrings:(NSString *)first, ... NS_REQUIRES_NIL_TERMINATION;
++ (instancetype)stringWithConcatnatingStrings:(NSString *)first, ... NS_REQUIRES_NIL_TERMINATION;
 
 @end
 
@@ -132,6 +132,34 @@
  */
 - (NSString *)substringFromIndex:(NSUInteger)from toIndex:(NSUInteger)to;
 
+/*!
+ *  @brief Returns a new string made by removing from both ends of the receiver characters contained in whitespace character set.
+ *  @return A new string made by removing from both ends of the receiver characters contained in whitespace character set. If the receiver is composed entirely of characters from whitespace character set, the empty string is returned.
+ *  @see [stringByTrimmingCharactersInSet:][0]
+ *  @see [NSCharacterSet whitespaceCharacterSet][1]
+ *      [0]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/Reference/NSString.html#//apple_ref/occ/instm/NSString/stringByTrimmingCharactersInSet:
+ *      [1]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSCharacterSet_Class/Reference/Reference.html#//apple_ref/occ/clm/NSCharacterSet/whitespaceCharacterSet
+ */
+- (NSString *)stringByTrimmingWhitespaceCharacters;
+/*!
+ *  @brief Returns a new string made by removing from both ends of the receiver characters contained in whitespace and newline character set.
+ *  @return A new string made by removing from both ends of the receiver characters contained in whitespace and newline character set. If the receiver is composed entirely of characters from whitespace and newline character set, the empty string is returned.
+ *  @see [stringByTrimmingCharactersInSet:][0]
+ *  @see [NSCharacterSet whitespaceAndNewlineCharacterSet][1]
+ *      [0]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/Reference/NSString.html#//apple_ref/occ/instm/NSString/stringByTrimmingCharactersInSet:
+ *      [1]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSCharacterSet_Class/Reference/Reference.html#//apple_ref/occ/clm/NSCharacterSet/whitespaceAndNewlineCharacterSet
+ */
+- (NSString *)stringByTrimmingWhitespaceAndNewlineCharacters;
+/*!
+ *  @brief Returns a new string made by removing from both ends of the receiver characters contained in newline character set.
+ *  @return A new string made by removing from both ends of the receiver characters contained in newline character set. If the receiver is composed entirely of characters from newline character set, the empty string is returned.
+ *  @see [stringByTrimmingCharactersInSet:][0]
+ *  @see [NSCharacterSet newlineCharacterSet][1]
+ *      [0]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/Reference/NSString.html#//apple_ref/occ/instm/NSString/stringByTrimmingCharactersInSet:
+ *      [1]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSCharacterSet_Class/Reference/Reference.html#//apple_ref/occ/clm/NSCharacterSet/newlineCharacterSet
+ */
+- (NSString *)stringByTrimmingNewlineCharacters;
+
 @end
 
 
@@ -146,20 +174,7 @@
  *  @brief Creates and returns an NSString object initialized by converting given data into Unicode characters using UTF8 encoding.
  *  @see @ref NSString(Creations)::stringWithData:encoding:
  */
-+ (NSString *)stringWithUTF8Data:(NSData *)data;
-
-/*!
- *  @brief Returns a representation of the receiver using UTF8 encoding to determine the percent escapes necessary to convert the receiver into a legal URL string.
- *  @see [stringByAddingPercentEscapesUsingEncoding:][0]
- *      [0]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/Reference/NSString.html#//apple_ref/occ/instm/NSString/stringByAddingPercentEscapesUsingEncoding:
- */
-- (NSString *)stringByAddingPercentEscapesUsingUTF8Encoding;
-/*!
- *  @brief Returns a new string made by replacing in the receiver all percent escapes with the matching characters as determined by UTF8 encoding.
- *  @see [stringByReplacingPercentEscapesUsingEncoding:][0]
- *      [0]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/Reference/NSString.html#//apple_ref/occ/instm/NSString/stringByAddingPercentEscapesUsingEncoding:
- */
-- (NSString *)stringByReplacingPercentEscapesUsingUTF8Encoding;
++ (instancetype)stringWithUTF8Data:(NSData *)data;
 
 /*!
  *  @brief Returns an NSData object containing a representation of the receiver encoded using UTF8 encoding.

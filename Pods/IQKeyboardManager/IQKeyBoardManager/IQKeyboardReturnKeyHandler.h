@@ -24,7 +24,8 @@
 #import <Foundation/NSObject.h>
 #import "IQKeyboardManagerConstants.h"
 
-#import <UIKit/UITextInputTraits.h>
+#import <UIKit/UITextField.h>
+#import <UIKit/UITextView.h>
 
 @class UITextField,UIView, UIViewController;
 
@@ -35,7 +36,14 @@
  
     @abstract Add all the textFields available in UIViewController's view.
  */
--(id)initWithViewController:(UIViewController*)controller;
+-(instancetype)initWithViewController:(UIViewController*)controller;
+
+/*!
+    @method delegate
+ 
+    @abstract textField's delegates.
+ */
+@property(nonatomic, weak) id<UITextFieldDelegate,UITextViewDelegate> delegate;
 
 /*!
     @property toolbarManageBehaviour

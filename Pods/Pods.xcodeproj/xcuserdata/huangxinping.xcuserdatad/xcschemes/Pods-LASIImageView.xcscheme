@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CCADE22A17A941CAB608F60B"
+               BlueprintIdentifier = "0E80A65ADC6A404ABBA0D02B"
                BuildableName = "libPods-LASIImageView.a"
                BlueprintName = "Pods-LASIImageView"
                ReferencedContainer = "container:Pods.xcodeproj">

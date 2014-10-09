@@ -12,29 +12,48 @@
 #import <COSTouchVisualizerWindow.h>
 #import <Appirater/Appirater.h>
 #import <RRFPSBar/RRFPSBar.h>
-#import "GT/GTInterface.h"
+#import <NUI/NUISettings.h>
+#import "APService.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    {     // 注册UI引擎
-        [[UIEngine defaultUIEngine] registerObserver];
-    }
+//    [NUISettings initWithStylesheet:@"Switchboard.NUI"];
+
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    self.window.backgroundColor = [UIColor blackColor];
+
     {   // 注册该项目真实使用的语种列表
         [SMLanguageManager registerActualSupportedLanguage:@[KSMChinese_Sim]];
     }
+
     {     // 友盟分析
-        [MobClick startWithAppkey:@"535a27b356240b1768015126" reportPolicy:REALTIME channelId:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"]];
+        [MobClick startWithAppkey:UMENG_KEY reportPolicy:REALTIME channelId:nil];
     }
+
     {     // 评价
-        [Appirater setAppId:@"552035781"];
+        [Appirater setAppId:APPSTORE_ID];
         [Appirater setDaysUntilPrompt:1];
         [Appirater setUsesUntilPrompt:10];
         [Appirater setSignificantEventsUntilPrompt:-1];
         [Appirater setTimeBeforeReminding:2];
         [Appirater setDebug:YES];
+        [Appirater appLaunched:NO];
     }
+
+    {     // 推送
+        [APService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+                                                       UIRemoteNotificationTypeSound |
+                                                       UIRemoteNotificationTypeAlert)];
+        [APService setupWithOption:launchOptions];
+        [application setApplicationIconBadgeNumber:0];
+    }
+
+    {     // MVVM
+        [TMOSmarty initialize];
+    }
+    //    SMLog(@"%@", [[[UIDevice currentDevice] identifierForVendor] UUIDString]);
 
     {     // fps
 #ifdef DEBUG

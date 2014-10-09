@@ -21,3 +21,7 @@ git submodule add -f https://github.com/shodgin/StrikeThroughLabel.git Vendor/St
 git submodule add -f https://github.com/iOSNerd/PagedScrollView.git Vendor/PagedScrollView
 git submodule add -f https://github.com/huangxinping/LayerText.git Vendor/LayerText
 git submodule add -f https://github.com/huangxinping/TOWebViewController.git Vendor/TOWebViewController
+git submodule add -f https://github.com/huangxinping/TMOSmarty.git Vendor/TMOSmarty
+git submodule add -f https://github.com/huangxinping/MarkupLabel.git Vendor/MarkupLabel
+git submodule add -f https://github.com/huangxinping/Surfboard.git Vendor/Surfboard
+git submodule add -f https://github.com/huangxinping/ICETutorial.git Vendor/ICETutorial

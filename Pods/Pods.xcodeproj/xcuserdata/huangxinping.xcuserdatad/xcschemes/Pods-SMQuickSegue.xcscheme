@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "457B7838EF4B49C4B7A99C34"
+               BlueprintIdentifier = "5DC2069F78F6459C813F013C"
                BuildableName = "libPods-SMQuickSegue.a"
                BlueprintName = "Pods-SMQuickSegue"
                ReferencedContainer = "container:Pods.xcodeproj">

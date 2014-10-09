@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F2C5A6A2F0114ACAA129F65D"
+               BlueprintIdentifier = "B0655F2130C4465B8886C1EC"
                BuildableName = "libPods-TAPKeyboardPop.a"
                BlueprintName = "Pods-TAPKeyboardPop"
                ReferencedContainer = "container:Pods.xcodeproj">

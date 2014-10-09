@@ -12,14 +12,20 @@
 /** @file */    // Doxygen marker
 
 #import <Foundation/Foundation.h>
-#import "NetControllerDelegate.h"
+#import <ReactiveCocoa.h>
+#import <RACAFNetworking.h>
+#import <RACEXTScope.h>
 
-@interface NetController : NSObject
+@interface NetController : AFHTTPRequestOperationManager
 
-/**
- *  网络控制器委托
+/*!
+ *  @brief  单例
+ *
+ *  @return 实例句柄
+ *
+ *  @since 1.0
  */
-@property (nonatomic, assign) id <NetControllerDelegate> delegate;
++ (instancetype)sharedInstance;
 
 /**
  *  提取测试网络连接例子
@@ -27,6 +33,6 @@
  *  @param os   系统版本
  *  @param uuid 设备唯一标识符
  */
-- (void)fetchExampleAPIWithOS:(NSString *)os uuid:(NSString *)uuid;
+- (RACSignal *)fetchExampleAPIWithOS:(NSString *)os uuid:(NSString *)uuid;
 
 @end

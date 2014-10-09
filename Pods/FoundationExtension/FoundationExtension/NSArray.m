@@ -12,10 +12,6 @@
 
 @implementation NSArray (Shortcuts)
 
-- (id):(NSUInteger)index {
-    return self[index];
-}
-
 - (BOOL)hasIndex:(NSUInteger)index {
     return index < self.count;
 }
@@ -25,15 +21,15 @@
 
 @implementation NSArray (Creations)
 
-- (id)initWithData:(NSData *)data {
+- (instancetype)initWithData:(NSData *)data {
     return [self initWithData:data format:NULL error:NULL];
 }
 
-+ (id)arrayWithData:(NSData *)data {
++ (instancetype)arrayWithData:(NSData *)data {
     return [[[self alloc] initWithData:data] autorelease];
 }
 
-- (id)initWithData:(NSData *)data format:(NSPropertyListFormat *)format error:(NSError **)error {
+- (instancetype)initWithData:(NSData *)data format:(NSPropertyListFormat *)format error:(NSError **)error {
     NSArray *contents = [data propertyListObjectUsingFormat:format error:error];
     if (contents == nil) {
         [self release];
@@ -42,19 +38,19 @@
     return [self initWithArray:contents];
 }
 
-+ (id)arrayWithData:(NSData *)data format:(NSPropertyListFormat *)format error:(NSError **)error {
++ (instancetype)arrayWithData:(NSData *)data format:(NSPropertyListFormat *)format error:(NSError **)error {
     return [[[self alloc] initWithData:data format:format error:error] autorelease];
 }
 
-- (id)initWithEnumerator:(id<NSFastEnumeration>)enumerator {
+- (instancetype)initWithEnumerator:(id<NSFastEnumeration>)enumerator {
     return [self initWithEnumerator:enumerator copyItems:NO];
 }
 
-+ (id)arrayWithEnumerator:(id<NSFastEnumeration>)enumerator {
++ (instancetype)arrayWithEnumerator:(id<NSFastEnumeration>)enumerator {
     return [[[self alloc] initWithEnumerator:enumerator] autorelease];
 }
 
-- (id)initWithEnumerator:(id<NSFastEnumeration>)enumerator copyItems:(BOOL)flag {
+- (instancetype)initWithEnumerator:(id<NSFastEnumeration>)enumerator copyItems:(BOOL)flag {
     NSMutableArray *array = [NSMutableArray array];
     if (flag) {
         for (id object in enumerator) {
@@ -68,6 +64,50 @@
         }
     }
     return [self initWithArray:array];
+}
+
+- (instancetype)initWithObject:(id)object count:(NSUInteger)count {
+    id *objects = malloc(sizeof(id) * count);
+    for (NSUInteger i = 0; i < count; i++) {
+        objects[i] = object;
+    }
+    self = [self initWithObjects:objects count:count];
+    free(objects);
+    return self;
+}
+
++ (instancetype)arrayWithObject:(id)object count:(NSUInteger)count {
+    return [[[self alloc] initWithObject:object count:count] autorelease];
+}
+
+- (instancetype)initWithObjectCopy:(id)object count:(NSUInteger)count mutable:(BOOL)flag {
+    id *objects = malloc(sizeof(id) * count);
+    if (flag) {
+        for (NSUInteger i = 0; i < count; i++) {
+            objects[i] = [object mutableCopy];
+        }
+    } else {
+        for (NSUInteger i = 0; i < count; i++) {
+            objects[i] = [object copy];
+        }
+    }
+    return [self initWithObjects:objects count:count];
+}
+
+- (NSArray *)subarrayFromIndex:(NSUInteger)index {
+    return [self subarrayWithRange:NSMakeRange(index, self.count - index)];
+}
+
+- (NSArray *)subarrayToIndex:(NSUInteger)index {
+    return [self subarrayWithRange:NSMakeRange(0, index)];
+}
+
+- (NSArray *)subarrayFromIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex {
+    return [self subarrayWithRange:NSMakeRange(fromIndex, toIndex - fromIndex)];
+}
+
+- (NSArray *)subarrayFromIndex:(NSUInteger)fromIndex length:(NSUInteger)length {
+    return [self subarrayWithRange:NSMakeRange(fromIndex, length)];
 }
 
 @end
@@ -104,23 +144,19 @@
 - (id)randomObject {
     NSUInteger count = self.count;
     if (count == 0) {
-        return self[0]; // raise index error
-    }
-    return self[arc4random_uniform(count)];
-}
-
-- (NSArray *)randomObjectsOfCount:(NSUInteger)theCount {
-    NSUInteger count = self.count;
-    if (theCount > count) {
-        [self objectAtIndex:count]; // NOTE: to raise proper exception
         return nil;
     }
+    return self[arc4random_uniform((u_int32_t)count)];
+}
+
+- (NSArray *)randomObjectsOfCount:(NSUInteger)aCount {
+    NSUInteger count = self.count;
     // FIXME: slow - reimplement with objectsAtIndexes
     NSMutableArray *copy = [self mutableCopy];
     NSMutableArray *selected = [NSMutableArray array];
 
-    for (NSUInteger i = 0; i < theCount; i ++) {
-        NSUInteger index = arc4random_uniform((uint32_t)(theCount - i));
+    for (NSUInteger i = 0; i < MIN(aCount, count); i ++) {
+        NSUInteger index = arc4random_uniform((uint32_t)(aCount - i));
         [selected addObject:copy[index]];
         [copy removeObjectAtIndex:index];
     }
@@ -129,12 +165,16 @@
     return selected;
 }
 
+- (NSArray *)shuffledArray {
+    return [self randomObjectsOfCount:self.count];
+}
+
 @end
 
 
 @implementation NSMutableArray (Random)
 
-- (id)popRandomObject {
+- (id)removeRandomObject {
     NSUInteger count = self.count;
     if (count == 0) {
         return self[0]; // raise index error
@@ -149,8 +189,27 @@
     NSMutableArray *pool = [self mutableCopy];
     [self removeAllObjects];
     while (pool.count) {
-        [self addObject:[pool popRandomObject]];
+        [self addObject:[pool removeRandomObject]];
     }
+    [pool release];
+}
+
+@end
+
+
+@implementation NSArray (Deprecated)
+
+- (id):(NSUInteger)index {
+    return self[index];
+}
+
+@end
+
+
+@implementation NSMutableArray (Deprecated)
+
+- (id)popRandomObject {
+    return [self removeRandomObject];
 }
 
 @end

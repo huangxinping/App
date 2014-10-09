@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C6A48E2C5D3B44EB8804E2B6"
+               BlueprintIdentifier = "4F96F53CE6D74EF7B07C7834"
                BuildableName = "libPods-GIKPopoverBackgroundView.a"
                BlueprintName = "Pods-GIKPopoverBackgroundView"
                ReferencedContainer = "container:Pods.xcodeproj">
